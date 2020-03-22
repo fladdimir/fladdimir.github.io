@@ -469,7 +469,78 @@ Or do you have questions concerning the presented implementation/toolstack?&lt;/
 &lt;p>
 &lt;a href="https://www.linkedin.com/in/wladimir-hofmann-9065a714b/" target="_blank" rel="noopener">Wladimir Hofmann&lt;/a> -
 &lt;a href="https://www.linkedin.com/in/clemens-lennart-schwarz-609815186/" target="_blank" rel="noopener">Clemens L. Schwarz&lt;/a> -
-&lt;a href="https://www.linkedin.com/in/fredrik-branding-064014163/" target="_blank" rel="noopener">Fredrik Branding&lt;/a>&lt;/p></description></item><item><title>Implementation of an IoT- and Cloud-based Digital Twin for Real-Time Decision Support in Port Operations</title><link>/publication/mim2019/</link><pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate><guid>/publication/mim2019/</guid><description>&lt;p>Presented at: 9th IFAC Conference on Manufacturing Modelling, Management and Control 2019, Berlin, Germany&lt;/p>
+&lt;a href="https://www.linkedin.com/in/fredrik-branding-064014163/" target="_blank" rel="noopener">Fredrik Branding&lt;/a>&lt;/p></description></item><item><title>Introducing Casymda</title><link>/post/casymda/</link><pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate><guid>/post/casymda/</guid><description>&lt;p>Discrete Event Simulation is a widespread tool for analysis and design of logistics systems.&lt;br>
+However, most industrial applications are realized using commercial simulators, and existing open-source alternatives still seem to lack some of the convenient features commercial packages are offering.&lt;br>
+The &lt;em>Casymda&lt;/em>-package strives to add some of these features, building on established standards such as BPMN and SimPy.&lt;/p>
+&lt;p>This post will introduce main features and show how to run a simple example.&lt;/p>
+&lt;blockquote>
+&lt;p>Get
+&lt;a href="https://github.com/fladdimir/casymda" target="_blank" rel="noopener">the repo&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="existing-discrete-event-simulation-packages">Existing Discrete Event Simulation Packages&lt;/h2>
+&lt;p>Current applications of DES go beyond the traditional usage for systems planning.
+They include more operational use-cases such as virtual commissioning or short-term forecasts &amp;amp; optimization.
+Consequently, simulation models are getting integrated tightly into other IT-systems.
+This allows to increase process transparency and to improve our means to analyze, control, and optimize system performance.&lt;/p>
+&lt;p>Most industrial simulation uses are still based on commercial packages.&lt;/p>
+&lt;p>And there are good reasons for this.&lt;br>
+If you&amp;rsquo;ve already worked with commercial DES packages (such as Anylogic/Arena/ExtendSim/FlexSim/PlantSimulation/Simio/&amp;hellip;YouNameIt), you probably learned to like some typical characteristics:&lt;/p>
+&lt;ul>
+&lt;li>block-based graphical modeling of processes&lt;/li>
+&lt;li>(often) vendor-specific scripting possibilities to define custom behavior and non-standard procedures (this is where things get fun)&lt;/li>
+&lt;li>(3D) visualization / animation capabilities for debug / validation / presentation (fun as well, most of the time)&lt;/li>
+&lt;li>domain-specific libraries with objects providing pre-built industry-specific behaviors (configuration and customization)&lt;/li>
+&lt;li>interfacing options: spreadsheets, databases, socket, COM,&amp;hellip; (what&amp;rsquo;s the last one?)&lt;/li>
+&lt;/ul>
+&lt;p>However, there are a couple of open-source alternatives too.&lt;br>
+Even though they tend to lack some of the commercial features described above, there are upsides such as better scalability and simplified interfacing.&lt;/p>
+&lt;p>Related to Python there are (at least) two popular DES packages:
+&lt;a href="https://www.salabim.org/" target="_blank" rel="noopener">Salabim&lt;/a> and
+&lt;a href="https://simpy.readthedocs.io/en/latest/" target="_blank" rel="noopener">SimPy&lt;/a>.
+Both are not only free and open-source, but even built on top of the standard library of one of the world&amp;rsquo;s most popular programming languages.&lt;/p>
+&lt;h2 id="casymda-features--implementation">Casymda: Features &amp;amp; Implementation&lt;/h2>
+&lt;p>Based on SimPy3,
+&lt;a href="https://pypi.org/project/casymda/" target="_blank" rel="noopener">&lt;em>Casymda&lt;/em>&lt;/a> adds bits of complementing functionality to gain some of the modeling convenience of commercial &amp;ldquo;block-based&amp;rdquo; DES-packages.&lt;br>
+It facilitates the usage of bpmn-process-descriptions to generate corresponding simulation-model python-code.
+.bpmn-files (basically xml) can easily be created with the
+&lt;a href="http://www.bpmn.io" target="_blank" rel="noopener">Camunda-Modeler&lt;/a>.&lt;br>
+This graphical modeling helps to maintain an overview of the high-level model-structure.
+Generated Casymda-models also include a generic, token-like animation of simulated processes out-of-the-box, ready to be run in a web-browser.
+For presentation and debugging, animations can be paused and their speed can be changed dynamically.
+Solely animation-related events are not scheduled if the simulation is run without visualization.
+This maximizes the execution speed - which becomes especially important when a high number of runs is necessary.&lt;br>
+Further features of Casymda include simulated movements along shortest paths in a 2D-tilemap-space, and gradual typing for development convenience (checkout
+&lt;a href="https://github.com/microsoft/pyright" target="_blank" rel="noopener">pyright&lt;/a> if you are using
+&lt;a href="https://code.visualstudio.com/docs/python/editing" target="_blank" rel="noopener">vscode&lt;/a>).&lt;/p>
+&lt;p>Let&amp;rsquo;s have a quick look at a
+&lt;a href="https://github.com/fladdimir/casymda/tree/github/examples/tilemap" target="_blank" rel="noopener">simple example Casymda-model&lt;/a>, illustrating some basic ideas.&lt;/p>
+&lt;p>The animation below shows a simple process consisting of 3 Casymda-&lt;em>blocks&lt;/em>: &lt;code>Entities&lt;/code> are created in a &lt;code>Source&lt;/code>, pass a process-step called &lt;code>TilemapMovement&lt;/code>, and leave the system via a &lt;code>Sink&lt;/code>.&lt;/p>
+&lt;p>&lt;img src="./gifs/tilemap_process_simple_x50.gif" alt="simple animated simulation process">&lt;/p>
+&lt;p>To run the example just enter the following command from within the repository and visit &lt;a href="http://localhost:5000">http://localhost:5000&lt;/a>:&lt;/p>
+&lt;pre>&lt;code class="language-sh">docker-compose up web-animation-tilemap-simple-process
+&lt;/code>&lt;/pre>
+&lt;p>Created block-objects can be parametrized with arguments provided as text-annotations (e.g. the &lt;code>inter_arrival_time=100&lt;/code> [seconds] of the entities at the source).
+The naming of blocks is parsed following the pattern &lt;em>ClassName&lt;/em>:&lt;em>instance_name&lt;/em>.
+The default process-animation includes additional information on the processed entities and on the state of each block.&lt;/p>
+&lt;p>The way in which animations are created by Casymda is inspired by the
+&lt;a href="https://cloud.anylogic.com/models" target="_blank" rel="noopener">Anylogic implementation&lt;/a>.
+A web-server is running the actual simulation, and providing frame information to be rendered by a browser.
+The corresponding Casymda functionality is implemented using
+&lt;a href="https://palletsprojects.com/p/flask/" target="_blank" rel="noopener">flask&lt;/a> and
+&lt;a href="https://www.pixijs.com/" target="_blank" rel="noopener">pixijs&lt;/a>.&lt;/p>
+&lt;p>Below you can find an &lt;em>tilemap-animation&lt;/em> of the &lt;code>TilemapMovement&lt;/code> process step of the model. As specified in the text-annotation, entities move &lt;code>from_node=&amp;quot;A&amp;quot;&lt;/code>, &lt;code>to_node=&amp;quot;C&amp;quot;&lt;/code>.
+Tilemaps can be provided in &lt;code>.csv&lt;/code> format, with field values indicating possible origin/destination nodes (e.g. &lt;code>A&lt;/code>, &lt;code>B&lt;/code>, and &lt;code>C&lt;/code>), passable nodes (&lt;code>0&lt;/code>), and impassable nodes (&lt;code>1&lt;/code>).
+The size of each tile is configured as part of the tilemap configuration.
+Shortest paths and distances between all origin/destination nodes are computed using
+&lt;a href="https://networkx.github.io/" target="_blank" rel="noopener">networkx&lt;/a>.&lt;/p>
+&lt;p>&lt;img src="./gifs/tilemap_simple_x10.gif" alt="simple animated tilemap simulation">&lt;/p>
+&lt;p>To run the tilemap animation example just enter the following command and visit: &lt;a href="http://localhost:5000">http://localhost:5000&lt;/a>&lt;/p>
+&lt;pre>&lt;code class="language-sh">docker-compose up web-animation-tilemap-simple
+&lt;/code>&lt;/pre>
+&lt;h2 id="additional-resources">Additional resources&lt;/h2>
+&lt;p>For additional information, feel free to have a look at
+&lt;a href="https://casymda.github.io/page/Webpage/Startpage.html" target="_blank" rel="noopener">other projects built with Casymda&lt;/a> (German).&lt;/p>
+&lt;p>Interested in machine-learning? The next post will show how to use a Casymda-model to train a reinforcement learning algorithm to solve a production logistics problem - stay tuned ;)&lt;/p></description></item><item><title>Implementation of an IoT- and Cloud-based Digital Twin for Real-Time Decision Support in Port Operations</title><link>/publication/mim2019/</link><pubDate>Wed, 28 Aug 2019 00:00:00 +0000</pubDate><guid>/publication/mim2019/</guid><description>&lt;p>Presented at: 9th IFAC Conference on Manufacturing Modelling, Management and Control 2019, Berlin, Germany&lt;/p>
 &lt;p>Full text
 &lt;a href="https://www.researchgate.net/publication/320434207_A_Simulation_Tool_to_Assess_the_Integration_of_Cargo_Bikes_into_an_Urban_Distribution_System" target="_blank" rel="noopener">on researchgate&lt;/a>.&lt;/p></description></item><item><title>Simulation and Virtual Commissioning of Modules for a Plug-and-Play Conveying System</title><link>/publication/incom2018/</link><pubDate>Mon, 11 Jun 2018 00:00:00 +0000</pubDate><guid>/publication/incom2018/</guid><description>&lt;p>Presented at: 16th IFAC Symposium on Information Control Problems in Manufacturing, June 11-13 2018, Bergamo, Italy&lt;/p>
 &lt;p>Full text
