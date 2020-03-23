@@ -60,7 +60,7 @@ Instead of explicitly defining a specific solution strategy for a problem, we ca
 &lt;p>First, there is a lot of active development in &lt;em>RL&lt;/em>, as well as in the application of &lt;em>Digital Twins&lt;/em> in production/logistics.
 We believe that there lies even more potential in integrating these concepts.
 Furthermore, we found the often derogatory-treated &lt;em>&amp;ldquo;low-level implementation work&amp;rdquo;&lt;/em> to be an actual obstacle for making progress in this challenging and highly inter-disciplinary area of applied research.
-This contribution therefore strives to show a working example based on a tool-stack which seamlessly integrates two of the most popular open-source software packages from their respective areas:
+This contribution strives to show a working example based on a tool-stack which seamlessly integrates two of the most popular open-source software packages from their respective areas:
 &lt;a href="https://stable-baselines.readthedocs.io/en/master/" target="_blank" rel="noopener">stable-baselines&lt;/a> for &lt;em>RL&lt;/em> and
 &lt;a href="https://simpy.readthedocs.io/en/latest/" target="_blank" rel="noopener">SimPy&lt;/a> for implementing &lt;em>Digital Twins&lt;/em>.&lt;/p>
 &lt;h3 id="reinforcement-learning">Reinforcement Learning&lt;/h3>
@@ -79,19 +79,19 @@ The environment then processes the action and returns:&lt;/p>
 &lt;li>and an &lt;em>info&lt;/em>-object (might contain additional information e.g. for logging purposes).&lt;/li>
 &lt;/ul>
 &lt;p>&lt;img src="diagrams/gym_rl_environment_interface.jpg" alt="Gym-RL-Environment-Interface">&lt;/p>
-&lt;p>The interface also prescribes some more stuff, such as the formats of &lt;em>action-space&lt;/em> and &lt;em>observation_space&lt;/em>, as well as &lt;em>render&lt;/em> and &lt;em>reset&lt;/em> behavior.&lt;br>
+&lt;p>The interface also prescribes more, such as the formats of &lt;em>action-space&lt;/em> and &lt;em>observation_space&lt;/em>, as well as &lt;em>render&lt;/em> and &lt;em>reset&lt;/em> behavior.&lt;br>
 The various RL algorithms provided by the
 &lt;a href="https://pypi.org/project/stable-baselines/" target="_blank" rel="noopener">stable-baselines&lt;/a>-package are ready to work with environments implementing this gym-interface.
 All that is left to do is creating a compliant environment - and in the next section we will show how this can be achieved in the domain of logistics.&lt;/p>
 &lt;h3 id="digital-twins-and-discrete-event-simulation">Digital Twins and Discrete Event Simulation&lt;/h3>
 &lt;p>Frankly, &lt;em>Digital Twin&lt;/em> is probably the most overused buzzword of all the &amp;ldquo;Lostistics 4.0 / Industry 4.0&amp;rdquo; stuff that is out there.
-Even though we could not resist to put it into the title, from now on we&amp;rsquo;ll prove that we can do better and use the more specific term &amp;ldquo;Discrete Event Simulation&amp;rdquo; (DES) instead.&lt;/p>
+Even though we could not resist to put it into the title, from now on we&amp;rsquo;ll prove that we can do better and use the more specific term &amp;ldquo;Discrete Event Simulation&amp;rdquo; (DES).&lt;/p>
 &lt;p>Why DES? Discrete Event Simulation is one of the widespread tools for analysis and design of logistics systems.
 Today&amp;rsquo;s applications go beyond the traditional usage for systems planning.
 They include more operational use-cases such as virtual commissioning or short-term forecasts.
 Simulation models are getting integrated tightly into other IT-systems.
 This allows to increase process transparency and to improve our means to analyze, control, and optimize system performance in real-time.
-Doesn&amp;rsquo;t this sound pretty close to what &lt;em>Digital Twins&lt;/em> always promise? ;)&lt;/p>
+Doesn&amp;rsquo;t this sound pretty close to what &lt;em>Digital Twins&lt;/em> always promise?&lt;/p>
 &lt;p>Most industrial simulation uses are still based on commercial packages.&lt;br>
 However, there are a couple of open-source alternatives, which are typically closer to general-purpose language programming. Even though they tend to lack some convenient commercial features, there are upsides such as better scalability and simplified interfacing.&lt;/p>
 &lt;p>Related to Python we became aware of two popular DES packages:
@@ -140,9 +140,7 @@ This step could include e.g. counting the number of entities in different queues
 &lt;a href="https://www.sciencedirect.com/science/article/pii/S2405896319315010" target="_blank" rel="noopener">improving the tour-building for in-plant milk-run systems&lt;/a>.
 These internal deliveries are commonly used for assembly line supply, and the tours are typically following a very rigid plan.
 Given the fact that the actual demand at the line tends to vary, their research revealed quite a lot of potential to decrease delivery lead times and to increase systems&amp;rsquo; utilization - just by making the tour-planning more dynamic.&lt;/p>
-&lt;p>Based on this setting we constructed an abstracted and simplified version of an assembly line with a corresponding material supply system to provide a playground for reinforcement learning algorithms.
-The repository is provided
-&lt;a href="https://github.com/fladdimir/tugger-routing" target="_blank" rel="noopener">here&lt;/a>.&lt;/p>
+&lt;p>Based on this setting we constructed an abstracted and simplified version of an assembly line with a corresponding material supply system to provide a playground for reinforcement learning algorithms.&lt;/p>
 &lt;h3 id="scenario">Scenario&lt;/h3>
 &lt;p>The image below shows a schematic layout plan of the system:&lt;/p>
 &lt;p>&lt;img src="images/layout_50perc.png" alt="case-study-layout">&lt;/p>
@@ -157,13 +155,13 @@ The goal of the assembly line is achieving the maximal throughput, which also co
 &lt;ul>
 &lt;li>material can only be loaded at the stocks (&lt;code>A&lt;/code> and &lt;code>B&lt;/code>), each of which holds an infinite amount of material, so that the tugger never waits for material at a loading site&lt;/li>
 &lt;li>material can only be unloaded at a station actually requiring this type of material (hence a tugger cannot unload a box of &lt;code>A&lt;/code> at a station which needs &lt;code>B&lt;/code> for assembly)&lt;/li>
-&lt;li>the inventory capacity at the stations (&lt;code>I-IX&lt;/code>) is infinte, therefore the tugger never waits at an unloading site (otherwise livelocks could occur where a tugger cannot unload material whereever it moves)&lt;/li>
+&lt;li>the inventory capacity at the stations (&lt;code>I-IX&lt;/code>) is infinite, so that the tugger never waits at an unloading site (otherwise livelocks could occur where a tugger cannot unload material wherever it moves)&lt;/li>
 &lt;/ul>
 &lt;table>
 &lt;thead>
 &lt;tr>
 &lt;th align="left">System parameters&lt;/th>
-&lt;th>&lt;/th>
+&lt;th align="center">&lt;/th>
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
@@ -260,7 +258,7 @@ The estimation assumes &amp;ldquo;full truck loads&amp;rdquo;, always completely
 &lt;thead>
 &lt;tr>
 &lt;th align="left">Throughput estimation&lt;/th>
-&lt;th>&lt;/th>
+&lt;th align="center">&lt;/th>
 &lt;/tr>
 &lt;/thead>
 &lt;tbody>
@@ -342,11 +340,11 @@ Will our RL-agent be able to&amp;hellip;&lt;/p>
 &lt;/ol>
 &lt;/li>
 &lt;/ol>
-&lt;p>Note that even unsuccessful loading or unloading attempts are implemented to take a small, fixed amount of time, so that every possible Gym-step is guaranteed to take at least some simulated time (and a time-constrained episode is guaranteed to reach it&amp;rsquo;s end eventually).&lt;/p>
+&lt;p>Note that even unsuccessful loading or unloading attempts are implemented to take a small, fixed amount of time, so that every possible Gym-step is guaranteed to take at least some simulated time (and a time-constrained episode is guaranteed to reach its end eventually).&lt;/p>
 &lt;p>Below you can see a process animation, as well as an animation of a tilemap.
 The agent here follows an explicitly defined simple rule of always delivering a complete load of 25 units to the station with the lowest inventory level.
-To run the animation just clone
-&lt;a href="https://github.com/fladdimir/tugger-routing" target="_blank" rel="noopener">the repository&lt;/a>.&lt;/p>
+To run the animation just clone the
+&lt;a href="https://github.com/fladdimir/tugger-routing" target="_blank" rel="noopener">repo&lt;/a>, run the command, and visit &lt;a href="http://localhost:5000">http://localhost:5000&lt;/a>.&lt;/p>
 &lt;p>Process animation:&lt;/p>
 &lt;pre>&lt;code class="language-sh">docker-compose up web-animation-lia-process
 &lt;/code>&lt;/pre>
@@ -368,7 +366,7 @@ To run the animation just clone
 &lt;li>&lt;code>get_reward&lt;/code> specifies how the elapsed time is taken into account for reward calculation&lt;/li>
 &lt;li>&lt;code>check_if_model_is_done&lt;/code> implements a model-specific check whether a certain amount of time has been simulated. One episode is scheduled to take 24h (86400s).&lt;/li>
 &lt;/ul>
-&lt;p>The &lt;code>render&lt;/code> method of the Gym-Env is not implemented, since animations at arbitrary moments in time - whenever a Gym-step is finished - do not make much sense for discrete event simulation environments. Animation is therefore controlled seperately.&lt;/p>
+&lt;p>The &lt;code>render&lt;/code> method of the Gym-Env is not implemented, since animations at arbitrary moments in time - whenever a Gym-step is finished - do not make much sense for discrete event simulation environments. The animation is controlled separately.&lt;/p>
 &lt;p>The &lt;code>info&lt;/code> return value of &lt;code>step&lt;/code> is configured to return the number of &lt;code>finished_products&lt;/code> which can then be logged.&lt;/p>
 &lt;!-- omit in toc -->
 &lt;h4 id="observation---action-space">Observation- &amp;amp; Action-Space&lt;/h4>
@@ -399,18 +397,18 @@ To run the animation just clone
 &lt;p>As stated above, the defined goal of the assembly line is to achieve the best possible throughput of products, which corresponds to producing as many products as possible e.g. during one episode (24h).&lt;/p>
 &lt;p>How do we achieve that? Which kind of incentive is suitable to stimulate such a behavior?
 The design of appropriate reward functions is known to be a non-trivial matter.
-In fact, the design of rewards and incentives even for (arguably more intelligent) humans is a major problem in education and management (remember the last time you studied for passing an exam instead of actually learning useful contents ;).&lt;/p>
+In fact, the design of rewards and incentives even for (arguably more intelligent) humans is a major problem in management and education (remember the last time you studied for passing an exam instead of actually learning useful contents).&lt;/p>
 &lt;p>For the environment at hand, we could just think about giving a single reward at the end of each episode, proportionally to the number of achieved products in that fixed amount of time (24h), which would probably properly reflect our aim of maximizing the throughput.
 However, the resulting reward would be quite &lt;em>sparse&lt;/em> and therefore greatly decelerate learning speed (taking the average duration of a random action, each episode would take more than 1000 actions to complete before an agent sees any reward).&lt;/p>
 &lt;p>Another idea would be to reward every successful delivery of material to any station, which would be possible to be completed within 2 steps (movement to the stock &amp;amp; movement to a suitable station consuming the loaded material).
 This way we would get less sparse rewards, but also an obvious problem of exploitability, caused by the fact that the delivery of material to one station alone would actually never lead to the completion of any product at all.&lt;/p>
-&lt;p>As a compromise, we simply decided to go for a a reward of 1 everytime a product completes its final assembly step, which is possible be completed within 12 steps (minimum, not necessarily an optimal strategy).
+&lt;p>As a compromise, we simply decided to go for a reward of 1 everytime a product completes its final assembly step, which is possible be completed within 12 steps (minimum, not necessarily an optimal strategy).
 Even exhibiting a random behavior, this would allow an agent to generate a reward of around 50 during one episode, so that there are sufficient &amp;ldquo;randomly succesful&amp;rdquo; samples to learn from.&lt;/p>
-&lt;p>One problem of this reward is that the simulated time needed to obtain a reward is not reflected in the reward itself.
+&lt;p>One problem with this reward comes from the fact that the simulated time needed to obtain a reward is not reflected by the reward itself.
 Since every gym-step can actually eat up a greatly varying amount of simulation time (from 5 seconds to &amp;gt;100), there is a huge implicit impact on the throughput, which the agent is unaware of.
 To solve this problem we introduced &amp;ldquo;costs of time&amp;rdquo;, which means we simply give a small negative reward every step, proportional to the amount of simulated time that passed.
 This finally leaves us with the subsequent question of how big these &amp;ldquo;costs&amp;rdquo; should be.
-If set too high, they would just overrule any of the few actual rewards in the beginning of the training.
+If set too high, they would just overrule any of the few actual rewards at the beginning of the training.
 If put too low, there would not be sufficient stimulus to exhibit time-efficient behavior at all.
 Again, as a simple compromise, we implemented the costs to grow proportionally with the highest reward seen so far at the end of an episode, which guarantees a certain balance, and rewards increasing time-efficiency.&lt;/p>
 &lt;p>The above described reward that we designed is definitely not &amp;ldquo;perfect&amp;rdquo; and also feels a bit like putting too much effort into &amp;ldquo;reward engineering&amp;rdquo; - nevertheless its a first solution our agents can hopefully work with&amp;hellip;&lt;/p>
@@ -423,10 +421,10 @@ To leverage multiple CPUs for training, it can be desirable to use a &lt;code>Su
 &lt;p>Train an ACER-agent (by default for 10,000 steps only, which should take &amp;lt;1min):&lt;/p>
 &lt;pre>&lt;code class="language-sh">docker-compose up acer-training
 &lt;/code>&lt;/pre>
-&lt;p>Plot performance (might require additional steps for connecting the display):&lt;/p>
+&lt;p>Plot performance (might require additional setup for connecting the display):&lt;/p>
 &lt;pre>&lt;code class="language-sh">docker-compose up acer-plot-training
 &lt;/code>&lt;/pre>
-&lt;p>Tilemap-animation of the trained agent (visit &lt;a href="http://localhost:5000">http://localhost:5000&lt;/a>):&lt;/p>
+&lt;p>Tilemap-animation of the trained agent (&lt;a href="http://localhost:5000">http://localhost:5000&lt;/a>):&lt;/p>
 &lt;pre>&lt;code class="language-sh">docker-compose up acer-web-animation-tilemap
 &lt;/code>&lt;/pre>
 &lt;p>Below we can see an ACER-agent trained for 1m steps:&lt;/p>
@@ -448,19 +446,20 @@ The following graph shows the number of produced products per episode (24h) over
 &lt;li>The best-performing RL algorithm (ACER trained for 1mio. steps, orange line) reached a maximum throughput of 856 products / episode (78% of the near-optimal heuristics performance).&lt;/li>
 &lt;/ul>
 &lt;p>The number of episodes varies due to the variable number of Gym-steps per episode (24h of simulated time), depending on the simulated time each Gym-step needs.
-The small number of episodes of the ACER_3mio. training is explained by the up to 17277 Gym-steps per episode, occuring from episode 260 on.
-Each step of such an episode takes only 5 seconds (the minimum possible time a repeated visit of the same location takes).
+The small number of episodes of the ACER_3mio. training is explained by the up to 17277 Gym-steps per episode, occurring from episode 260 on.
+Each step of such an episode takes only 5 seconds (the minimum possible time of all available Gym-steps, &amp;ldquo;achieved&amp;rdquo; by a repeated visit of the same location).
 This behavior might be caused by the defined negative reward per step, proportional to the amount of simulated time the step needed.
 Appearently, the agent does not remember how to generate a positive reward and only tries to maximize the short-term reward by minimizing the step-time.
 Obviously this behavior does not lead to any successful delivery, let alone completion of any product.&lt;/p>
 &lt;p>It is worth to be mentioned that all training runs were done with default algorithm settings, and that the evaluation of different hyperparameters is strongly
-&lt;a href="https://stable-baselines.readthedocs.io/en/master/guide/rl_tips.html" target="_blank" rel="noopener">recommended&lt;/a> for performance optimization. Thus, it might not be improbable for an RL agent to close the performance gap towards the theoretically reachable optimum.&lt;/p>
+&lt;a href="https://stable-baselines.readthedocs.io/en/master/guide/rl_tips.html" target="_blank" rel="noopener">recommended&lt;/a> for performance optimization.
+Thus, it might not be improbable for an RL agent to close the performance gap towards the theoretically reachable optimum.&lt;/p>
 &lt;h2 id="summing-up">Summing Up&lt;/h2>
 &lt;p>Short version: Our best RL agent reached about 78% of the best possible performance inside our production-logistics environment.&lt;/p>
 &lt;p>Ok, now is this good or bad?&lt;/p>
 &lt;p>Well, one could be disappointed by the fact that our agent was not able to reach the performance of a hand-coded heuristics approach.&lt;br>
-But did we believe when we started out that we could get a generic piece of code to cope with the non-trivial relations of our specific and fairly complex environment? Certainly not!&lt;br>
-And this was just a first shot - we did not even start with hyperparameter tuning or the evaluation of alternative rewards.&lt;/p>
+But did we believe when we started that we could get a generic piece of code to cope with the non-trivial relations of our specific and fairly complex environment? Certainly not!&lt;br>
+And this was just a first shot - we did not yet start with hyperparameter tuning or the evaluation of alternative rewards.&lt;/p>
 &lt;p>What do your experiences with reinforcement learning look like?&lt;br>
 Which logistics problems did you solve with RL?&lt;br>
 Did you spot a bug somewhere in the code or do you want to suggest an improvement?&lt;br>
