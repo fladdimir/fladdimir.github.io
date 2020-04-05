@@ -1,4 +1,124 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Wladimir Hofmann | Homepage</title><link>/authors/fladdimir/</link><atom:link href="/authors/fladdimir/index.xml" rel="self" type="application/rss+xml"/><description>Wladimir Hofmann | Homepage</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 21 Mar 2020 00:00:00 +0000</lastBuildDate><image><url>img/map[gravatar:%!s(bool=false) shape:circle]</url><title>Wladimir Hofmann | Homepage</title><link>/authors/fladdimir/</link></image><item><title>Using A Digital Twin for Assembly Line Supply Strategy Planning</title><link>/post/tugger-routing/</link><pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate><guid>/post/tugger-routing/</guid><description>&lt;p>&lt;em>Artificial Intelligence&lt;/em>, &lt;em>Digital Twins&lt;/em>, &lt;em>Industry 4.0&lt;/em>&amp;hellip; you might have &lt;em>heard&lt;/em> these buzzwords before.&lt;br>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Wladimir Hofmann | Homepage</title><link>/authors/fladdimir/</link><atom:link href="/authors/fladdimir/index.xml" rel="self" type="application/rss+xml"/><description>Wladimir Hofmann | Homepage</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sat, 04 Apr 2020 00:00:00 +0000</lastBuildDate><image><url>img/map[gravatar:%!s(bool=false) shape:circle]</url><title>Wladimir Hofmann | Homepage</title><link>/authors/fladdimir/</link></image><item><title>Urban Logistics Network Simulation in Python</title><link>/post/csa-streetmap/</link><pubDate>Sat, 04 Apr 2020 00:00:00 +0000</pubDate><guid>/post/csa-streetmap/</guid><description>&lt;p>A really nice and quite unique feature of
+&lt;a href="https://www.anylogic.com/" target="_blank" rel="noopener">Anylogic&lt;/a> is the possibility to include GIS-maps into simulation models.
+It allows to place elements on a map and move them along existing routes, based on real spatial information.
+This is cool because it can be used to simulate entire supply chains, including means to provide a great, tangible visualization for complex problems.&lt;/p>
+&lt;p>In a
+&lt;a href="../../publication/i3m2017">previous project&lt;/a> I used Anylogic to evaluate different designs and delivery schemes for a more sustainable urban logistics network in the city center of Grenoble in France. The data-driven simulation model allowed to quickly calculate KPIs for various transshipment node locations and different types of transport equipment in a multi-tier supply-chain network.&lt;/p>
+&lt;p>Based on the success and positive feedback for their feature, Anylogic even built
+&lt;a href="https://www.anylogistix.com/" target="_blank" rel="noopener">anyLogistix&lt;/a>, a &amp;ldquo;spin-off&amp;rdquo; product combining pre-built &amp;amp; customizable simulation models with a commercial solver for integrated supply chain planning &amp;amp; optimization.&lt;/p>
+&lt;p>Obviously, those commercial features come at a price, so let&amp;rsquo;s see whether we can also realize this kind of model using open-source technologies.&lt;/p>
+&lt;p>The simulation model presented in this post will be based on a mini-case-study.&lt;/p>
+&lt;hr>
+&lt;blockquote>
+&lt;p>
+&lt;a href="https://github.com/fladdimir/csa-streetmap" target="_blank" rel="noopener">Get the repo.&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;hr>
+&lt;h2 id="scenario--scope">Scenario &amp;amp; Scope&lt;/h2>
+&lt;p>Facing the fact that humanity gets more and more used to home-delivery of even everyday necessities, the small French bakery
+&lt;a href="http://www.die-patisserie.de/de_DE" target="_blank" rel="noopener">Die Patisserie&lt;/a> in Hamburg-Altona wants to deliver sweet pastries to nearby customers.&lt;/p>
+&lt;p>They identified 3 major purchasers: the lost-and-found office
+&lt;a href="https://www.hamburg.de/altona/fundbuero/" target="_blank" rel="noopener">Zentrales Fundbüro&lt;/a>,
+&lt;a href="https://www.monkeys-hamburg.de/" target="_blank" rel="noopener">Monkeys Music Club&lt;/a>, and the publishing house
+&lt;a href="https://www.carlsen.de/node/18749" target="_blank" rel="noopener">Carlsen Verlag&lt;/a>.&lt;/p>
+&lt;p>Coordinates of the different locations:&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>&lt;/th>
+&lt;th>Node&lt;/th>
+&lt;th>Name&lt;/th>
+&lt;th>Lat&lt;/th>
+&lt;th>Lon&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>1.&lt;/td>
+&lt;td>PAT&lt;/td>
+&lt;td>Die Patisserie&lt;/td>
+&lt;td>53.55668&lt;/td>
+&lt;td>9.92815&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>2.&lt;/td>
+&lt;td>ZFB&lt;/td>
+&lt;td>Zentrales Fundbüro (lost-and-found office)&lt;/td>
+&lt;td>53.55817&lt;/td>
+&lt;td>9.92829&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>3.&lt;/td>
+&lt;td>MMC&lt;/td>
+&lt;td>Monkeys Music Club&lt;/td>
+&lt;td>53.55706&lt;/td>
+&lt;td>9.93161&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>4.&lt;/td>
+&lt;td>CAV&lt;/td>
+&lt;td>Carlsen Verlag (publishing house)&lt;/td>
+&lt;td>53.55703&lt;/td>
+&lt;td>9.92684&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;p>For the sake of simplicity, the order in which nodes are visited is assumed to be fixed. The tour starts &amp;amp; ends at the patisserie:&lt;/p>
+&lt;p>&lt;img src="img/stations.jpg" alt="tour-stops">&lt;/p>
+&lt;hr>
+&lt;h2 id="simulation-model">Simulation Model&lt;/h2>
+&lt;p>The simulation model for the simplistic scenario is created with:&lt;/p>
+&lt;ul>
+&lt;li>OSMnx/networkx for retrieving geo-information and calculating shortest-paths&lt;/li>
+&lt;li>SimPy/Casymda for simulating the tour&lt;/li>
+&lt;li>Leaflet.js for browser-based animation&lt;/li>
+&lt;/ul>
+&lt;h3 id="1-osmnx">1. OSMnx&lt;/h3>
+&lt;p>The awesome
+&lt;a href="https://github.com/gboeing/osmnx" target="_blank" rel="noopener">OSMnx&lt;/a> package provides the possibility to obtain a networkx-graph representation of a street-network from OpenStreetMap with a single line of code.
+A relevant section for our scenario can be obtained by specifying center and distance for osm-nodes to be included:&lt;/p>
+&lt;pre>&lt;code class="language-py">CENTER = (53.55668, 9.92815)
+DISTANCE = 300
+G = ox.graph_from_point(CENTER, distance=DISTANCE, network_type='drive')
+&lt;/code>&lt;/pre>
+&lt;p>OSMnx let&amp;rsquo;s us pick the nearest osm-node for each of the 4 locations of the tour, and also offers convenient means to plot the network.
+Blue dots represent osm-nodes, connected by edges.
+The 4 relevant locations are shown in red:&lt;/p>
+&lt;p>&lt;img src="img/osmnx_plot.jpg" alt="OSMnx-graph-plot">&lt;/p>
+&lt;p>To prepare all information needed by the simulation model, we can now just compute all shortest paths between the 4 relevant nodes in the network with networkx, and include detailed information on all piece-wise linear segments for each route.&lt;br>
+The results are pickled and saved to disk to avoid fetching and recalculation for each run of the model (of course its kind to keep the load for the OSM-server as low as possible).&lt;/p>
+&lt;p>The above described approach could be improved, e.g. by automatically determining the area to be loaded from the given relevant locations. Instead of just picking the closest osm-node for each relevant location, it would also be more precise to first go for the closest edge in the network.
+And as the network size grows, it might be a better idea to directly query the shortest path between relevant nodes from the OSM-server, instead of fetching the network as a whole (the way Anylogic seems to do it).&lt;/p>
+&lt;h3 id="2-casymdasimpy">2. Casymda/SimPy&lt;/h3>
+&lt;p>
+&lt;a href="../casymda">Casymda&lt;/a> provides block-based modeling of discrete-event-simulation models on top of
+&lt;a href="https://pypi.org/project/simpy/" target="_blank" rel="noopener">SimPy&lt;/a>.&lt;br>
+Our model can be characterized by a simple process:&lt;/p>
+&lt;p>&lt;img src="img/diagram.svg" alt="bpmn-process">&lt;/p>
+&lt;p>A truck is created at a parameterized &lt;code>Source&lt;/code> and then processed at a custom &lt;code>DriveTour&lt;/code>-block, which contains the logic for elapsing time according to the length of a route and the movement speed of the truck. It also contains the option to calculate intermediate locations for animation. The nodes to be visited are specified via the text-annotation &lt;code>stops=[&amp;quot;ZFB&amp;quot;, &amp;quot;MMC&amp;quot;, &amp;quot;CAV&amp;quot;]&lt;/code>.&lt;/p>
+&lt;p>The animation is implemented by exposing information and resources via flask (similar to the &lt;em>tilemap-animation&lt;/em> described in the previous post).&lt;/p>
+&lt;h3 id="3-leafletjs">3. Leaflet.js&lt;/h3>
+&lt;p>To visualize the location of nodes and entities on a map,
+&lt;a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet&lt;/a> only requires a few lines. For setting the rotation angle, there is the
+&lt;a href="https://github.com/bbecquet/Leaflet.RotatedMarker" target="_blank" rel="noopener">Rotated.Marker-plugin&lt;/a>.&lt;/p>
+&lt;pre>&lt;code class="language-js">marker = L.marker(element.coords, { icon: new L.Icon({iconUrl: element.icon_path}) }).addTo(map);
+marker.bindPopup(element.text);
+marker.setRotationAngle(element.direction);
+&lt;/code>&lt;/pre>
+&lt;hr>
+&lt;h2 id="result">Result&lt;/h2>
+&lt;p>To run the simulation via &lt;a href="http://localhost:5000">http://localhost:5000&lt;/a>:&lt;/p>
+&lt;pre>&lt;code class="language-sh">docker-compose up geo-web-animation
+&lt;/code>&lt;/pre>
+&lt;p>The
+&lt;a href="img/tour.mp4">screencast below&lt;/a> shows a complete tour of a truck visiting all nodes in the defined order (Patisserie - Lost-and-found - Monkey&amp;rsquo;s - Carlsen Publishing - Patisserie).&lt;/p>
+&lt;video autoplay loop controls>
+&lt;source src="img/tour.mp4" type="video/mp4">
+&lt;/video>
+&lt;blockquote>
+&lt;p>As you can notice, the one-way street &lt;em>Völckersstraße&lt;/em> is correctly taken into account when moving from &lt;em>Monkeys Music Club&lt;/em> (3., right-most node) to &lt;em>Carlsen Verlag&lt;/em> (4., left-most node).&lt;/p>
+&lt;/blockquote>
+&lt;p>Of course there are numerous improvements and extensions imaginable, including e.g. the calculation of more realistic driving times based on actual speed limits which are already part of the available OSM-data.&lt;/p></description></item><item><title>Using a Digital Twin for Assembly Line Supply Strategy Planning</title><link>/post/tugger-routing/</link><pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate><guid>/post/tugger-routing/</guid><description>&lt;p>&lt;em>Artificial Intelligence&lt;/em>, &lt;em>Digital Twins&lt;/em>, &lt;em>Industry 4.0&lt;/em>&amp;hellip; you might have &lt;em>heard&lt;/em> these buzzwords before.&lt;br>
 But wouldn&amp;rsquo;t it be cool to &lt;em>apply&lt;/em> them, solving an actual problem?&lt;br>
 To learn about practical application rather than abstract concepts?&lt;br>
 To know which challenges to master, and which pitfalls to avoid?&lt;/p>
