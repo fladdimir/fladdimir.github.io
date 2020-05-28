@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Wladimir Hofmann">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Continuous Integration and Virtual Commissioning of Logistics Software">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/csa-vcom/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.6)">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light" disabled>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark">
+        
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hud653617489d02b724f2e6ae29c68221f_13132_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hud653617489d02b724f2e6ae29c68221f_13132_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/post/csa-vcom/">
+
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Wladimir Hofmann | Homepage">
+  <meta property="og:url" content="/post/csa-vcom/">
+  <meta property="og:title" content="Logistics Process Models for Automated Integration Testing | Wladimir Hofmann | Homepage">
+  <meta property="og:description" content="Continuous Integration and Virtual Commissioning of Logistics Software"><meta property="og:image" content="/post/csa-vcom/featured.png">
+  <meta property="twitter:image" content="/post/csa-vcom/featured.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-05-24T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-05-24T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/csa-vcom/"
+  },
+  "headline": "Logistics Process Models for Automated Integration Testing",
+  
+  "image": [
+    "/post/csa-vcom/featured.png"
+  ],
+  
+  "datePublished": "2020-05-24T00:00:00Z",
+  "dateModified": "2020-05-24T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Wladimir Hofmann"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Wladimir Hofmann | Homepage",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/images/icon_hud653617489d02b724f2e6ae29c68221f_13132_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Continuous Integration and Virtual Commissioning of Logistics Software"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Logistics Process Models for Automated Integration Testing | Wladimir Hofmann | Homepage</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="dark">
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Wladimir Hofmann | Homepage</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Wladimir Hofmann | Homepage</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#experience"><span>Experience</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<div class="article-container pt-3">
+  <h1>Logistics Process Models for Automated Integration Testing</h1>
+
+  
+  <p class="page-subtitle">Continuous Integration and Virtual Commissioning of Logistics Software</p>
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  
+  <span><a href="/authors/fladdimir/">Wladimir Hofmann</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    May 24, 2020
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    5 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 430px;">
+  <div style="position: relative">
+    <img src="/post/csa-vcom/featured_huabab85e840d0e00ddcf303dab5df9aab_1494492_720x0_resize_lanczos_2.png" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>The planning and design of logistics systems - both at supply-chain and intralogistics level - is frequently supported by simulation studies, used for comparing design alternatives, assessing their feasibility, as well as estimating KPIs like lead-time or throughput.</p>
+<p>When it comes to the realization phase of logistics systems, major challenges relate to the development of controls and operational IT systems.
+Given the fact that testing, integration, commissioning (and bug-fixing) of these systems tend to consume a significant chunk of the realization phase, it becomes clear that it is beneficial to test a developed system as early as possible - even before physical construction takes place.<br>
+
+<a href="https://www.sciencedirect.com/science/article/pii/S2212827119305839" target="_blank" rel="noopener"><em>Virtual Commissioning</em></a> describes the testing of software against the digital counterpart of a real system, making use of <em>simulation</em> models to <em>emulate</em> real-world interaction.</p>
+<p>This post will show an example of how the integration of simulation-based testing into today&rsquo;s agile software development processes can look like, investigating a case-study on order management &amp; delivery optimization.</p>
+<hr>
+<blockquote>
+<p>Get the repo from github: <a href="https://github.com/fladdimir/csa-vcom">https://github.com/fladdimir/csa-vcom</a></p>
+</blockquote>
+<hr>
+<h2 id="1-scenario--scope">1. Scenario &amp; Scope</h2>
+<p>Remember 
+<a href="https://www.die-patisserie.de/" target="_blank" rel="noopener"><em>La Pâtisserie</em></a>, the small French bakery in Hamburg-Altona, which was experiencing 
+<a href="../csa-streetmap/">a massive shift of demand towards at-home delivery</a> of their sweet pastries?</p>
+<p>Having evaluated different options of how to scale their business-model with help of an innovative open-source approach to urban delivery network simulation, the growing network now gets harder and harder to manage, calling for an increased software-based support of the bakery&rsquo;s daily logistics operations&hellip;</p>
+<h2 id="2-processes--requirements">2. Processes &amp; Requirements</h2>
+<p>To be able to focus on their core-competencies (to conjure up delicious treats, instead of fighting intractably inconsistent spread-sheet data), our bakery decides to go for a web-based logistics planning application.<br>
+The core processes to be supported are:</p>
+<ul>
+<li>Registration of customers, and tracking their orders</li>
+<li>Managing locations of the depots to plan the best-possible deliveries</li>
+<li>Keeping track of the trucks, delivering goods according to the planned tours</li>
+</ul>
+<p>The following BPMN-diagram shows the the processes and a simple token-flow animation:</p>
+<video autoplay loop controls>
+  <source src="img/bpmn.mp4" type="video/mp4">
+</video>
+<hr>
+<h2 id="3-test-first-simulation-model--build-pipeline">3. Test First: Simulation Model + Build-Pipeline</h2>
+<p>To make sure that all required processes are adequatly supported by the developed software, our bakery&rsquo;s software development division opts for a test-driven approach, backed by a build-pipeline which automatically checks all code pushed to the repository.<br>
+Based on the specified business process a 
+<a href="../casymda">Casymda</a> simulation model is generated, ready to emulate the real system, with which the developed software is supposed to work.
+As processes and scope of the application change, the simulation model is evolved in an agile way.</p>
+<p>
+<a href="https://gitea.io/" target="_blank" rel="noopener">Gitea</a> and 
+<a href="https://drone.io/" target="_blank" rel="noopener">Drone</a> form the basis of the continuous integration infrastructure.
+As part of a virtual commissioning step, the pipeline spins up the application in a service-container, against which the simulation model runs the test-scenario, emulating interaction and verifying the expected behavior of the software.</p>
+<p><img src="img/pipeline.png" alt="pipeline"></p>
+<p>The pipeline is described by a 
+<a href="https://github.com/fladdimir/csa-vcom/blob/github/.drone.yml" target="_blank" rel="noopener"><em>.drone.yml</em></a> file. Note that the pipeline could be improved in various ways, e.g. by properly waiting for the app (service) to become available for the simulation-step.
+A 
+<a href="https://github.com/fladdimir/csa-vcom/blob/github/gitea/docker-compose.yml" target="_blank" rel="noopener">docker-compose.yml</a> allows to start the gitea+drone setup locally (using a single-instance setup, which is 
+<a href="https://docs.drone.io/server/provider/gitea/" target="_blank" rel="noopener">not ideal</a>, but sufficient for testing).</p>
+<hr>
+<h2 id="4-application-design--implementation">4. Application Design &amp; Implementation</h2>
+<p>Our bakery&rsquo;s app is dealing with management of the data of customers, orders, depots, tours, and trucks.
+Additionally, it is required to support planning the delivery process by calculating efficient tours and assigning them to available trucks.</p>
+<p>The app adopts a basic 3-layer structure consisting of a browser-based ui, a backend containing the business logic and optimization algorithms, and a persisting database.
+The graphic below summarizes the setup, including the simulation model which acts as a client in the automated build pipeline:</p>
+<p><img src="img/app_layer.png" alt="app-parts-overview"></p>
+<p>The backend is implemented using 
+<a href="https://www.djangoproject.com/" target="_blank" rel="noopener">Django</a>+
+<a href="https://www.django-rest-framework.org/" target="_blank" rel="noopener">Django-Rest-Framework</a>, and relying on 
+<a href="https://developers.google.com/optimization" target="_blank" rel="noopener">Google-OR-Tools</a> for optimization tasks.
+Tour planning is modeled as a capacitated vehicle routing problem with multiple depots.
+For an optimal assignment of pending tours to available trucks, OR-Tools offers a minimum-cost-flow solver which is used on a corresponding bi-partite graph.</p>
+<p>To create the required distance matrices, we can utilize the 
+<a href="https://github.com/Project-OSRM/osrm-backend" target="_blank" rel="noopener">Open Source Routing Machine</a>, provided as a ready-to-use Docker image (
+<a href="https://hub.docker.com/r/osrm/osrm-backend/" target="_blank" rel="noopener">OSRM-in-a-box</a>).
+OSRM offers a convenient API which is synchronously consumed upon creation of a new customer or depot.
+Open-street-map data can be downloaded e.g. from <a href="https://download.geofabrik.de">https://download.geofabrik.de</a>.
+The map of 
+<a href="https://download.geofabrik.de/europe/germany/hamburg.html" target="_blank" rel="noopener">Hamburg</a> has a size of ~35 MB and OSRM-preprocessing (car-profile) takes about 30 seconds (i5 dual-core notebook processor).</p>
+<p>
+<a href="https://www.sqlite.org/index.html" target="_blank" rel="noopener">SQLite</a> provides a simple database solution, however, Django makes it easy to switch to a client/server RDBMS like 
+<a href="https://docs.djangoproject.com/en/3.0/ref/databases/" target="_blank" rel="noopener">Postgres or MariaDB</a>.</p>
+<p>The basic frontend is built with 
+<a href="https://angular.io/" target="_blank" rel="noopener">Angular</a>, 
+<a href="https://material.angular.io/" target="_blank" rel="noopener">Material</a>, and 
+<a href="https://leafletjs.com/" target="_blank" rel="noopener">Leaflet.js</a> (easy to integrate thanks to 
+<a href="https://github.com/Asymmetrik/ngx-leaflet" target="_blank" rel="noopener">ngx-leaflet</a>).</p>
+<hr>
+<h2 id="5-result">5. Result</h2>
+<p>The screencast below shows the workflow from a users perspective. It comprises registering a new customer, issuing an order, planning tours, assignment to a truck, and tracking deliveries as the tour proceeds:</p>
+<video autoplay loop controls>
+  <source src="img/app.mp4" type="video/mp4">
+</video>
+<p>The shown process matches the one executed by the simulation model in the virtual commissioning pipeline build step, ensuring stable functionality for every version of the software:</p>
+<p><img src="img/drone.png" alt="drone"></p>
+<p>Extensive and automated integration testing with simulation models can help to enable and sustain software quality, particularly in the context of process-centric logistics applications.
+As we&rsquo;ve seen, today&rsquo;s software development tools and standards allow for an efficient integration of simulation techniques &amp; virtual commissioning approaches into the development process.</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/csa-vcom/&amp;text=Logistics%20Process%20Models%20for%20Automated%20Integration%20Testing" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/csa-vcom/&amp;t=Logistics%20Process%20Models%20for%20Automated%20Integration%20Testing" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Logistics%20Process%20Models%20for%20Automated%20Integration%20Testing&amp;body=/post/csa-vcom/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/csa-vcom/&amp;title=Logistics%20Process%20Models%20for%20Automated%20Integration%20Testing" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Logistics%20Process%20Models%20for%20Automated%20Integration%20Testing%20/post/csa-vcom/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/csa-vcom/&amp;title=Logistics%20Process%20Models%20for%20Automated%20Integration%20Testing" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="avatar mr-3 avatar-circle" src="/authors/fladdimir/avatar_hu9aec7404c102c7c1af6267bcc4e47f28_382731_270x270_fill_lanczos_center_2.png" alt="Wladimir Hofmann">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/">Wladimir Hofmann</a></h5>
+      <h6 class="card-subtitle">Software Developer, Simulation Engineer</h6>
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:fladdi.mir%20[at]%20gmx%20[dot]%20de" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/wladimir-hofmann-9065a714b/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.researchgate.net/profile/Wladimir_Hofmann" target="_blank" rel="noopener">
+        <i class="ai ai-researchgate"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/fladdimir" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = true;</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

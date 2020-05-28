@@ -1,11 +1,1164 @@
-<!doctype html><html lang=en-us><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=generator content="Source Themes Academic 4.8.0"><meta name=author content="Wladimir Hofmann"><meta name=description content="The use of cargo bikes for goods deliveries represents a promising concept of urban logistics. In this contribution, a new simulation-based assessment tool integrating this emission free vehicles in urban distribution systems is presented. First, typical schemes are identified and an analysis of the underlying planning problems is conducted. Second, the developed GIS-based discrete-event simulation model and the coupled tour-planning algorithm are described, implementing the pattern of control optimization. To the best of our knowledge, such a tool is not yet existing. Finally, the tool is applied, evaluating the potential use of cargo bikes for B2B-deliveries in the medium size city of Grenoble in France."><link rel=alternate hreflang=en-us href=/publication/i3m2017/><meta name=theme-color content="rgba(255,255,255,0.6)"><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin=anonymous><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css crossorigin=anonymous title=hl-light disabled><link rel=stylesheet href=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css crossorigin=anonymous title=hl-dark><script src=https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin=anonymous async></script><link rel=stylesheet href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap"><link rel=stylesheet href=/css/academic.css><link rel=manifest href=/index.webmanifest><link rel=icon type=image/png href=/images/icon_hud653617489d02b724f2e6ae29c68221f_13132_32x32_fill_lanczos_center_2.png><link rel=apple-touch-icon type=image/png href=/images/icon_hud653617489d02b724f2e6ae29c68221f_13132_192x192_fill_lanczos_center_2.png><link rel=canonical href=/publication/i3m2017/><meta property="twitter:card" content="summary_large_image"><meta property="og:site_name" content="Wladimir Hofmann | Homepage"><meta property="og:url" content="/publication/i3m2017/"><meta property="og:title" content="A Simulation Tool to Assess the Integration of Cargo Bikes into an Urban Distribution System | Wladimir Hofmann | Homepage"><meta property="og:description" content="The use of cargo bikes for goods deliveries represents a promising concept of urban logistics. In this contribution, a new simulation-based assessment tool integrating this emission free vehicles in urban distribution systems is presented. First, typical schemes are identified and an analysis of the underlying planning problems is conducted. Second, the developed GIS-based discrete-event simulation model and the coupled tour-planning algorithm are described, implementing the pattern of control optimization. To the best of our knowledge, such a tool is not yet existing. Finally, the tool is applied, evaluating the potential use of cargo bikes for B2B-deliveries in the medium size city of Grenoble in France."><meta property="og:image" content="/publication/i3m2017/featured.jpeg"><meta property="twitter:image" content="/publication/i3m2017/featured.jpeg"><meta property="og:locale" content="en-us"><meta property="article:published_time" content="2017-09-18T00:00:00+00:00"><meta property="article:modified_time" content="2017-09-18T00:00:00+00:00"><script type=application/ld+json>{"@context":"https://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"/publication/i3m2017/"},"headline":"A Simulation Tool to Assess the Integration of Cargo Bikes into an Urban Distribution System","image":["/publication/i3m2017/featured.jpeg"],"datePublished":"2017-09-18T00:00:00Z","dateModified":"2017-09-18T00:00:00Z","author":{"@type":"Person","name":"Wladimir Hofmann"},"publisher":{"@type":"Organization","name":"Wladimir Hofmann | Homepage","logo":{"@type":"ImageObject","url":"/images/icon_hud653617489d02b724f2e6ae29c68221f_13132_192x192_fill_lanczos_center_2.png"}},"description":"The use of cargo bikes for goods deliveries represents a promising concept of urban logistics. In this contribution, a new simulation-based assessment tool integrating this emission free vehicles in urban distribution systems is presented. First, typical schemes are identified and an analysis of the underlying planning problems is conducted. Second, the developed GIS-based discrete-event simulation model and the coupled tour-planning algorithm are described, implementing the pattern of control optimization. To the best of our knowledge, such a tool is not yet existing. Finally, the tool is applied, evaluating the potential use of cargo bikes for B2B-deliveries in the medium size city of Grenoble in France."}</script><title>A Simulation Tool to Assess the Integration of Cargo Bikes into an Urban Distribution System | Wladimir Hofmann | Homepage</title></head><body id=top data-spy=scroll data-offset=70 data-target=#TableOfContents class=dark><aside class=search-results id=search><div class=container><section class=search-header><div class="row no-gutters justify-content-between mb-3"><div class=col-6><h1>Search</h1></div><div class="col-6 col-search-close"><a class=js-search href=#><i class="fas fa-times-circle text-muted" aria-hidden=true></i></a></div></div><div id=search-box></div></section><section class=section-search-results><div id=search-hits></div></section></div></aside><nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id=navbar-main><div class=container><div class="d-none d-lg-inline-flex"><a class=navbar-brand href=/>Wladimir Hofmann | Homepage</a></div><button type=button class=navbar-toggler data-toggle=collapse data-target=#navbar-content aria-controls=navbar aria-expanded=false aria-label="Toggle navigation">
-<span><i class="fas fa-bars"></i></span></button><div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none"><a class=navbar-brand href=/>Wladimir Hofmann | Homepage</a></div><div class="navbar-collapse main-menu-item collapse justify-content-start" id=navbar-content><ul class="navbar-nav d-md-inline-flex"><li class=nav-item><a class=nav-link href=/#about><span>Home</span></a></li><li class=nav-item><a class=nav-link href=/#experience><span>Experience</span></a></li><li class=nav-item><a class=nav-link href=/#projects><span>Projects</span></a></li><li class=nav-item><a class=nav-link href=/#publications><span>Publications</span></a></li></ul></div><ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2"></ul></div></nav><div class=pub><div class="article-container pt-3"><h1>A Simulation Tool to Assess the Integration of Cargo Bikes into an Urban Distribution System</h1><div class=article-metadata><div><span><a href=/authors/fladdimir/>Wladimir Hofmann</a></span>, <span><a href=/authors/tom-assmann/>Tom Assmann</a></span>, <span><a href=/authors/parisa-dolati-neghabadi/>Parisa Dolati Neghabadi</a></span>, <span><a href=/authors/van-dat-cung/>Van Dat Cung</a></span>, <span><a href=/authors/juri-tolujew/>Juri Tolujew</a></span></div><span class=article-date>September 2017</span></div><div class="btn-links mb-3"><a class="btn btn-outline-primary my-1 mr-1" href="https://pdfs.semanticscholar.org/7363/542159a582190b197b0ecddef6629726887f.pdf?_ga=2.252425609.1077172365.1584819305-1036502146.1584819305" target=_blank rel=noopener>PDF</a>
-<button type=button class="btn btn-outline-primary my-1 mr-1 js-cite-modal" data-filename=/publication/i3m2017/cite.bib>
-Cite</button></div></div><div class="article-header article-container featured-image-wrapper mt-4 mb-4" style=max-width:600px;max-height:382px><div style=position:relative><img src=/publication/i3m2017/featured.jpeg alt class=featured-image>
-<span class=article-header-caption>OSM-based simulation of cargo-bike-based deliveries</span></div></div><div class=article-container><h3>Abstract</h3><p class=pub-abstract>The use of cargo bikes for goods deliveries represents a promising concept of urban logistics. In this contribution, a new simulation-based assessment tool integrating this emission free vehicles in urban distribution systems is presented. First, typical schemes are identified and an analysis of the underlying planning problems is conducted. Second, the developed GIS-based discrete-event simulation model and the coupled tour-planning algorithm are described, implementing the pattern of control optimization. To the best of our knowledge, such a tool is not yet existing. Finally, the tool is applied, evaluating the potential use of cargo bikes for B2B-deliveries in the medium size city of Grenoble in France.</p><div class=row><div class=col-md-1></div><div class=col-md-10><div class=row><div class="col-12 col-md-3 pub-row-heading">Type</div><div class="col-12 col-md-9"><a href=/publication/#1>Conference paper</a></div></div></div><div class=col-md-1></div></div><div class="d-md-none space-below"></div><div class=row><div class=col-md-1></div><div class=col-md-10><div class=row><div class="col-12 col-md-3 pub-row-heading">Publication</div><div class="col-12 col-md-9">Proceedings of the International Multi-Disciplinary Modeling & Simulation Multi-Conference</div></div></div><div class=col-md-1></div></div><div class="d-md-none space-below"></div><div class=space-below></div><div class=article-style><p>Presented at: International Workshop on Simulation for Energy, Sustainable Development & Environment, September 18-20 2017, Barcelona, Spain</p><p>Full text
-<a href=https://www.researchgate.net/publication/320434207_A_Simulation_Tool_to_Assess_the_Integration_of_Cargo_Bikes_into_an_Urban_Distribution_System target=_blank rel=noopener>on researchgate</a>.</p></div><div class=share-box aria-hidden=true><ul class=share><li><a href="https://twitter.com/intent/tweet?url=/publication/i3m2017/&text=A%20Simulation%20Tool%20to%20Assess%20the%20Integration%20of%20Cargo%20Bikes%20into%20an%20Urban%20Distribution%20System" target=_blank rel=noopener class=share-btn-twitter><i class="fab fa-twitter"></i></a></li><li><a href="https://www.facebook.com/sharer.php?u=/publication/i3m2017/&t=A%20Simulation%20Tool%20to%20Assess%20the%20Integration%20of%20Cargo%20Bikes%20into%20an%20Urban%20Distribution%20System" target=_blank rel=noopener class=share-btn-facebook><i class="fab fa-facebook"></i></a></li><li><a href="mailto:?subject=A%20Simulation%20Tool%20to%20Assess%20the%20Integration%20of%20Cargo%20Bikes%20into%20an%20Urban%20Distribution%20System&body=/publication/i3m2017/" target=_blank rel=noopener class=share-btn-email><i class="fas fa-envelope"></i></a></li><li><a href="https://www.linkedin.com/shareArticle?url=/publication/i3m2017/&title=A%20Simulation%20Tool%20to%20Assess%20the%20Integration%20of%20Cargo%20Bikes%20into%20an%20Urban%20Distribution%20System" target=_blank rel=noopener class=share-btn-linkedin><i class="fab fa-linkedin-in"></i></a></li><li><a href="https://web.whatsapp.com/send?text=A%20Simulation%20Tool%20to%20Assess%20the%20Integration%20of%20Cargo%20Bikes%20into%20an%20Urban%20Distribution%20System%20/publication/i3m2017/" target=_blank rel=noopener class=share-btn-whatsapp><i class="fab fa-whatsapp"></i></a></li><li><a href="https://service.weibo.com/share/share.php?url=/publication/i3m2017/&title=A%20Simulation%20Tool%20to%20Assess%20the%20Integration%20of%20Cargo%20Bikes%20into%20an%20Urban%20Distribution%20System" target=_blank rel=noopener class=share-btn-weibo><i class="fab fa-weibo"></i></a></li></ul></div><div class="media author-card content-widget-hr"><img class="avatar mr-3 avatar-circle" src=/authors/fladdimir/avatar_hu9aec7404c102c7c1af6267bcc4e47f28_382731_270x270_fill_lanczos_center_2.png alt="Wladimir Hofmann"><div class=media-body><h5 class=card-title><a href=/>Wladimir Hofmann</a></h5><h6 class=card-subtitle>Software Developer, Simulation Engineer</h6><ul class=network-icon aria-hidden=true><li><a href=mailto:fladdi.mir%20[at]%20gmx%20[dot]%20de><i class="fas fa-envelope"></i></a></li><li><a href=https://www.linkedin.com/in/wladimir-hofmann-9065a714b/ target=_blank rel=noopener><i class="fab fa-linkedin"></i></a></li><li><a href=https://www.researchgate.net/profile/Wladimir_Hofmann target=_blank rel=noopener><i class="ai ai-researchgate"></i></a></li><li><a href=https://github.com/fladdimir target=_blank rel=noopener><i class="fab fa-github"></i></a></li></ul></div></div><div class="media author-card content-widget-hr"><div class=media-body><h5 class=card-title><a href=/authors/tom-assmann/></a></h5><ul class=network-icon aria-hidden=true></ul></div></div><div class="media author-card content-widget-hr"><div class=media-body><h5 class=card-title><a href=/authors/parisa-dolati-neghabadi/></a></h5><ul class=network-icon aria-hidden=true></ul></div></div><div class="media author-card content-widget-hr"><div class=media-body><h5 class=card-title><a href=/authors/van-dat-cung/></a></h5><ul class=network-icon aria-hidden=true></ul></div></div><div class="media author-card content-widget-hr"><div class=media-body><h5 class=card-title><a href=/authors/juri-tolujew/></a></h5><ul class=network-icon aria-hidden=true></ul></div></div></div></div><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin=anonymous></script><script src=https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js></script><script>const code_highlighting=true;</script><script>const isSiteThemeDark=true;</script><script src=/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js></script><div class=container><footer class=site-footer><p class=powered-by>Powered by the
-<a href=https://sourcethemes.com/academic/ target=_blank rel=noopener>Academic theme</a> for
-<a href=https://gohugo.io target=_blank rel=noopener>Hugo</a>.
-<span class=float-right aria-hidden=true><a href=# class=back-to-top><span class=button_icon><i class="fas fa-chevron-up fa-2x"></i></span></a></span></p></footer></div><div id=modal class="modal fade" role=dialog><div class=modal-dialog><div class=modal-content><div class=modal-header><h5 class=modal-title>Cite</h5><button type=button class=close data-dismiss=modal aria-label=Close>
-<span aria-hidden=true>&#215;</span></button></div><div class=modal-body><pre><code class="tex hljs"></code></pre></div><div class=modal-footer><a class="btn btn-outline-primary my-1 js-copy-cite" href=# target=_blank><i class="fas fa-copy"></i>Copy</a>
-<a class="btn btn-outline-primary my-1 js-download-cite" href=# target=_blank><i class="fas fa-download"></i>Download</a><div id=modal-error></div></div></div></div></div></body></html>
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Wladimir Hofmann">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="The use of cargo bikes for goods deliveries represents a promising concept of urban logistics. In this contribution, a new simulation-based assessment tool integrating this emission free vehicles in urban distribution systems is presented. First, typical schemes are identified and an analysis of the underlying planning problems is conducted. Second, the developed GIS-based discrete-event simulation model and the coupled tour-planning algorithm are described, implementing the pattern of control optimization. To the best of our knowledge, such a tool is not yet existing. Finally, the tool is applied, evaluating the potential use of cargo bikes for B2B-deliveries in the medium size city of Grenoble in France.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/publication/i3m2017/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.6)">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light" disabled>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark">
+        
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hud653617489d02b724f2e6ae29c68221f_13132_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hud653617489d02b724f2e6ae29c68221f_13132_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/publication/i3m2017/">
+
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Wladimir Hofmann | Homepage">
+  <meta property="og:url" content="/publication/i3m2017/">
+  <meta property="og:title" content="A Simulation Tool to Assess the Integration of Cargo Bikes into an Urban Distribution System | Wladimir Hofmann | Homepage">
+  <meta property="og:description" content="The use of cargo bikes for goods deliveries represents a promising concept of urban logistics. In this contribution, a new simulation-based assessment tool integrating this emission free vehicles in urban distribution systems is presented. First, typical schemes are identified and an analysis of the underlying planning problems is conducted. Second, the developed GIS-based discrete-event simulation model and the coupled tour-planning algorithm are described, implementing the pattern of control optimization. To the best of our knowledge, such a tool is not yet existing. Finally, the tool is applied, evaluating the potential use of cargo bikes for B2B-deliveries in the medium size city of Grenoble in France."><meta property="og:image" content="/publication/i3m2017/featured.jpeg">
+  <meta property="twitter:image" content="/publication/i3m2017/featured.jpeg"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2017-09-18T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2017-09-18T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/publication/i3m2017/"
+  },
+  "headline": "A Simulation Tool to Assess the Integration of Cargo Bikes into an Urban Distribution System",
+  
+  "image": [
+    "/publication/i3m2017/featured.jpeg"
+  ],
+  
+  "datePublished": "2017-09-18T00:00:00Z",
+  "dateModified": "2017-09-18T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Wladimir Hofmann"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Wladimir Hofmann | Homepage",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/images/icon_hud653617489d02b724f2e6ae29c68221f_13132_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "The use of cargo bikes for goods deliveries represents a promising concept of urban logistics. In this contribution, a new simulation-based assessment tool integrating this emission free vehicles in urban distribution systems is presented. First, typical schemes are identified and an analysis of the underlying planning problems is conducted. Second, the developed GIS-based discrete-event simulation model and the coupled tour-planning algorithm are described, implementing the pattern of control optimization. To the best of our knowledge, such a tool is not yet existing. Finally, the tool is applied, evaluating the potential use of cargo bikes for B2B-deliveries in the medium size city of Grenoble in France."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>A Simulation Tool to Assess the Integration of Cargo Bikes into an Urban Distribution System | Wladimir Hofmann | Homepage</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="dark">
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Wladimir Hofmann | Homepage</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Wladimir Hofmann | Homepage</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#experience"><span>Experience</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <div class="pub">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1>A Simulation Tool to Assess the Integration of Cargo Bikes into an Urban Distribution System</h1>
+
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  
+  <span><a href="/authors/fladdimir/">Wladimir Hofmann</a></span>, <span><a href="/authors/tom-assmann/">Tom Assmann</a></span>, <span><a href="/authors/parisa-dolati-neghabadi/">Parisa Dolati Neghabadi</a></span>, <span><a href="/authors/van-dat-cung/">Van Dat Cung</a></span>, <span><a href="/authors/juri-tolujew/">Juri Tolujew</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    September 2017
+  </span>
+  
+
+  
+
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+    
+  
+
+
+
+<a class="btn btn-outline-primary my-1 mr-1" href="https://pdfs.semanticscholar.org/7363/542159a582190b197b0ecddef6629726887f.pdf?_ga=2.252425609.1077172365.1584819305-1036502146.1584819305" target="_blank" rel="noopener">
+  PDF
+</a>
+
+
+
+<button type="button" class="btn btn-outline-primary my-1 mr-1 js-cite-modal"
+        data-filename="/publication/i3m2017/cite.bib">
+  Cite
+</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 600px; max-height: 382px;">
+  <div style="position: relative">
+    <img src="/publication/i3m2017/featured.jpeg" alt="" class="featured-image">
+    <span class="article-header-caption">OSM-based simulation of cargo-bike-based deliveries</span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    
+    <h3>Abstract</h3>
+    <p class="pub-abstract">The use of cargo bikes for goods deliveries represents a promising concept of urban logistics. In this contribution, a new simulation-based assessment tool integrating this emission free vehicles in urban distribution systems is presented. First, typical schemes are identified and an analysis of the underlying planning problems is conducted. Second, the developed GIS-based discrete-event simulation model and the coupled tour-planning algorithm are described, implementing the pattern of control optimization. To the best of our knowledge, such a tool is not yet existing. Finally, the tool is applied, evaluating the potential use of cargo bikes for B2B-deliveries in the medium size city of Grenoble in France.</p>
+    
+
+    
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-12 col-md-3 pub-row-heading">Type</div>
+          <div class="col-12 col-md-9">
+            
+            
+            <a href="/publication/#1">
+              Conference paper
+            </a>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="d-md-none space-below"></div>
+    
+
+    
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
+        <div class="row">
+          <div class="col-12 col-md-3 pub-row-heading">Publication</div>
+          <div class="col-12 col-md-9">Proceedings of the International Multi-Disciplinary Modeling &amp; Simulation Multi-Conference</div>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+    <div class="d-md-none space-below"></div>
+    
+
+    <div class="space-below"></div>
+
+    <div class="article-style"><p>Presented at: International Workshop on Simulation for Energy, Sustainable Development &amp; Environment, September 18-20 2017, Barcelona, Spain</p>
+<p>Full text 
+<a href="https://www.researchgate.net/publication/320434207_A_Simulation_Tool_to_Assess_the_Integration_of_Cargo_Bikes_into_an_Urban_Distribution_System" target="_blank" rel="noopener">on researchgate</a>.</p>
+</div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/publication/i3m2017/&amp;text=A%20Simulation%20Tool%20to%20Assess%20the%20Integration%20of%20Cargo%20Bikes%20into%20an%20Urban%20Distribution%20System" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/publication/i3m2017/&amp;t=A%20Simulation%20Tool%20to%20Assess%20the%20Integration%20of%20Cargo%20Bikes%20into%20an%20Urban%20Distribution%20System" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=A%20Simulation%20Tool%20to%20Assess%20the%20Integration%20of%20Cargo%20Bikes%20into%20an%20Urban%20Distribution%20System&amp;body=/publication/i3m2017/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/publication/i3m2017/&amp;title=A%20Simulation%20Tool%20to%20Assess%20the%20Integration%20of%20Cargo%20Bikes%20into%20an%20Urban%20Distribution%20System" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=A%20Simulation%20Tool%20to%20Assess%20the%20Integration%20of%20Cargo%20Bikes%20into%20an%20Urban%20Distribution%20System%20/publication/i3m2017/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/publication/i3m2017/&amp;title=A%20Simulation%20Tool%20to%20Assess%20the%20Integration%20of%20Cargo%20Bikes%20into%20an%20Urban%20Distribution%20System" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="avatar mr-3 avatar-circle" src="/authors/fladdimir/avatar_hu9aec7404c102c7c1af6267bcc4e47f28_382731_270x270_fill_lanczos_center_2.png" alt="Wladimir Hofmann">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/">Wladimir Hofmann</a></h5>
+      <h6 class="card-subtitle">Software Developer, Simulation Engineer</h6>
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:fladdi.mir%20[at]%20gmx%20[dot]%20de" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/wladimir-hofmann-9065a714b/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.researchgate.net/profile/Wladimir_Hofmann" target="_blank" rel="noopener">
+        <i class="ai ai-researchgate"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/fladdimir" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+    
+    
+
+
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/tom-assmann/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+    
+    
+
+
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/parisa-dolati-neghabadi/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+    
+    
+
+
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/van-dat-cung/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+    
+    
+
+
+
+
+
+  
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/juri-tolujew/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  </div>
+</div>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = true;</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

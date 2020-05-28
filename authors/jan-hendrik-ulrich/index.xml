@@ -1,3 +1,27 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jan Hendrik Ulrich | Wladimir Hofmann | Homepage</title><link>/authors/jan-hendrik-ulrich/</link><atom:link href="/authors/jan-hendrik-ulrich/index.xml" rel="self" type="application/rss+xml"/><description>Jan Hendrik Ulrich</description><generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 11 Jun 2018 00:00:00 +0000</lastBuildDate><image><url>img/map[gravatar:%!s(bool=false) shape:circle]</url><title>Jan Hendrik Ulrich</title><link>/authors/jan-hendrik-ulrich/</link></image><item><title>Simulation and Virtual Commissioning of Modules for a Plug-and-Play Conveying System</title><link>/publication/incom2018/</link><pubDate>Mon, 11 Jun 2018 00:00:00 +0000</pubDate><guid>/publication/incom2018/</guid><description>&lt;p>Presented at: 16th IFAC Symposium on Information Control Problems in Manufacturing, June 11-13 2018, Bergamo, Italy&lt;/p>
-&lt;p>Full text
-&lt;a href="https://www.researchgate.net/publication/324825135_Simulation_and_Virtual_Commissioning_of_Modules_for_a_Plug-and-Play_Conveying_System" target="_blank" rel="noopener">on researchgate&lt;/a>.&lt;/p></description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jan Hendrik Ulrich | Wladimir Hofmann | Homepage</title>
+    <link>/authors/jan-hendrik-ulrich/</link>
+      <atom:link href="/authors/jan-hendrik-ulrich/index.xml" rel="self" type="application/rss+xml" />
+    <description>Jan Hendrik Ulrich</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 11 Jun 2018 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
+      <title>Jan Hendrik Ulrich</title>
+      <link>/authors/jan-hendrik-ulrich/</link>
+    </image>
+    
+    <item>
+      <title>Simulation and Virtual Commissioning of Modules for a Plug-and-Play Conveying System</title>
+      <link>/publication/incom2018/</link>
+      <pubDate>Mon, 11 Jun 2018 00:00:00 +0000</pubDate>
+      <guid>/publication/incom2018/</guid>
+      <description>&lt;p&gt;Presented at: 16th IFAC Symposium on Information Control Problems in Manufacturing, June 11-13 2018, Bergamo, Italy&lt;/p&gt;
+&lt;p&gt;Full text 
+&lt;a href=&#34;https://www.researchgate.net/publication/324825135_Simulation_and_Virtual_Commissioning_of_Modules_for_a_Plug-and-Play_Conveying_System&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on researchgate&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
