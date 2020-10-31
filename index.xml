@@ -5,12 +5,179 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Wladimir Hofmann | Homepage</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 24 May 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 27 Oct 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Wladimir Hofmann | Homepage</title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>Real Time Simulation-based Supply Chain Analytics</title>
+      <link>/post/csa-simulation-based-sc-forecast/</link>
+      <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
+      <guid>/post/csa-simulation-based-sc-forecast/</guid>
+      <description>&lt;p&gt;In his highly interesting, recently published 
+&lt;a href=&#34;http://nbn-resolving.de/urn:nbn:de:bvb:29-opus4-145483&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;PhD thesis (German)&lt;/a&gt;, Toni Donhauser from the University Erlangen-Nürnberg gives an excellent example on how a production-synchronous digital twin can be used for automated, simulation-based order scheduling in masonry plants.&lt;/p&gt;
+&lt;p&gt;As a core feature, the developed simulation allows to initialize the &lt;em&gt;work-in-process&lt;/em&gt; of the manufacturing system to precisely mirror the current state and create accurate short-term forecasts, which serve as a basis for comparing alternatives and optimizing production plans in case of unexpected disruptions.
+
+&lt;a href=&#34;https://www.plm.automation.siemens.com/global/de/products/manufacturing-planning/plant-simulation-throughput-optimization.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tecnomatix Plant Simulation (Siemens)&lt;/a&gt; is used for the implementation of the simulation model.
+Manufacturing data is fetched via the built-in OPC-UA interface from an OPC server and via ODBC from an MS Access database.
+Simulation runs can be triggered manually by an operator using a management application written in C#.&lt;/p&gt;
+&lt;p&gt;Since &lt;em&gt;Plant Simulation&lt;/em&gt; is known for extensive features as well as for extensive licensing fees, this blog post will present an alternative implementation of such a production-synchronous digital twin, based on open-source frameworks and building on easy-to-operate, pay-per-use AWS infrastructure.&lt;/p&gt;
+&lt;p&gt;The complete setup can be deployed and tested locally using &lt;em&gt;Docker&lt;/em&gt;, &lt;em&gt;LocalStack&lt;/em&gt; and &lt;em&gt;Terraform&lt;/em&gt; (no AWS account required).&lt;/p&gt;
+&lt;hr&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Get the repo from github:&lt;br&gt;
+&lt;a href=&#34;https://github.com/fladdimir/csa-simulation-based-sc-forecast&#34;&gt;https://github.com/fladdimir/csa-simulation-based-sc-forecast&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;scenario--scope&#34;&gt;Scenario &amp;amp; Scope&lt;/h2&gt;
+&lt;p&gt;The chart below shows a fictive and simplified order manufacturing process, serving as a minimal example to illustrate how a digital twin of the system can be implemented.&lt;br&gt;
+After being created, orders are received and accepted by the company (&lt;em&gt;&amp;ldquo;ingest&amp;rdquo;&lt;/em&gt;-step), and the order-specific raw material is ordered (&lt;em&gt;&amp;ldquo;order_material&amp;rdquo;&lt;/em&gt;), leaving the order waiting until the corresponding material arrives (&lt;em&gt;&amp;ldquo;wait_for_material&amp;rdquo;&lt;/em&gt;).
+When the material is delivered, the order proceeds to a queue (&lt;em&gt;&amp;ldquo;wait_for_sop&amp;rdquo;&lt;/em&gt;), waiting to be processed in a capacity-constrained &lt;em&gt;&amp;ldquo;production&amp;rdquo;&lt;/em&gt;-step, which is only able to process one order at a time.
+Eventually, the finished order gets delivered to the customer and leaves the system.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/diagram.png&#34; alt=&#34;process-flow&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Whenever material for an order is requested, an initial estimated time of arrival (ETA) is assigned.
+However, unexpected supplier-specific process deviations or other delivery problems may introduce delays at any point in time, so that ETA-updates are possible during this step.
+Since the production step uses a capacity-constrained resource and represents a possible bottleneck of the system, any unplanned under-utilization here may delay every upcoming order and diminish the system throughput (depending on how tight the schedule looks like).
+Therefore, it is desirable to be able to quantify the effects of any shift in time as soon as an ETA-update for an order occurs.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;synchronized-digital-twin-concept-and-implementation&#34;&gt;Synchronized Digital Twin: Concept and Implementation&lt;/h2&gt;
+&lt;p&gt;The next figure shows a simple event-processing pipeline, able to ingest defined events and to persist the system state (&lt;em&gt;event tracking&lt;/em&gt;), which in turn enables the simulation-based creation of forecasts for expected order completions times and delays (&lt;em&gt;event analytics&lt;/em&gt;).
+A simple web-dashboard will be used to visualize the results.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/concept.png&#34; alt=&#34;event-processing-pipeline&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;1-publishing-events-of-data-producers&#34;&gt;1. Publishing events of data producers&lt;/h4&gt;
+&lt;p&gt;During the processing of an order in the physical system, data producers such as sensors and IoT-devices are capturing information on the progress, i.e. events of state-changes as e.g. start or finish of the production step of an order.
+These order updates are published to a defined endpoint where they are collected and processed (2.).
+While those events would actually be happening in the physical manufacturing system, a simulation model might be used to create test-data for the digital twin (see the 
+&lt;a href=&#34;../csa-vcom/&#34;&gt;post on &lt;em&gt;Virtual Commissioning&lt;/em&gt;&lt;/a&gt; for another example of this use-case for simulation).&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./img/icons/kinesis.png&#34; alt=&#34;kinesis&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;2-capturing-events-with-aws-kinesis&#34;&gt;2. Capturing events with AWS Kinesis&lt;/h4&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Kinesis&lt;/a&gt; is an AWS service for continuous buffering and real-time processing of streaming data.
+A Kinesis &lt;em&gt;stream&lt;/em&gt; decouples data producers and consumers and consists of a configurable number of &lt;em&gt;shards&lt;/em&gt;, each of which is able to ingest up to 1 MB or 1000 records of data per second.
+Each record is put into one shard based on it&amp;rsquo;s specified &lt;em&gt;partition key&lt;/em&gt; value, which gets important since in-order processing of records is 
+&lt;a href=&#34;https://aws.amazon.com/blogs/compute/new-aws-lambda-scaling-controls-for-kinesis-and-dynamodb-event-sources/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;guaranteed only on partition key level&lt;/a&gt;.&lt;br&gt;
+In the described scenario in-order processing becomes critical for ETA-updates of orders, since the message of an expected delay must not be processed before an earlier submitted update.&lt;br&gt;
+New records can be put to the stream e.g. using the AWS SDK, which is available for various languages, including Python which is used for the emulated test client.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./img/icons/lambda.png&#34; alt=&#34;lambda&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;3-processing-events-with-aws-lambda&#34;&gt;3. Processing events with AWS Lambda&lt;/h4&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://aws.amazon.com/lambda/?nc1=h_ls&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Lambda&lt;/a&gt; is the function-as-a-service offer of AWS, which allows to run code on-demand, paying for the number of invocations as well as for execution time.
+Lambda functions can easily be integrated with other services such as SQS and DynamoDB.
+Since AWS provisions the function runtime on-demand, the short cold-start times of NodeJS and Python make them a popular choice for implementing lambdas, while &amp;ldquo;heavier&amp;rdquo; alternatives such as Java are less common (the JVM would need multiple invocations for the JIT-compilation to boost performance).&lt;br&gt;
+The lambda implemented for processing order updates is simple and just updates the corresponding item of the affected order in a specified DynamoDB table with data from the event provided as part of the invocation.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./img/icons/dynamodb.png&#34; alt=&#34;dynamodb&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;4-persisting-the-system-state-with-dynamodb&#34;&gt;4. Persisting the system state with DynamoDB&lt;/h4&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;DynamoDB&lt;/a&gt; is used as a fast, flexible and managed NoSQL database.
+While this type of database by design lacks some of the amenities of relational databases (such as proper means to enforce referential integrity on the database level, or the availability of sophisticated ORMs and schema management tools), it is fine for our simple use-case which just involves updating single items and basic queries.
+DynamoDB requires a hashkey and optionally a partition key, both of which are used in combination to uniquely identify a stored item.
+For orders the string id can be used as the hashkey.
+A nice feature of DynamoDB is the option to enable &lt;em&gt;streams&lt;/em&gt;, automatically providing information on table-updates. This way, order ETA-updates can trigger new forecasts.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./img/icons/lambda.png&#34; alt=&#34;lambda&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;5-simulating-the-future&#34;&gt;5. Simulating the future&lt;/h4&gt;
+&lt;p&gt;AWS allows to use Lambda functions as DynamoDB stream event consumers, so that simulation runs can forecast future order completion times on every state change.&lt;br&gt;
+For each run, the complete system state is fetched from the DynamoDB (which might actually need multiple requests, since a single scan might only return a page of up to 1 MB of data).&lt;br&gt;
+Based on the registered process timestamps, the currently relevant process step of each order can be identified.&lt;br&gt;
+The simulation model is generated from the process diagram shown above using 
+&lt;a href=&#34;../casymda/&#34;&gt;Casymda&lt;/a&gt;.
+For the sake of simplicity of this proof of concept, processing times are assumed to be deterministic (even though stochastic behavior could be easily modeled, it would require averaging multiple runs).
+Model blocks are implemented to account for already elapsed processing time of &lt;em&gt;work-in-process&lt;/em&gt;-entities at the start of the simulation (one of the possibilities to initialize &lt;em&gt;online simulation&lt;/em&gt; models discussed in the often-cited paper of 
+&lt;a href=&#34;https://informs-sim.org/wsc05papers/222.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hanisch and Tolujew, 2005&lt;/a&gt;, further explored by 
+&lt;a href=&#34;https://d-nb.info/987148664/34&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hotz, 2007&lt;/a&gt;).
+During the execution, forecast metrics are collected in form of predicted process step completion times.
+Currently, AWS allows Lambda function executions to take up to 15 minutes, so that even complex models can be run this way.
+However, frequent and long running calculations might make it more attractive to create a dedicated service.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./img/icons/plotly_dash_icon.png&#34; alt=&#34;dash&#34;&gt;&lt;/p&gt;
+&lt;h4 id=&#34;6--7-forecast-persistence-and-visualization&#34;&gt;6. + 7. Forecast persistence and visualization&lt;/h4&gt;
+&lt;p&gt;At the end of each run, the gathered results are persisted in a second DynamoDB table, from where a dashboard application can access and visualize the data.&lt;br&gt;
+
+&lt;a href=&#34;https://github.com/plotly/dash&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Plotly Dash&lt;/a&gt; is a popular framework for analytics web-apps.
+It enables the quick creation of dynamic dashboards just by writing Python code.
+Under the hood, it uses 
+&lt;a href=&#34;https://flask.palletsprojects.com/en/1.1.x/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;flask&lt;/a&gt; to serve 
+&lt;a href=&#34;https://dash.plotly.com/react-for-python-developers&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;React&lt;/a&gt; websites with 
+&lt;a href=&#34;https://github.com/plotly/plotly.js/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;plotly charts&lt;/a&gt; to a browser.
+Data queries and analysis are done on the backend using Python.
+The implemented dashboard just contains a simple gantt-chart (and serves only as a very basic example, leaving lots of room for extension).
+Automatic dashboard refreshes are implemented using an &lt;em&gt;interval&lt;/em&gt;-callback to cyclically poll the database for updates.&lt;br&gt;
+A dashboard&amp;rsquo;s Docker container could be run on AWS (e.g. ECS/Fargate, but since the free version of LocalStack does not include this it will just be run locally for demonstration).&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;result&#34;&gt;Result&lt;/h2&gt;
+&lt;p&gt;To run the setup locally from within the cloned repository, Docker and Terraform need to be installed.&lt;br&gt;
+Even though the performance is not comparable to the actual cloud service, 
+&lt;a href=&#34;https://github.com/localstack/localstack&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;LocalStack&lt;/a&gt; is an awesome option to serve a multitude of AWS services locally, including Kinesis, Lambda, and DynamoDB.
+LocalStack can be started in a privileged Docker container, spawning more containers as needed, e.g. for executing Lambdas.
+It can be started via:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;docker-compose up localstack
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Before the Lambda functions can be deployed, the function code and its dependencies need to be packaged:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;docker-compose up package-ingest-lambda package-simulation-lambda
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.terraform.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Terraform&lt;/a&gt; is a great and widespread tool which can automatically provision infrastructure resources described in configuration files (however, have a look at 
+&lt;a href=&#34;https://itnext.io/things-i-wish-i-knew-about-terraform-before-jumping-into-it-43ee92a9dd65&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this article&lt;/a&gt; for a more nuanced analysis).
+To create all required resources, two terraform commands are needed:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;cd terraform
+terraform init # required once
+terraform apply # enter &#39;yes&#39; when prompted to confirm the changes (or use -auto-approve)
+cd ../ # return to project root
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;(To prevent 404 errors when calling &lt;code&gt;apply&lt;/code&gt; after a restart of LocalStack without calling &lt;code&gt;terraform destroy&lt;/code&gt;, first delete the &lt;code&gt;terraform.tfstate&lt;/code&gt; files next to &lt;code&gt;main.tf&lt;/code&gt;.)&lt;/p&gt;
+&lt;p&gt;After the successfull creation, two more containers can be started - one serving the dashboard and one running a simulation model to emulate real event producers:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;docker-compose up dashboard emulation
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Before (re-)starting any test-run, the DynamoDB-tables need to be cleared:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;docker-compose up truncate-tables
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a href=&#34;http://localhost:8050&#34;&gt;http://localhost:8050&lt;/a&gt; should now show the empty dashboard, while &lt;a href=&#34;http://localhost:5001&#34;&gt;http://localhost:5001&lt;/a&gt; should show the generic Casymda web canvas animation controls.
+To enable automatic refreshes use the switch above the chart on the dashboard.&lt;/p&gt;
+&lt;p&gt;When starting the emulation, orders will be created at the source and flow through the defined process.&lt;br&gt;
+At the same time, the dashboard should update with a minor delay and visualize the completion times of the relevant process steps of all orders which are currently present in the system.
+A vertical line in the chart indicates the point in time when the simulation run started and the forecast was created.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;sample-flow&#34;&gt;Sample flow&lt;/h3&gt;
+&lt;h4 id=&#34;1-the-first-order-is-created&#34;&gt;1. The first order is created&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;img/sc/e1.png&#34; alt=&#34;e1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The simulation forecasts process step completion times as defined in the model:
+&lt;img src=&#34;img/sc/g1.png&#34; alt=&#34;g1&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;2-the-second-order-arrives-and-_order-1_-production-starts&#34;&gt;2. The second order arrives and &lt;em&gt;Order-1&lt;/em&gt; production starts&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;img/sc/e2.png&#34; alt=&#34;e1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The forecast does not show problems:
+&lt;img src=&#34;img/sc/g2.png&#34; alt=&#34;g1&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;3-after-some-time-an-eta-update-for-the-_order-2_-material-delivery-is-communicated-and-a-delay-of-13-is-now-expected&#34;&gt;3. After some time, an ETA update for the &lt;em&gt;Order-2&lt;/em&gt; material delivery is communicated, and a delay of 1/3 is now expected&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;img/sc/e3.png&#34; alt=&#34;e1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The forecast shows the announced delay (orange) and the expected shift of the production step of &lt;em&gt;Order-2&lt;/em&gt;:
+&lt;img src=&#34;img/sc/g3.png&#34; alt=&#34;g1&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;4-_order-1_-is-finished-and-therefore-excluded-from-the-forecast-but-now-_order-3_-arrives&#34;&gt;4. &lt;em&gt;Order-1&lt;/em&gt; is finished (and therefore excluded from the forecast), but now &lt;em&gt;Order-3&lt;/em&gt; arrives&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;img/sc/e4.png&#34; alt=&#34;e1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The forecast reveals an upcoming problem! Caused by the capacity constraint of the production step (max. one order concurrently), the delay of &lt;em&gt;Order-2&lt;/em&gt; (orange) will also prevent to start the of production of &lt;em&gt;Order-3&lt;/em&gt; on time, even though the material is expected to be ready by then (red):
+&lt;img src=&#34;img/sc/g4.png&#34; alt=&#34;g1&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;5-when-_order-2_-is-almost-finished-a-4th-order-comes-in&#34;&gt;5. When &lt;em&gt;Order-2&lt;/em&gt; is almost finished, a 4th order comes in&lt;/h4&gt;
+&lt;p&gt;&lt;img src=&#34;img/sc/e5.png&#34; alt=&#34;e1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;As the forecast shows, the delay of &lt;em&gt;Order-2&lt;/em&gt; will cascade and also affect &lt;em&gt;Order-4&lt;/em&gt;:
+&lt;img src=&#34;img/sc/g5.png&#34; alt=&#34;g1&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Complete screen-cast:&lt;/p&gt;
+&lt;video autoplay controls&gt;
+  &lt;source src=&#34;img/sc/peek5.mp4&#34; type=&#34;video/mp4&#34;&gt;
+&lt;/video&gt;
+&lt;hr&gt;
+&lt;p&gt;While this was just a proof of concept and the presented example would have been easy to calculate by hand, there are plenty of improvements and extensions imaginable.&lt;/p&gt;
+&lt;p&gt;Looking at the scenario and business use-case, it would be interesting to add more complexity to the process, such as inventory for raw materials, and different replenishment strategies.
+Similarly, the impacts of stochastic or planned machine maintenance intervals might be evaluated.
+Another extension would be to incorporate targets into the process, such as order-specific due dates or throughput goals.
+This might then ask for additional optimization procedures to determine optimal production control policies (similar to the case presented in the thesis mentioned in the beginning of this article).&lt;/p&gt;
+&lt;p&gt;Interesting technical extensions include security aspects such as authentication and authorization of different data producing parties, as well as an integration of the IoT-related services of AWS, which might offer dedicated features to gather data with sensors and edge devices for the digital twin.
+Concerning the analytics of ingested event data, stream processing solutions such as &lt;em&gt;AWS Kinesis Data Analytics&lt;/em&gt; might be useful to identify relevant patterns and trigger forecast and optimization runs only in case of critical process deviations.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Logistics Process Models for Automated Integration Testing</title>

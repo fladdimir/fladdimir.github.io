@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Wladimir Hofmann">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Proof of concept using Casymda on AWS, ft. Terraform and LocalStack">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/csa-simulation-based-sc-forecast/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.6)">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light" disabled>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark">
+        
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hud653617489d02b724f2e6ae29c68221f_13132_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hud653617489d02b724f2e6ae29c68221f_13132_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/post/csa-simulation-based-sc-forecast/">
+
+  
+  
+  
+  
+  
+    
+  
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="Wladimir Hofmann | Homepage">
+  <meta property="og:url" content="/post/csa-simulation-based-sc-forecast/">
+  <meta property="og:title" content="Real Time Simulation-based Supply Chain Analytics | Wladimir Hofmann | Homepage">
+  <meta property="og:description" content="Proof of concept using Casymda on AWS, ft. Terraform and LocalStack"><meta property="og:image" content="/post/csa-simulation-based-sc-forecast/featured.jpg">
+  <meta property="twitter:image" content="/post/csa-simulation-based-sc-forecast/featured.jpg"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2020-10-27T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2020-10-27T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/csa-simulation-based-sc-forecast/"
+  },
+  "headline": "Real Time Simulation-based Supply Chain Analytics",
+  
+  "image": [
+    "/post/csa-simulation-based-sc-forecast/featured.jpg"
+  ],
+  
+  "datePublished": "2020-10-27T00:00:00Z",
+  "dateModified": "2020-10-27T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Wladimir Hofmann"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Wladimir Hofmann | Homepage",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/images/icon_hud653617489d02b724f2e6ae29c68221f_13132_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Proof of concept using Casymda on AWS, ft. Terraform and LocalStack"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Real Time Simulation-based Supply Chain Analytics | Wladimir Hofmann | Homepage</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="dark">
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Wladimir Hofmann | Homepage</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Wladimir Hofmann | Homepage</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#experience"><span>Experience</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<div class="article-container pt-3">
+  <h1>Real Time Simulation-based Supply Chain Analytics</h1>
+
+  
+  <p class="page-subtitle">Proof of concept using Casymda on AWS, ft. Terraform and LocalStack</p>
+  
+
+  
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  
+  <span><a href="/authors/fladdimir/">Wladimir Hofmann</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Oct 27, 2020
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    10 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 359px;">
+  <div style="position: relative">
+    <img src="/post/csa-simulation-based-sc-forecast/featured_hud23743b6991b609cfecf5504f835c131_161372_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>In his highly interesting, recently published 
+<a href="http://nbn-resolving.de/urn:nbn:de:bvb:29-opus4-145483" target="_blank" rel="noopener">PhD thesis (German)</a>, Toni Donhauser from the University Erlangen-Nürnberg gives an excellent example on how a production-synchronous digital twin can be used for automated, simulation-based order scheduling in masonry plants.</p>
+<p>As a core feature, the developed simulation allows to initialize the <em>work-in-process</em> of the manufacturing system to precisely mirror the current state and create accurate short-term forecasts, which serve as a basis for comparing alternatives and optimizing production plans in case of unexpected disruptions.
+
+<a href="https://www.plm.automation.siemens.com/global/de/products/manufacturing-planning/plant-simulation-throughput-optimization.html" target="_blank" rel="noopener">Tecnomatix Plant Simulation (Siemens)</a> is used for the implementation of the simulation model.
+Manufacturing data is fetched via the built-in OPC-UA interface from an OPC server and via ODBC from an MS Access database.
+Simulation runs can be triggered manually by an operator using a management application written in C#.</p>
+<p>Since <em>Plant Simulation</em> is known for extensive features as well as for extensive licensing fees, this blog post will present an alternative implementation of such a production-synchronous digital twin, based on open-source frameworks and building on easy-to-operate, pay-per-use AWS infrastructure.</p>
+<p>The complete setup can be deployed and tested locally using <em>Docker</em>, <em>LocalStack</em> and <em>Terraform</em> (no AWS account required).</p>
+<hr>
+<blockquote>
+<p>Get the repo from github:<br>
+<a href="https://github.com/fladdimir/csa-simulation-based-sc-forecast">https://github.com/fladdimir/csa-simulation-based-sc-forecast</a></p>
+</blockquote>
+<hr>
+<h2 id="scenario--scope">Scenario &amp; Scope</h2>
+<p>The chart below shows a fictive and simplified order manufacturing process, serving as a minimal example to illustrate how a digital twin of the system can be implemented.<br>
+After being created, orders are received and accepted by the company (<em>&ldquo;ingest&rdquo;</em>-step), and the order-specific raw material is ordered (<em>&ldquo;order_material&rdquo;</em>), leaving the order waiting until the corresponding material arrives (<em>&ldquo;wait_for_material&rdquo;</em>).
+When the material is delivered, the order proceeds to a queue (<em>&ldquo;wait_for_sop&rdquo;</em>), waiting to be processed in a capacity-constrained <em>&ldquo;production&rdquo;</em>-step, which is only able to process one order at a time.
+Eventually, the finished order gets delivered to the customer and leaves the system.</p>
+<p><img src="img/diagram.png" alt="process-flow"></p>
+<p>Whenever material for an order is requested, an initial estimated time of arrival (ETA) is assigned.
+However, unexpected supplier-specific process deviations or other delivery problems may introduce delays at any point in time, so that ETA-updates are possible during this step.
+Since the production step uses a capacity-constrained resource and represents a possible bottleneck of the system, any unplanned under-utilization here may delay every upcoming order and diminish the system throughput (depending on how tight the schedule looks like).
+Therefore, it is desirable to be able to quantify the effects of any shift in time as soon as an ETA-update for an order occurs.</p>
+<hr>
+<h2 id="synchronized-digital-twin-concept-and-implementation">Synchronized Digital Twin: Concept and Implementation</h2>
+<p>The next figure shows a simple event-processing pipeline, able to ingest defined events and to persist the system state (<em>event tracking</em>), which in turn enables the simulation-based creation of forecasts for expected order completions times and delays (<em>event analytics</em>).
+A simple web-dashboard will be used to visualize the results.</p>
+<p><img src="img/concept.png" alt="event-processing-pipeline"></p>
+<h4 id="1-publishing-events-of-data-producers">1. Publishing events of data producers</h4>
+<p>During the processing of an order in the physical system, data producers such as sensors and IoT-devices are capturing information on the progress, i.e. events of state-changes as e.g. start or finish of the production step of an order.
+These order updates are published to a defined endpoint where they are collected and processed (2.).
+While those events would actually be happening in the physical manufacturing system, a simulation model might be used to create test-data for the digital twin (see the 
+<a href="../csa-vcom/">post on <em>Virtual Commissioning</em></a> for another example of this use-case for simulation).</p>
+<p><img src="./img/icons/kinesis.png" alt="kinesis"></p>
+<h4 id="2-capturing-events-with-aws-kinesis">2. Capturing events with AWS Kinesis</h4>
+<p>
+<a href="https://docs.aws.amazon.com/streams/latest/dev/key-concepts.html" target="_blank" rel="noopener">Kinesis</a> is an AWS service for continuous buffering and real-time processing of streaming data.
+A Kinesis <em>stream</em> decouples data producers and consumers and consists of a configurable number of <em>shards</em>, each of which is able to ingest up to 1 MB or 1000 records of data per second.
+Each record is put into one shard based on it&rsquo;s specified <em>partition key</em> value, which gets important since in-order processing of records is 
+<a href="https://aws.amazon.com/blogs/compute/new-aws-lambda-scaling-controls-for-kinesis-and-dynamodb-event-sources/" target="_blank" rel="noopener">guaranteed only on partition key level</a>.<br>
+In the described scenario in-order processing becomes critical for ETA-updates of orders, since the message of an expected delay must not be processed before an earlier submitted update.<br>
+New records can be put to the stream e.g. using the AWS SDK, which is available for various languages, including Python which is used for the emulated test client.</p>
+<p><img src="./img/icons/lambda.png" alt="lambda"></p>
+<h4 id="3-processing-events-with-aws-lambda">3. Processing events with AWS Lambda</h4>
+<p>
+<a href="https://aws.amazon.com/lambda/?nc1=h_ls" target="_blank" rel="noopener">Lambda</a> is the function-as-a-service offer of AWS, which allows to run code on-demand, paying for the number of invocations as well as for execution time.
+Lambda functions can easily be integrated with other services such as SQS and DynamoDB.
+Since AWS provisions the function runtime on-demand, the short cold-start times of NodeJS and Python make them a popular choice for implementing lambdas, while &ldquo;heavier&rdquo; alternatives such as Java are less common (the JVM would need multiple invocations for the JIT-compilation to boost performance).<br>
+The lambda implemented for processing order updates is simple and just updates the corresponding item of the affected order in a specified DynamoDB table with data from the event provided as part of the invocation.</p>
+<p><img src="./img/icons/dynamodb.png" alt="dynamodb"></p>
+<h4 id="4-persisting-the-system-state-with-dynamodb">4. Persisting the system state with DynamoDB</h4>
+<p>
+<a href="https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html" target="_blank" rel="noopener">DynamoDB</a> is used as a fast, flexible and managed NoSQL database.
+While this type of database by design lacks some of the amenities of relational databases (such as proper means to enforce referential integrity on the database level, or the availability of sophisticated ORMs and schema management tools), it is fine for our simple use-case which just involves updating single items and basic queries.
+DynamoDB requires a hashkey and optionally a partition key, both of which are used in combination to uniquely identify a stored item.
+For orders the string id can be used as the hashkey.
+A nice feature of DynamoDB is the option to enable <em>streams</em>, automatically providing information on table-updates. This way, order ETA-updates can trigger new forecasts.</p>
+<p><img src="./img/icons/lambda.png" alt="lambda"></p>
+<h4 id="5-simulating-the-future">5. Simulating the future</h4>
+<p>AWS allows to use Lambda functions as DynamoDB stream event consumers, so that simulation runs can forecast future order completion times on every state change.<br>
+For each run, the complete system state is fetched from the DynamoDB (which might actually need multiple requests, since a single scan might only return a page of up to 1 MB of data).<br>
+Based on the registered process timestamps, the currently relevant process step of each order can be identified.<br>
+The simulation model is generated from the process diagram shown above using 
+<a href="../casymda/">Casymda</a>.
+For the sake of simplicity of this proof of concept, processing times are assumed to be deterministic (even though stochastic behavior could be easily modeled, it would require averaging multiple runs).
+Model blocks are implemented to account for already elapsed processing time of <em>work-in-process</em>-entities at the start of the simulation (one of the possibilities to initialize <em>online simulation</em> models discussed in the often-cited paper of 
+<a href="https://informs-sim.org/wsc05papers/222.pdf" target="_blank" rel="noopener">Hanisch and Tolujew, 2005</a>, further explored by 
+<a href="https://d-nb.info/987148664/34" target="_blank" rel="noopener">Hotz, 2007</a>).
+During the execution, forecast metrics are collected in form of predicted process step completion times.
+Currently, AWS allows Lambda function executions to take up to 15 minutes, so that even complex models can be run this way.
+However, frequent and long running calculations might make it more attractive to create a dedicated service.</p>
+<p><img src="./img/icons/plotly_dash_icon.png" alt="dash"></p>
+<h4 id="6--7-forecast-persistence-and-visualization">6. + 7. Forecast persistence and visualization</h4>
+<p>At the end of each run, the gathered results are persisted in a second DynamoDB table, from where a dashboard application can access and visualize the data.<br>
+
+<a href="https://github.com/plotly/dash" target="_blank" rel="noopener">Plotly Dash</a> is a popular framework for analytics web-apps.
+It enables the quick creation of dynamic dashboards just by writing Python code.
+Under the hood, it uses 
+<a href="https://flask.palletsprojects.com/en/1.1.x/" target="_blank" rel="noopener">flask</a> to serve 
+<a href="https://dash.plotly.com/react-for-python-developers" target="_blank" rel="noopener">React</a> websites with 
+<a href="https://github.com/plotly/plotly.js/" target="_blank" rel="noopener">plotly charts</a> to a browser.
+Data queries and analysis are done on the backend using Python.
+The implemented dashboard just contains a simple gantt-chart (and serves only as a very basic example, leaving lots of room for extension).
+Automatic dashboard refreshes are implemented using an <em>interval</em>-callback to cyclically poll the database for updates.<br>
+A dashboard&rsquo;s Docker container could be run on AWS (e.g. ECS/Fargate, but since the free version of LocalStack does not include this it will just be run locally for demonstration).</p>
+<hr>
+<h2 id="result">Result</h2>
+<p>To run the setup locally from within the cloned repository, Docker and Terraform need to be installed.<br>
+Even though the performance is not comparable to the actual cloud service, 
+<a href="https://github.com/localstack/localstack" target="_blank" rel="noopener">LocalStack</a> is an awesome option to serve a multitude of AWS services locally, including Kinesis, Lambda, and DynamoDB.
+LocalStack can be started in a privileged Docker container, spawning more containers as needed, e.g. for executing Lambdas.
+It can be started via:</p>
+<pre><code class="language-sh">docker-compose up localstack
+</code></pre>
+<p>Before the Lambda functions can be deployed, the function code and its dependencies need to be packaged:</p>
+<pre><code class="language-sh">docker-compose up package-ingest-lambda package-simulation-lambda
+</code></pre>
+<p>
+<a href="https://www.terraform.io/" target="_blank" rel="noopener">Terraform</a> is a great and widespread tool which can automatically provision infrastructure resources described in configuration files (however, have a look at 
+<a href="https://itnext.io/things-i-wish-i-knew-about-terraform-before-jumping-into-it-43ee92a9dd65" target="_blank" rel="noopener">this article</a> for a more nuanced analysis).
+To create all required resources, two terraform commands are needed:</p>
+<pre><code class="language-sh">cd terraform
+terraform init # required once
+terraform apply # enter 'yes' when prompted to confirm the changes (or use -auto-approve)
+cd ../ # return to project root
+</code></pre>
+<p>(To prevent 404 errors when calling <code>apply</code> after a restart of LocalStack without calling <code>terraform destroy</code>, first delete the <code>terraform.tfstate</code> files next to <code>main.tf</code>.)</p>
+<p>After the successfull creation, two more containers can be started - one serving the dashboard and one running a simulation model to emulate real event producers:</p>
+<pre><code class="language-sh">docker-compose up dashboard emulation
+</code></pre>
+<p>Before (re-)starting any test-run, the DynamoDB-tables need to be cleared:</p>
+<pre><code class="language-sh">docker-compose up truncate-tables
+</code></pre>
+<p><a href="http://localhost:8050">http://localhost:8050</a> should now show the empty dashboard, while <a href="http://localhost:5001">http://localhost:5001</a> should show the generic Casymda web canvas animation controls.
+To enable automatic refreshes use the switch above the chart on the dashboard.</p>
+<p>When starting the emulation, orders will be created at the source and flow through the defined process.<br>
+At the same time, the dashboard should update with a minor delay and visualize the completion times of the relevant process steps of all orders which are currently present in the system.
+A vertical line in the chart indicates the point in time when the simulation run started and the forecast was created.</p>
+<hr>
+<h3 id="sample-flow">Sample flow</h3>
+<h4 id="1-the-first-order-is-created">1. The first order is created</h4>
+<p><img src="img/sc/e1.png" alt="e1"></p>
+<p>The simulation forecasts process step completion times as defined in the model:
+<img src="img/sc/g1.png" alt="g1"></p>
+<hr>
+<h4 id="2-the-second-order-arrives-and-_order-1_-production-starts">2. The second order arrives and <em>Order-1</em> production starts</h4>
+<p><img src="img/sc/e2.png" alt="e1"></p>
+<p>The forecast does not show problems:
+<img src="img/sc/g2.png" alt="g1"></p>
+<hr>
+<h4 id="3-after-some-time-an-eta-update-for-the-_order-2_-material-delivery-is-communicated-and-a-delay-of-13-is-now-expected">3. After some time, an ETA update for the <em>Order-2</em> material delivery is communicated, and a delay of 1/3 is now expected</h4>
+<p><img src="img/sc/e3.png" alt="e1"></p>
+<p>The forecast shows the announced delay (orange) and the expected shift of the production step of <em>Order-2</em>:
+<img src="img/sc/g3.png" alt="g1"></p>
+<hr>
+<h4 id="4-_order-1_-is-finished-and-therefore-excluded-from-the-forecast-but-now-_order-3_-arrives">4. <em>Order-1</em> is finished (and therefore excluded from the forecast), but now <em>Order-3</em> arrives</h4>
+<p><img src="img/sc/e4.png" alt="e1"></p>
+<p>The forecast reveals an upcoming problem! Caused by the capacity constraint of the production step (max. one order concurrently), the delay of <em>Order-2</em> (orange) will also prevent to start the of production of <em>Order-3</em> on time, even though the material is expected to be ready by then (red):
+<img src="img/sc/g4.png" alt="g1"></p>
+<hr>
+<h4 id="5-when-_order-2_-is-almost-finished-a-4th-order-comes-in">5. When <em>Order-2</em> is almost finished, a 4th order comes in</h4>
+<p><img src="img/sc/e5.png" alt="e1"></p>
+<p>As the forecast shows, the delay of <em>Order-2</em> will cascade and also affect <em>Order-4</em>:
+<img src="img/sc/g5.png" alt="g1"></p>
+<hr>
+<p>Complete screen-cast:</p>
+<video autoplay controls>
+  <source src="img/sc/peek5.mp4" type="video/mp4">
+</video>
+<hr>
+<p>While this was just a proof of concept and the presented example would have been easy to calculate by hand, there are plenty of improvements and extensions imaginable.</p>
+<p>Looking at the scenario and business use-case, it would be interesting to add more complexity to the process, such as inventory for raw materials, and different replenishment strategies.
+Similarly, the impacts of stochastic or planned machine maintenance intervals might be evaluated.
+Another extension would be to incorporate targets into the process, such as order-specific due dates or throughput goals.
+This might then ask for additional optimization procedures to determine optimal production control policies (similar to the case presented in the thesis mentioned in the beginning of this article).</p>
+<p>Interesting technical extensions include security aspects such as authentication and authorization of different data producing parties, as well as an integration of the IoT-related services of AWS, which might offer dedicated features to gather data with sensors and edge devices for the digital twin.
+Concerning the analytics of ingested event data, stream processing solutions such as <em>AWS Kinesis Data Analytics</em> might be useful to identify relevant patterns and trigger forecast and optimization runs only in case of critical process deviations.</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/csa-simulation-based-sc-forecast/&amp;text=Real%20Time%20Simulation-based%20Supply%20Chain%20Analytics" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/csa-simulation-based-sc-forecast/&amp;t=Real%20Time%20Simulation-based%20Supply%20Chain%20Analytics" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Real%20Time%20Simulation-based%20Supply%20Chain%20Analytics&amp;body=/post/csa-simulation-based-sc-forecast/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/csa-simulation-based-sc-forecast/&amp;title=Real%20Time%20Simulation-based%20Supply%20Chain%20Analytics" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Real%20Time%20Simulation-based%20Supply%20Chain%20Analytics%20/post/csa-simulation-based-sc-forecast/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/csa-simulation-based-sc-forecast/&amp;title=Real%20Time%20Simulation-based%20Supply%20Chain%20Analytics" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="avatar mr-3 avatar-circle" src="/authors/fladdimir/avatar_hu9aec7404c102c7c1af6267bcc4e47f28_382731_270x270_fill_lanczos_center_2.png" alt="Wladimir Hofmann">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/">Wladimir Hofmann</a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:fladdi.mir%20[at]%20gmx%20[dot]%20de" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/wladimir-hofmann-9065a714b/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.researchgate.net/profile/Wladimir_Hofmann" target="_blank" rel="noopener">
+        <i class="ai ai-researchgate"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/fladdimir" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = true;</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
