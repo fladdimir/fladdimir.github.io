@@ -5,12 +5,98 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Wladimir Hofmann | Homepage</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 27 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 20 Dec 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Wladimir Hofmann | Homepage</title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>Block-based Modeling with SimPy - in Java &amp; C#</title>
+      <link>/post/csa4j&#43;cs/</link>
+      <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>/post/csa4j&#43;cs/</guid>
+      <description>&lt;p&gt;When creating Python-based simulation models with 
+&lt;a href=&#34;../casymda/&#34;&gt;Casymda&lt;/a&gt; /
+&lt;a href=&#34;https://gitlab.com/team-simpy/simpy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SimPy&lt;/a&gt;, a frequent remark is that Python - being a slow, dynamic, interpreted language - would be a bad choice for this type of endeavour.&lt;/p&gt;
+&lt;p&gt;So could compiled, statically-typed SimPy alternatives make model execution faster, therefore being a better choice for development?&lt;/p&gt;
+&lt;p&gt;This post will have a look at 
+&lt;a href=&#34;https://github.com/uia4j/uia-sim&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Uia-Sim&lt;/a&gt; and 
+&lt;a href=&#34;https://github.com/heal-research/SimSharp&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SimSharp&lt;/a&gt;, two SimPy ports for discrete event simulation in Java and C#.
+As a proof-of-concept, two small block-based modeling libraries were created, similar to Casymda for SimPy, and their execution speed was compared with help of a simple benchmark model.&lt;/p&gt;
+&lt;h2 id=&#34;uia-sim-simpy-for-java&#34;&gt;Uia-Sim: SimPy for Java&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://github.com/uia4j/uia-sim&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Uia-Sim&lt;/a&gt; is a recently published Java port of SimPy, published by 
+&lt;a href=&#34;https://github.com/uia4j&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;UIA Java Solutions&lt;/a&gt;. Since Java does not provide generators/coroutines out of the box, the creator developed a &amp;ldquo;yield-like API&amp;rdquo; to enable blocking and resuming of simulation processes with help of threads.&lt;/p&gt;
+&lt;p&gt;Based on Uia-Sim, a Casymda-like library for block-based composition of discrete event simulation models was created as a proof-of-concept.
+
+&lt;a href=&#34;https://github.com/fladdimir/csa4j&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Csa4j&lt;/a&gt; implements some of the ideas from Casymda:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a &lt;code&gt;Block&lt;/code&gt; as the basic class to compose simulation models
+&lt;ul&gt;
+&lt;li&gt;is executing processing logic for received entities, and forwarding to successor-blocks&lt;/li&gt;
+&lt;li&gt;can be extended for custom processing logic (e.g. elapsing time, as &lt;code&gt;Delay&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Source&lt;/code&gt;-blocks spawn entities and initiate their processing&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Sink&lt;/code&gt;-blocks end entity processing and cause removal from the simulation&lt;/li&gt;
+&lt;li&gt;basic animation capabilities can visualize the entity flow between model blocks for debug / presentation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;As an improvement over Casymda, animation-related behavior and data was properly seperated from the simulation-related behavior of basic blocks, which just provide notifications whenever block-states change or entity movements occur.&lt;br&gt;
+Similar to Casymda&amp;rsquo;s debug animation based on Tkinter, corresponding visualizations can be created in Csa4j with JavaFX.
+While browser-based animation was out of scope for this PoC, the multitude of existing (micro-) web-frameworks for Java would make it easy to provide corresponding functionality.
+Further missing features which are present in Casymda include the parsing of .bpmn files to generate simulation model classes, the state-tracking of blocks, and tilemap-movements.&lt;/p&gt;
+&lt;p&gt;The project uses a basic gradle setup with Java 14 and JUnit-tests. Coverage info and static code analysis can be obtained with help of jacoco, sonarqube, and a sonarqube gradle plugin. Since Uia-Sim seems to be not yet available via maven-central, this dependency can be built locally and primarily be retrieved via a local maven repository. VSCode and its Java extension pack provide a great development experience.&lt;/p&gt;
+&lt;h2 id=&#34;simsharp-simpy-for-net&#34;&gt;SimSharp: SimPy for .NET&lt;/h2&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://github.com/heal-research/SimSharp&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SimSharp&lt;/a&gt; is a .NET port of SimPy which is developed by the research group &amp;ldquo;Heuristic and Evolutionary Algorithms Laboratory&amp;rdquo; (HEAL) from Austria (also known for the 
+&lt;a href=&#34;https://dev.heuristiclab.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;HeuristicLab&lt;/a&gt; optimization framework). Similar to SimPy (and different to Uia-Sim), SimSharp is using iterators for resumable simulation-processes.&lt;/p&gt;
+&lt;p&gt;Created for this PoC, the 
+&lt;a href=&#34;https://github.com/fladdimir/csa4cs&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Csa4cs&lt;/a&gt;-library provides the same features as &amp;ldquo;Csa4j&amp;rdquo; (described in the previous section), including a simple canvas animation based on skiasharp and gtksharp.&lt;br&gt;
+The project is based on the .NET 5.0 SDK, using the XUnit test framework. Similar to the Java project, coverage info and static code analysis can be obtained conveniently with sonarqube (even though the scan step requires a bit more setup effort compared with the gradle plugin usage in Java).
+Thanks to its C# extension, VSCode can offer great development support.&lt;/p&gt;
+&lt;h2 id=&#34;performance-comparison&#34;&gt;Performance Comparison&lt;/h2&gt;
+&lt;p&gt;To evaluate the execution speed of the simulation libraries, the same model was implemented using Casymda/SimPy, Csa4j/Uia-Sim, and Csa4cs/SimSharp.
+Additionally, the SimPy-model was executed using CPython and PyPy. Identical assertions on the results of the simulations verify the correctness of the model implementations.&lt;/p&gt;
+&lt;p&gt;The benchmark model is made of typically used, basic processing blocks and is shown below.&lt;br&gt;
+One source produces entities with a given inter-arrival-time and forwards them to a gateway, which alternatingly chooses either a delay-block with infinite capacity (parallel processing), or a buffer which is placed before a delay-block with capacity 1 (sequential processing). A second gateway joins both entity flows.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./img/model.gif&#34; alt=&#34;animated-process&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Depending on the inter-arrival-time, 2 main scenarios can be simulated:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;inter-arrival-time &amp;gt; processing time
+&lt;ul&gt;
+&lt;li&gt;not causing any queues or actually parallel processing, representing a plain processing of entities with a short event queue&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;inter-arrival-time &amp;lt; processing time
+&lt;ul&gt;
+&lt;li&gt;leading to a queue before the sequential processing (up to n/2 entities waiting), and a simultaneous processing of the other n/2 entities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Different experiments simulate the processing of 10 to 200_000 entities and were carried out on an Ubuntu notebook with i5 processor.&lt;/p&gt;
+&lt;p&gt;The diagram below shows the execution time of the simulation runs for the first scenario where no queing occurs, depending on the number of created entities:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/iat_10.png&#34; alt=&#34;chart_iat_10&#34;&gt;&lt;/p&gt;
+&lt;p&gt;As we can see - and as one might expect - the execution time linearly grows with the number of processed entities on all platforms.
+Interestingly, the Java model (red) is considerably slower than the Python and the C# versions, so that the longer experiments were omitted.
+This performance drawback could be explained by fact that one os-thread is created per entity-process, combined with a high computational overhead of threads compared to generator/iterable-based coroutine-objects.
+Even for short runs, the PyPy JIT compiler (orange) can reach an impressive speed-up compared to CPython (blue).
+The .NET model outperforms even PyPy by a factor of ~5.&lt;/p&gt;
+&lt;p&gt;The second chart shows the queuing scenario, with up to one half of the entities waiting for a shared resource, and the other half being simultaneously processed:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/iat_0.png&#34; alt=&#34;chart_iat_0&#34;&gt;&lt;/p&gt;
+&lt;p&gt;As before, the longer runs of the Java model were omitted due to their duration.
+While CPython and .NET show an again seemingly linear growth, the exponential development of the PyPy execution time reveals a rather surprising slow-down in the long run compared to CPython.&lt;/p&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Static typing alone does (surprisingly) not guarantee any execution speed advantage.&lt;/li&gt;
+&lt;li&gt;SimSharp did prove to work great and might definitely be worth further evaluation.&lt;/li&gt;
+&lt;li&gt;The Java-based library should probably not be used when creating many simulated processes (e.g. one process per entity, with many rather short-lived entities as in the sample model).&lt;/li&gt;
+&lt;li&gt;PyPy can provide significant speed-ups over CPython, closing the gap between Python and C# - however, that depends.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The shown figures were created from a first, tentative, prelimenary comparison, delivering results which are not even fully comparable (especially due to the omitted features in the Java and C# libraries). Apart from execution speed, the eco-system remains as a strong plus for creating discrete event simulation models with Python.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Real Time Simulation-based Supply Chain Analytics</title>
