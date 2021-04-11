@@ -5,12 +5,113 @@
     <link>/</link>
       <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <description>Wladimir Hofmann | Homepage</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Sun, 20 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Wladimir Hofmann | Homepage</title>
       <link>/</link>
     </image>
+    
+    <item>
+      <title>Playing around with React, Leaflet, Micronaut, Okta, &amp; Heroku</title>
+      <link>/post/location-sharing/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>/post/location-sharing/</guid>
+      <description>&lt;p&gt;Wouldn&amp;rsquo;t it be cool to be able to share your location with friends, but without relying on established service providers, which most probably already know way more about you than they should?&lt;/p&gt;
+&lt;p&gt;This post will look at a small web-app implementing essential basics of that functionality, using React and Leaflet at the frontend, Micronaut at the backend, Okta as identity provider, and Heroku for free hosting.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Get the repo: &lt;a href=&#34;https://github.com/fladdimir/locsharex&#34;&gt;https://github.com/fladdimir/locsharex&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;TL;DR - just 
+&lt;a href=&#34;https://locsharex.herokuapp.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;show me the app!&lt;/a&gt;&lt;br&gt;
+(first request may take some seconds, due to a possibly sleeping Heroku dyno)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;features-and-ui&#34;&gt;Features and UI&lt;/h2&gt;
+&lt;h3 id=&#34;login-screen&#34;&gt;Login screen&lt;/h3&gt;
+&lt;p&gt;To get a first impression without sign-up, 3 pre-defined test-users allow you to quickly see the app in action. Just click to login and play around.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/login.png&#34; alt=&#34;login-screen&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;okta-login&#34;&gt;Okta-Login&lt;/h3&gt;
+&lt;p&gt;To create your own user, sign-in via Okta, a free Open-ID-Connect identity provider.&lt;br&gt;
+(Well, free for any app as long as there are no more than 15k monthly users.)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/okta.png&#34; alt=&#34;okta&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;the-map&#34;&gt;The Map&lt;/h3&gt;
+&lt;p&gt;Main screen of the app, where you can see your and your friends&amp;rsquo; locations.&lt;br&gt;
+Edit your location by dragging the marker onto the map, stop sharing your position, or rely on your browser/device location (consent needed).
+Filter for username in case of searching for someone specific.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/map.png&#34; alt=&#34;map&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;settings&#34;&gt;Settings&lt;/h3&gt;
+&lt;p&gt;The contact-administration page, with lots of space for more friends ;)&lt;br&gt;
+Look for not-yet-connected people by username, change the name by which people may find you.
+Sign-out to try another test-user or check back later.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/settings.png&#34; alt=&#34;settings&#34;&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;technologies&#34;&gt;Technologies&lt;/h2&gt;
+&lt;h3 id=&#34;frontend&#34;&gt;Frontend&lt;/h3&gt;
+&lt;p&gt;Single-page 
+&lt;a href=&#34;https://reactjs.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;react&lt;/a&gt;-app, created with 
+&lt;a href=&#34;https://create-react-app.dev/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;create-react-app&lt;/a&gt; and 
+&lt;a href=&#34;https://material-ui.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Material-UI&lt;/a&gt;.
+Open-street-maps integration with help of 
+&lt;a href=&#34;https://leafletjs.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;leaflet&lt;/a&gt; and 
+&lt;a href=&#34;https://react-leaflet.js.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;react-leaflet&lt;/a&gt; for simple usage within react components with great 
+&lt;a href=&#34;https://www.typescriptlang.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;typescript&lt;/a&gt; support.
+
+&lt;a href=&#34;https://code.visualstudio.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;VSCode&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Worth mentioning might be the awesome &lt;em&gt;create-react-app&lt;/em&gt; tooling, including a proxy-mode for forwarding of &lt;em&gt;/api&lt;/em&gt; requests to another locally running server (no cors hustle), and the HTTPS support 
+&lt;a href=&#34;https://developers.google.com/web/updates/2016/04/geolocation-on-secure-contexts-only&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;required for using the geo-location browser api&lt;/a&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;backend&#34;&gt;Backend&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://micronaut.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Micronaut&lt;/a&gt;, a popular JVM-based microservice framework, aiming for lower memory footprints and faster start-up times than Spring-Boot, and (
+&lt;a href=&#34;https://spring.io/blog/2020/11/23/spring-native-for-graalvm-0-8-3-available-now&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;at least currently&lt;/a&gt;) still with better support for creating native images with GraalVM (for further start-up time reduction).
+Thanks to the 
+&lt;a href=&#34;https://github.com/redhat-developer/vscode-java&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;java-extension&lt;/a&gt;, VSCode also provides great support for backend development.&lt;/p&gt;
+&lt;p&gt;Convenient entity persistence with 
+&lt;a href=&#34;https://micronaut-projects.github.io/micronaut-data/latest/guide/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Data Repositories&lt;/a&gt; and 
+&lt;a href=&#34;https://hibernate.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Hibernate&lt;/a&gt;.
+Below is a simple entity-relationship-model for the app, showing the &lt;code&gt;AppUser&lt;/code&gt; with it&amp;rsquo;s app-internal ID, name, (embedded) position, and associated users (m-n self-reference):&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/erm.png&#34; alt=&#34;erm&#34;&gt;&lt;/p&gt;
+&lt;p&gt;In addition to the REST-API, Micronaut also provides the possibility to serve static files.&lt;/p&gt;
+&lt;h3 id=&#34;identity-provider&#34;&gt;Identity Provider&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://micronaut-projects.github.io/micronaut-security/latest/guide/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Micronaut Security&lt;/a&gt; offers a variety of options for securing an app, including support for &lt;em&gt;OpenID Connect&lt;/em&gt;-based authentication flows.
+To link persisted user-entities with actual users authenticating via OIDC, the entity also contains information on the identity provider and the &lt;em&gt;sub&lt;/em&gt; (a user ID from the identity provider).
+That information is only used once during login to identify the logged-in user before issuing a new JWT. No info from the identity-provider is given anywhere but to the database.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Micronaut Security&lt;/em&gt; includes support for a couple of different OIDC providers out of the box (e.g. Auth0, AWS-Cognito, Okta, Keycloak).&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://github.com/keycloak/keycloak&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Keycloak&lt;/a&gt; is a popular open-source identity and access management solution, lately starting to move from Wildfly to Quarkus - 
+&lt;a href=&#34;https://www.keycloak.org/2020/12/first-keycloak-x-release.adoc&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Keycloak-X&lt;/a&gt;.
+Great for just spinning up a 
+&lt;a href=&#34;quay.io/keycloak/keycloak-x&#34;&gt;container&lt;/a&gt; for local development.&lt;/p&gt;
+&lt;p&gt;Alternatively it is simple to switch to a managed IDP such as 
+&lt;a href=&#34;https://developer.okta.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Okta&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Shown below is an overview of the application components and their interaction during OIDC login:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;img/app.png&#34; alt=&#34;setup&#34;&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The user decides to login and issues a request to initiate the flow&lt;/li&gt;
+&lt;li&gt;The response redirects to the identity provider&lt;/li&gt;
+&lt;li&gt;The IDP login is loaded, where the user enters credentials&lt;/li&gt;
+&lt;li&gt;Upon successful IDP login, the user is redirected to a callback-endpoint of the app (including a one-time code)&lt;/li&gt;
+&lt;li&gt;The user issues the callback request (including the one-time code)&lt;/li&gt;
+&lt;li&gt;The app backend makes a secure back-channel request to exchange the user-related one-time code for an ID-token (together with an app-specific, pre-configured client-secret)&lt;/li&gt;
+&lt;li&gt;The IDP returns an ID-token containing user information&lt;/li&gt;
+&lt;li&gt;The app backend creates a new JWT containing the app-internal user ID and returns the JWT as an http-only cookie as part of a redirecting response&lt;/li&gt;
+&lt;li&gt;The browser then sends the cookie with every API request, allowing the backend to validate the JWT and the permission of the user to access requested resources&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;During &lt;em&gt;logout&lt;/em&gt; the user needs to clear the existing IDP session as well as the app session, which can be achieved by a series of redirects between the logout endpoints.&lt;/p&gt;
+&lt;p&gt;See e.g. 
+&lt;a href=&#34;https://youtu.be/996OiexHze0&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;this presentation&lt;/a&gt; for an in-depth explanation of OAuth 2 and OIDC.&lt;/p&gt;
+&lt;h3 id=&#34;heroku&#34;&gt;Heroku&lt;/h3&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://www.heroku.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Heroku&lt;/a&gt; is a platform-as-service which offers a simple way to run an app in the cloud, including a free tier of 550 micro instance-hours per month and a postgres-database with a 10k row limit.
+Applications can be provided e.g. in form of jars or docker images (the latter may require custom processing of the environment variable storing the Database credentials).
+After 30 mins of inactivity without incoming requests, an instance is put to sleep and stops consuming instance-hours.
+To quickly respond to a request when waking up an instance, the usage of a 
+&lt;a href=&#34;https://guides.micronaut.io/micronaut-creating-first-graal-app/guide/index.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;native image&lt;/a&gt; of the app can be beneficial (reducing the app startup time from ~4.1 seconds to ~0.24s).&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Feel free to register for a free Okta account (no gmail needed), and share your favorite location ;)&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://locsharex.herokuapp.com&#34;&gt;https://locsharex.herokuapp.com&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Block-based Modeling with SimPy - in Java &amp; C#</title>
