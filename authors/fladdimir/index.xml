@@ -5,12 +5,34 @@
     <link>/authors/fladdimir/</link>
       <atom:link href="/authors/fladdimir/index.xml" rel="self" type="application/rss+xml" />
     <description>Wladimir Hofmann | Homepage</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 09 Jun 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Wladimir Hofmann | Homepage</title>
       <link>/authors/fladdimir/</link>
     </image>
+    
+    <item>
+      <title>Minimal Web-based Audio Remote Control with Python</title>
+      <link>/post/audio-remote-control/</link>
+      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
+      <guid>/post/audio-remote-control/</guid>
+      <description>&lt;p&gt;The &lt;em&gt;huge&lt;/em&gt; effort for lifting oneself up from the couch
+and moving the distance to the connected PC makes it almost unbearable
+to do audio volume changes when watching Netflix on the big screen
+(not even speaking of the pain bending the fingers to reach hotkeys).&lt;/p&gt;
+&lt;p&gt;Luckily, there are great libraries available to alleviate this agony with just a few lines of Python.&lt;/p&gt;
+&lt;p&gt;On the Ubuntu laptop, 
+&lt;a href=&#34;https://github.com/larsimmisch/pyalsaaudio&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pyalsaaudio&lt;/a&gt; gives simple control over the system&amp;rsquo;s audio level, 
+&lt;a href=&#34;https://github.com/AndreMiras/pycaw&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pycaw&lt;/a&gt; offers the same on Windows.&lt;br&gt;
+
+&lt;a href=&#34;https://flask.palletsprojects.com/en/2.0.x/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Flask&lt;/a&gt; exposes a corresponding command-endpoint as well as a minimal web UI.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Start the 
+&lt;a href=&#34;https://github.com/fladdimir/automatic-octo-journey&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ease of the pain&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+    </item>
     
     <item>
       <title>Playing around with React, Leaflet, Micronaut, Okta, &amp; Heroku</title>
