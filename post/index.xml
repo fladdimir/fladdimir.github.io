@@ -5,12 +5,116 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Wed, 09 Jun 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 23 Aug 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>Python-based Emulation for Developing Material Flow Controls in C</title>
+      <link>/post/material-flow-control-emulation/</link>
+      <pubDate>Mon, 23 Aug 2021 00:00:00 +0000</pubDate>
+      <guid>/post/material-flow-control-emulation/</guid>
+      <description>&lt;p&gt;Back at university we had a great time playing around with miniaturized 
+&lt;a href=&#34;https://en.wikipedia.org/wiki/Fischertechnik&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Fischertechnik&lt;/a&gt; conveying systems.
+We learned about the challenges of PLC programming and the joy of using 
+&lt;a href=&#34;https://www.arduino.cc/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Arduino&lt;/a&gt; micro-controller boards to bring conveyor belts and turntables to life.
+We were learning about simulation-based controls testing using 
+&lt;a href=&#34;https://emulate3d.de/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Emulate3D&lt;/a&gt; (awesome 3D physics engine, robot emulations) and 
+&lt;a href=&#34;https://www.plm.automation.siemens.com/global/de/products/manufacturing-planning/plant-simulation-throughput-optimization.html&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Plant Simulation&lt;/a&gt; (also great for testing higher-level controls).&lt;br&gt;
+However, the restrictive licensing - USB dongles and notoriously limited pool-licenses - made it challenging to create a simple and accessible controls development workflow suitable for all project team members.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s sketch the idea of a material flow simulation environment for developing, debugging and testing C-code inside a Python-based simulation model - non-proprietary and ready to be run anywhere, e.g. as part of CI.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Public repo: &lt;a href=&#34;https://github.com/fladdimir/material-flow-control-c-emulation&#34;&gt;https://github.com/fladdimir/material-flow-control-c-emulation&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;1-scenario--scope&#34;&gt;1. Scenario &amp;amp; Scope&lt;/h2&gt;
+&lt;p&gt;The &amp;ldquo;turntable&amp;rdquo; (image above) represents a typical Fischertechnik conveying module. It consists of 2 motors and 3 sensors:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;conveyor belt (motor 1)&lt;/li&gt;
+&lt;li&gt;proximity sensor or photoelectric barrier to identify whether some item is present on the module (sensor 1)&lt;/li&gt;
+&lt;li&gt;turning unit for changing the belt rotation by 90 degrees (motor 2)&lt;/li&gt;
+&lt;li&gt;stop position sensors for checking whether the module fully rotated (sensors 2+3, both at 0 and 90 degrees)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Even though the motors typically require 24V, relays can be used to control a module with a micro-controller boards typically working at 3-5V pin voltage.
+Micro-controller boards such as Arduinos also offer further options for interfacing with other systems via serial communication.&lt;/p&gt;
+&lt;p&gt;Putting together multiple turntable modules, grid-like conveying layouts can be realized.&lt;/p&gt;
+&lt;p&gt;However, writing control logic for Arduino can be challenging, especially since debugging code running on a connected board is not as simple.
+Additionally, central material flow control software also needs to be tested in interaction with module controls.&lt;/p&gt;
+&lt;h2 id=&#34;2-system-structure&#34;&gt;2. System Structure&lt;/h2&gt;
+&lt;p&gt;A structure for controlling the flow of goods through a grid of connected turntable modules could look like this:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./system_structure-control_structure_2.jpg&#34; alt=&#34;system_structure_controls&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;every turntable&amp;rsquo;s sensors and actors are controlled by a micro-controller (I/O)&lt;/li&gt;
+&lt;li&gt;every micro-controller has a serial connection to communicate with a central material flow control server&lt;/li&gt;
+&lt;li&gt;the server logic consists of different parts dedicated to communicating with connected modules, as well as central functions e.g. for pathfinding/routing of items through the system&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;While systems such as 
+&lt;a href=&#34;https://www.flexlog.de/en/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Flexconveyor&lt;/a&gt; claim to work in a decentralized way without the need for a central &amp;ldquo;routing brain&amp;rdquo;, the described structure tries to shift all functions without hard real-time requirements from the micro-controllers to a central server (which makes particular sense when running on low-budget, resource-constrained boards such as the Arduino Uno).&lt;/p&gt;
+&lt;h2 id=&#34;3-emulation-interfaces&#34;&gt;3. Emulation Interfaces&lt;/h2&gt;
+&lt;p&gt;Within the described setup, every micro-controller interacts with its environment via sensor-reads, actor-writes, and byte-wise serial-reads/writes.
+To be able to run the control logic on a development computer, the actual hardware-dependent read/write calls need to be replaced by interactions with simulated counterparts.&lt;/p&gt;
+&lt;p&gt;One way of achieving that using a Python-based emulation environment and exploiting the simple interfacing with C code could look like this:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;./system_structure-emulation_2.jpg&#34; alt=&#34;system_structure_emulation&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;module control C code is called from a Python runtime with help of a generated CFFI wrapper&lt;/li&gt;
+&lt;li&gt;device-dependent interaction methods are setup to call corresponding Python functions providing simulated inputs/outputs&lt;/li&gt;
+&lt;li&gt;sensor-reads &amp;amp; actor-writes are run against a shared memory, which is also read/written by a simulation of the physical modules&lt;/li&gt;
+&lt;li&gt;serial reads &amp;amp; writes are going to a pipe, which represents a connection to the server-side module agent&lt;/li&gt;
+&lt;li&gt;a dedicated sub-process is created for every module control so that no global C variables are shared between different module controls&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://cffi.readthedocs.io/en/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CFFI&lt;/a&gt; allows for the simple creation of functions which are declared in C and called from Python, as well as the other way around.
+When generating the CFFI wrapper code, C header files can be used to prepare C functions to be called from Python.
+To be able to implement forward-declared C functions in Python, the follwing definition can be set:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-c&#34;&gt;extern &amp;quot;Python+C&amp;quot; bool _light_barrier(); // provide info whether sensor is triggered
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;This way, an implementing Python function can then be wired:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&#34;language-py&#34;&gt;@ffi.def_extern()
+def _light_barrier() -&amp;gt; bool:
+    return shared_array[LIGHT_BARRIER_IDX] # simulated value from memory instead of actual sensor
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;4-2d-simulation&#34;&gt;4. 2D-Simulation&lt;/h2&gt;
+&lt;p&gt;To be able to emulate physical interactions of the module control code, real system components need to be simulated.
+While there are 
+&lt;a href=&#34;https://projectchrono.org/pychrono/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Python wrappers&lt;/a&gt; for awesome (3D) physics engines such as 
+&lt;a href=&#34;https://github.com/projectchrono/chrono&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;chrono&lt;/a&gt;, this implementation just uses a minimal 2D engine with very limited physics.&lt;/p&gt;
+&lt;p&gt;Supported features include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;nested element structures in 2D&lt;/li&gt;
+&lt;li&gt;cheap collision//overlap detection for certain combinations of simple geometries (rectangles, straights, points)&lt;/li&gt;
+&lt;li&gt;relative transition and rotation movements of elements and child-elements&lt;/li&gt;
+&lt;li&gt;movement limits (e.g. to realize max. 90 degrees of rotation for turntables)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;While an elements global position is determined by its local position relative to the parent-element it is attached to, the global position is cached to avoid recalculation for nested objects in case no position changes occured for any parent element.&lt;br&gt;
+The collision detection uses a simple 2-phase check, first checking cheap circumcycles to identify potentially colliding objects before performing a more expensive cohen-sutherland evaluation.
+Collisions are used in the simulation e.g. to identify when a box is hitting a light barrier, or which conveyor belt movements are changing a box&amp;rsquo;s position.&lt;/p&gt;
+&lt;h2 id=&#34;5-putting-it-all-together&#34;&gt;5. Putting it all together&lt;/h2&gt;
+&lt;p&gt;The screencast shows an animation of a small sample test scenario consisting of several modules forwarding one box towards randomly chosen target modules (indicated by &amp;lsquo;X&amp;rsquo;):&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;emulation.gif&#34; alt=&#34;c-controlled turntable modules forwarding a box towards randomly chosen targets (indicated by &amp;lsquo;X&amp;rsquo;)&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The visualization is created with help of the 
+&lt;a href=&#34;https://api.arcade.academy/en/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Arcade&lt;/a&gt; game engine, which allows to simply step forward the simulation inside the game loop and animate the current state.
+In addition to the advent of the simulated time, the (C-coded) control loop of each module is invoked sequentially to allow a reaction to potential sensor state changes.&lt;/p&gt;
+&lt;p&gt;On the server-side of the control hierarchy, the forwarding/receiving of boxes between modules and the awaiting of modules to reach readiness is realized using asyncio coroutines.&lt;br&gt;
+The determination of which modules to visit in order to reach a distant target module is done with help of 
+&lt;a href=&#34;https://networkx.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;networkx&lt;/a&gt; and a corresponding graph constructed from the module locations.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The cool thing about all this: we can debug every single layer of the control code at any point in time!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In addition to normal Python debugging (part of the VS Code Python extension) of the server-side control code, we can attach a C (gcc) debugger to any of the module sub-processes running the C code.&lt;br&gt;
+This also works great from within VS Code, where we can even run different debugging sessions at the same time.&lt;/p&gt;
+&lt;p&gt;Being able to &amp;ldquo;look inside&amp;rdquo; the current state of a C module control makes it amazingly easy to discover bugs, such as the bad evaluation of commands received via serial communication, confirmation serial writes at bad times, plain wrong if-conditions, misplaced early returns etc..&lt;/p&gt;
+&lt;p&gt;As animation is fully optional, running a &amp;ldquo;headless&amp;rdquo; simulation can be easily used for validating checked-in control code agains a set of defined test scenarios / module layouts e.g. as part of a CI pipeline.&lt;/p&gt;
+&lt;h3 id=&#34;limits-and-shortcomings&#34;&gt;Limits and Shortcomings&lt;/h3&gt;
+&lt;p&gt;Despite the good level of support for development and debugging, there are serious shortcomings of the presented approach, so that there still remains the need for properly testing the complete physical system:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;C code is run on a normal PC instead of a resource-constrained micro-controller, so e.g. memory usage should be carefully checked&lt;/li&gt;
+&lt;li&gt;the defined &amp;ldquo;hardware abstraction layer&amp;rdquo; hides the complexity of actual communication hardware and technologies (pins/bus systems/rxtx/i2c/&amp;hellip;)&lt;/li&gt;
+&lt;li&gt;all control code is invoked sequentially and the simulation waits for all control loops to finish before the next time step, so real-time requirements should be checked with special care on the target hardware&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Camunda Morning Task-List</title>
