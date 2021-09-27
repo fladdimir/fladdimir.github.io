@@ -227,7 +227,7 @@
   
   <meta property="og:site_name" content="Wladimir Hofmann | Homepage">
   <meta property="og:url" content="/post/tugger-routing/">
-  <meta property="og:title" content="Digital Twin for Assembly Line Supply Strategy Planning | Wladimir Hofmann | Homepage">
+  <meta property="og:title" content="Digital Twin for Assembly Line Material Provisioning Planning | Wladimir Hofmann | Homepage">
   <meta property="og:description" content="Case-Study on Reinforcement-Learning in Logistics"><meta property="og:image" content="/post/tugger-routing/featured.png">
   <meta property="twitter:image" content="/post/tugger-routing/featured.png"><meta property="og:locale" content="en-us">
   
@@ -260,7 +260,7 @@
     "@type": "WebPage",
     "@id": "/post/tugger-routing/"
   },
-  "headline": "Digital Twin for Assembly Line Supply Strategy Planning",
+  "headline": "Digital Twin for Assembly Line Material Provisioning Planning",
   
   "image": [
     "/post/tugger-routing/featured.png"
@@ -300,7 +300,7 @@
 
 
 
-  <title>Digital Twin for Assembly Line Supply Strategy Planning | Wladimir Hofmann | Homepage</title>
+  <title>Digital Twin for Assembly Line Material Provisioning Planning | Wladimir Hofmann | Homepage</title>
 
 </head>
 
@@ -538,7 +538,7 @@
 
 
 <div class="article-container pt-3">
-  <h1>Digital Twin for Assembly Line Supply Strategy Planning</h1>
+  <h1>Digital Twin for Assembly Line Material Provisioning Planning</h1>
 
   
   <p class="page-subtitle">A Case-Study on Reinforcement-Learning in Logistics</p>
@@ -577,7 +577,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    20 min read
+    19 min read
   </span>
   
 
@@ -620,59 +620,7 @@
   <div class="article-container">
 
     <div class="article-style">
-      <p><em>Artificial Intelligence</em>, <em>Digital Twins</em>, <em>Industry 4.0</em>&hellip; you might have <em>heard</em> these buzzwords before.<br>
-But wouldn&rsquo;t it be cool to <em>apply</em> them, solving an actual problem?<br>
-To learn about practical application rather than abstract concepts?<br>
-To know which challenges to master, and which pitfalls to avoid?</p>
-<p>Great, so this article is for <em>you</em>!<br>
-It will..</p>
-<ul>
-<li>describe how to use reinforcement learning to solve a production-logistics problem</li>
-<li>explain basic concepts of reinforcement learning and industrial digital twins</li>
-<li>present an in-depth case-study on assembly line supply strategy planning</li>
-</ul>
-<p>And it will include code, ready for execution on <em>your</em> machine. Docker-based, no further installation needed.</p>
-<blockquote>
-<p>Get the repo:
-<a href="https://github.com/fladdimir/tugger-routing">https://github.com/fladdimir/tugger-routing</a></p>
-</blockquote>
-<p><em>Disclaimer:</em>
-This article is the result of leisure-time work. It represents our individual perspectives on the discussed topics. It&rsquo;s a report capturing our personal experiences, rather than a purely scientific study. The content, concepts, and their implementation can probably be improved in virtually any imaginable way.<br>
-We still hope that you enjoy reading.</p>
-<!-- omit in toc -->
-<h2 id="outline">Outline</h2>
-<ul>
-<li>
-<a href="#introduction--basics">Introduction &amp; Basics</a>
-<ul>
-<li>
-<a href="#reinforcement-learning">Reinforcement Learning</a></li>
-<li>
-<a href="#digital-twins-and-discrete-event-simulation">Digital Twins and Discrete Event Simulation</a></li>
-<li>
-<a href="#wrapping-a-des-model-in-a-gym-environment">Wrapping a DES-Model in a Gym-Environment</a></li>
-</ul>
-</li>
-<li>
-<a href="#case-study">Case-Study</a>
-<ul>
-<li>
-<a href="#scenario">Scenario</a></li>
-<li>
-<a href="#simulation-model">Simulation Model</a></li>
-<li>
-<a href="#preparing-the-gym-environment">Preparing the Gym-Environment</a></li>
-<li>
-<a href="#rl-agent-training--evaluation">RL-Agent Training &amp; Evaluation</a></li>
-<li>
-<a href="#performance-comparison">Performance Comparison</a></li>
-</ul>
-</li>
-<li>
-<a href="#summing-up">Summing Up</a></li>
-</ul>
-<h2 id="introduction--basics">Introduction &amp; Basics</h2>
-<p>Reinforcement learning represents an emerging technique from machine learning.
+      <p>Reinforcement learning represents an emerging technique from machine learning.
 It can autonomously derive complex action sequences in dynamic environments and is successfully applied in various fields, e.g. from 
 <a href="https://openai.com/blog/" target="_blank" rel="noopener">robotics and gaming</a>.
 Instead of explicitly defining a specific solution strategy for a problem, we can just provide an <em>environment</em>. A self-learning <em>agent</em> will then autonomously discover successful strategies just by interaction.</p>
@@ -686,6 +634,57 @@ This contribution strives to show a working example based on a tool-stack which 
 
 <a href="https://stable-baselines.readthedocs.io/en/master/" target="_blank" rel="noopener">stable-baselines</a> for <em>RL</em> and 
 <a href="https://simpy.readthedocs.io/en/latest/" target="_blank" rel="noopener">SimPy</a> for implementing <em>Digital Twins</em>.</p>
+<blockquote>
+<p>Get the repo:
+<a href="https://github.com/fladdimir/tugger-routing">https://github.com/fladdimir/tugger-routing</a></p>
+</blockquote>
+<!-- omit in toc -->
+<h2 id="outline">Outline</h2>
+<ul>
+<li>
+<a href="#outline">Outline</a></li>
+<li>
+<a href="#introduction--basics">Introduction &amp; Basics</a>
+<ul>
+<li>
+<a href="#reinforcement-learning">Reinforcement Learning</a></li>
+<li>
+<a href="#digital-twins-and-discrete-event-simulation">Digital Twins and Discrete Event Simulation</a>
+<ul>
+<li>
+<a href="#casymda-package">Casymda-Package</a></li>
+</ul>
+</li>
+<li>
+<a href="#wrapping-a-des-model-in-a-gym-environment">Wrapping a DES-Model in a Gym-Environment</a></li>
+</ul>
+</li>
+<li>
+<a href="#case-study">Case-Study</a>
+<ul>
+<li>
+<a href="#scenario">Scenario</a></li>
+<li>
+<a href="#simulation-model">Simulation Model</a></li>
+<li>
+<a href="#preparing-the-gym-environment">Preparing the Gym-Environment</a>
+<ul>
+<li>
+<a href="#observation---action-space">Observation- &amp; Action-Space</a></li>
+<li>
+<a href="#rewards">Rewards</a></li>
+</ul>
+</li>
+<li>
+<a href="#rl-agent-training--evaluation">RL-Agent Training &amp; Evaluation</a></li>
+<li>
+<a href="#performance-comparison">Performance Comparison</a></li>
+</ul>
+</li>
+<li>
+<a href="#summing-up">Summing Up</a></li>
+</ul>
+<h2 id="introduction--basics">Introduction &amp; Basics</h2>
 <h3 id="reinforcement-learning">Reinforcement Learning</h3>
 <p>If you still ask yourself what RL is capable of, we definitely recommend to have a look at 
 <a href="https://openai.com/blog/emergent-tool-use/" target="_blank" rel="noopener">what the guys from openai are doing</a>.</p>
@@ -1116,7 +1115,7 @@ Or do you have questions concerning the presented implementation/toolstack?</p>
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=/post/tugger-routing/&amp;text=Digital%20Twin%20for%20Assembly%20Line%20Supply%20Strategy%20Planning" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=/post/tugger-routing/&amp;text=Digital%20Twin%20for%20Assembly%20Line%20Material%20Provisioning%20Planning" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -1129,7 +1128,7 @@ Or do you have questions concerning the presented implementation/toolstack?</p>
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=/post/tugger-routing/&amp;t=Digital%20Twin%20for%20Assembly%20Line%20Supply%20Strategy%20Planning" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=/post/tugger-routing/&amp;t=Digital%20Twin%20for%20Assembly%20Line%20Material%20Provisioning%20Planning" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
@@ -1142,7 +1141,7 @@ Or do you have questions concerning the presented implementation/toolstack?</p>
       
       
       <li>
-        <a href="mailto:?subject=Digital%20Twin%20for%20Assembly%20Line%20Supply%20Strategy%20Planning&amp;body=/post/tugger-routing/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Digital%20Twin%20for%20Assembly%20Line%20Material%20Provisioning%20Planning&amp;body=/post/tugger-routing/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -1155,7 +1154,7 @@ Or do you have questions concerning the presented implementation/toolstack?</p>
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=/post/tugger-routing/&amp;title=Digital%20Twin%20for%20Assembly%20Line%20Supply%20Strategy%20Planning" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=/post/tugger-routing/&amp;title=Digital%20Twin%20for%20Assembly%20Line%20Material%20Provisioning%20Planning" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -1168,7 +1167,7 @@ Or do you have questions concerning the presented implementation/toolstack?</p>
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=Digital%20Twin%20for%20Assembly%20Line%20Supply%20Strategy%20Planning%20/post/tugger-routing/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=Digital%20Twin%20for%20Assembly%20Line%20Material%20Provisioning%20Planning%20/post/tugger-routing/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -1181,7 +1180,7 @@ Or do you have questions concerning the presented implementation/toolstack?</p>
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=/post/tugger-routing/&amp;title=Digital%20Twin%20for%20Assembly%20Line%20Supply%20Strategy%20Planning" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=/post/tugger-routing/&amp;title=Digital%20Twin%20for%20Assembly%20Line%20Material%20Provisioning%20Planning" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>

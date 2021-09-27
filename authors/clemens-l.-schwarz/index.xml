@@ -13,63 +13,11 @@
     </image>
     
     <item>
-      <title>Digital Twin for Assembly Line Supply Strategy Planning</title>
+      <title>Digital Twin for Assembly Line Material Provisioning Planning</title>
       <link>/post/tugger-routing/</link>
       <pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate>
       <guid>/post/tugger-routing/</guid>
-      <description>&lt;p&gt;&lt;em&gt;Artificial Intelligence&lt;/em&gt;, &lt;em&gt;Digital Twins&lt;/em&gt;, &lt;em&gt;Industry 4.0&lt;/em&gt;&amp;hellip; you might have &lt;em&gt;heard&lt;/em&gt; these buzzwords before.&lt;br&gt;
-But wouldn&amp;rsquo;t it be cool to &lt;em&gt;apply&lt;/em&gt; them, solving an actual problem?&lt;br&gt;
-To learn about practical application rather than abstract concepts?&lt;br&gt;
-To know which challenges to master, and which pitfalls to avoid?&lt;/p&gt;
-&lt;p&gt;Great, so this article is for &lt;em&gt;you&lt;/em&gt;!&lt;br&gt;
-It will..&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;describe how to use reinforcement learning to solve a production-logistics problem&lt;/li&gt;
-&lt;li&gt;explain basic concepts of reinforcement learning and industrial digital twins&lt;/li&gt;
-&lt;li&gt;present an in-depth case-study on assembly line supply strategy planning&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;And it will include code, ready for execution on &lt;em&gt;your&lt;/em&gt; machine. Docker-based, no further installation needed.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Get the repo:
-&lt;a href=&#34;https://github.com/fladdimir/tugger-routing&#34;&gt;https://github.com/fladdimir/tugger-routing&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;&lt;em&gt;Disclaimer:&lt;/em&gt;
-This article is the result of leisure-time work. It represents our individual perspectives on the discussed topics. It&amp;rsquo;s a report capturing our personal experiences, rather than a purely scientific study. The content, concepts, and their implementation can probably be improved in virtually any imaginable way.&lt;br&gt;
-We still hope that you enjoy reading.&lt;/p&gt;
-&lt;!-- omit in toc --&gt;
-&lt;h2 id=&#34;outline&#34;&gt;Outline&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;a href=&#34;#introduction--basics&#34;&gt;Introduction &amp;amp; Basics&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;a href=&#34;#reinforcement-learning&#34;&gt;Reinforcement Learning&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;#digital-twins-and-discrete-event-simulation&#34;&gt;Digital Twins and Discrete Event Simulation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;#wrapping-a-des-model-in-a-gym-environment&#34;&gt;Wrapping a DES-Model in a Gym-Environment&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;#case-study&#34;&gt;Case-Study&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;a href=&#34;#scenario&#34;&gt;Scenario&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;#simulation-model&#34;&gt;Simulation Model&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;#preparing-the-gym-environment&#34;&gt;Preparing the Gym-Environment&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;#rl-agent-training--evaluation&#34;&gt;RL-Agent Training &amp;amp; Evaluation&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;#performance-comparison&#34;&gt;Performance Comparison&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;a href=&#34;#summing-up&#34;&gt;Summing Up&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&#34;introduction--basics&#34;&gt;Introduction &amp;amp; Basics&lt;/h2&gt;
-&lt;p&gt;Reinforcement learning represents an emerging technique from machine learning.
+      <description>&lt;p&gt;Reinforcement learning represents an emerging technique from machine learning.
 It can autonomously derive complex action sequences in dynamic environments and is successfully applied in various fields, e.g. from 
 &lt;a href=&#34;https://openai.com/blog/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;robotics and gaming&lt;/a&gt;.
 Instead of explicitly defining a specific solution strategy for a problem, we can just provide an &lt;em&gt;environment&lt;/em&gt;. A self-learning &lt;em&gt;agent&lt;/em&gt; will then autonomously discover successful strategies just by interaction.&lt;/p&gt;
@@ -83,6 +31,57 @@ This contribution strives to show a working example based on a tool-stack which 
 
 &lt;a href=&#34;https://stable-baselines.readthedocs.io/en/master/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;stable-baselines&lt;/a&gt; for &lt;em&gt;RL&lt;/em&gt; and 
 &lt;a href=&#34;https://simpy.readthedocs.io/en/latest/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;SimPy&lt;/a&gt; for implementing &lt;em&gt;Digital Twins&lt;/em&gt;.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Get the repo:
+&lt;a href=&#34;https://github.com/fladdimir/tugger-routing&#34;&gt;https://github.com/fladdimir/tugger-routing&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;!-- omit in toc --&gt;
+&lt;h2 id=&#34;outline&#34;&gt;Outline&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#outline&#34;&gt;Outline&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#introduction--basics&#34;&gt;Introduction &amp;amp; Basics&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#reinforcement-learning&#34;&gt;Reinforcement Learning&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#digital-twins-and-discrete-event-simulation&#34;&gt;Digital Twins and Discrete Event Simulation&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#casymda-package&#34;&gt;Casymda-Package&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#wrapping-a-des-model-in-a-gym-environment&#34;&gt;Wrapping a DES-Model in a Gym-Environment&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#case-study&#34;&gt;Case-Study&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#scenario&#34;&gt;Scenario&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#simulation-model&#34;&gt;Simulation Model&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#preparing-the-gym-environment&#34;&gt;Preparing the Gym-Environment&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;a href=&#34;#observation---action-space&#34;&gt;Observation- &amp;amp; Action-Space&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#rewards&#34;&gt;Rewards&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#rl-agent-training--evaluation&#34;&gt;RL-Agent Training &amp;amp; Evaluation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#performance-comparison&#34;&gt;Performance Comparison&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;a href=&#34;#summing-up&#34;&gt;Summing Up&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;introduction--basics&#34;&gt;Introduction &amp;amp; Basics&lt;/h2&gt;
 &lt;h3 id=&#34;reinforcement-learning&#34;&gt;Reinforcement Learning&lt;/h3&gt;
 &lt;p&gt;If you still ask yourself what RL is capable of, we definitely recommend to have a look at 
 &lt;a href=&#34;https://openai.com/blog/emergent-tool-use/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;what the guys from openai are doing&lt;/a&gt;.&lt;/p&gt;
