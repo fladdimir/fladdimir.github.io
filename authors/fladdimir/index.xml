@@ -5,12 +5,23 @@
     <link>/authors/fladdimir/</link>
       <atom:link href="/authors/fladdimir/index.xml" rel="self" type="application/rss+xml" />
     <description>Wladimir Hofmann | Homepage</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 23 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 28 Oct 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Wladimir Hofmann | Homepage</title>
       <link>/authors/fladdimir/</link>
     </image>
+    
+    <item>
+      <title>Towards the Productive Application of Reinforcement Learning in Logistics: A Case Study on Assembly Line Material Provision Planning</title>
+      <link>/publication/esm2021/</link>
+      <pubDate>Thu, 28 Oct 2021 00:00:00 +0000</pubDate>
+      <guid>/publication/esm2021/</guid>
+      <description>&lt;p&gt;Presented at: The 35th annual European Simulation and Modelling Conference, ESM&amp;rsquo;2021, Rome, Italy&lt;/p&gt;
+&lt;p&gt;Full text 
+&lt;a href=&#34;https://www.researchgate.net/publication/355717138_Towards_the_Productive_Application_of_Reinforcement_Learning_in_Logistics_A_Case_Study_on_Assembly_Line_Material_Provision_Planning&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on researchgate&lt;/a&gt;.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Python-based Emulation for Developing Material Flow Controls in C</title>
@@ -1311,7 +1322,7 @@ Shortest paths and distances between all origin/destination nodes are computed u
       <guid>/publication/mim2019/</guid>
       <description>&lt;p&gt;Presented at: 9th IFAC Conference on Manufacturing Modelling, Management and Control 2019, Berlin, Germany&lt;/p&gt;
 &lt;p&gt;Full text 
-&lt;a href=&#34;https://www.researchgate.net/publication/320434207_A_Simulation_Tool_to_Assess_the_Integration_of_Cargo_Bikes_into_an_Urban_Distribution_System&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on researchgate&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://doi.org/10.1016/j.ifacol.2019.11.516&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;on ScienceDirect&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
