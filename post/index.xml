@@ -160,7 +160,7 @@ to do audio volume changes when watching Netflix on the big screen
 &lt;p&gt;
 &lt;a href=&#34;https://flask.palletsprojects.com/en/2.0.x/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Flask&lt;/a&gt; exposes a corresponding command-endpoint as well as a minimal web UI.&lt;/p&gt;
 &lt;p&gt;Touch input within the dashed area is captured and translated to mouse cursor movements using 
-&lt;a href=&#34;https://pypi.org/project/pynput/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pynput&lt;/a&gt;, giving a simple option for start &amp;amp; pause.&lt;/p&gt;
+&lt;a href=&#34;https://pypi.org/project/pynput/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pynput&lt;/a&gt;, giving a simple option for start &amp;amp; pause. In case the keyboard isn&amp;rsquo;t close either, pynput also enables remote keystrokes.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Start the 
 &lt;a href=&#34;https://github.com/fladdimir/automatic-octo-journey&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;ease of the pain&lt;/a&gt;.&lt;/p&gt;

@@ -5,12 +5,33 @@
     <link>/publication/</link>
       <atom:link href="/publication/index.xml" rel="self" type="application/rss+xml" />
     <description>Publications</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Thu, 28 Oct 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 13 Dec 2021 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Publications</title>
       <link>/publication/</link>
     </image>
+    
+    <item>
+      <title>From Logistics Process Models to Automated Integration Testing: Proof-of-Concept using Open-Source Simulation Software</title>
+      <link>/publication/wsc2021/</link>
+      <pubDate>Mon, 13 Dec 2021 00:00:00 +0000</pubDate>
+      <guid>/publication/wsc2021/</guid>
+      <description>&lt;p&gt;Presented at: Winter Simulation Conference 2021, WSC&amp;rsquo;2021, Phoenix, US&lt;/p&gt;
+&lt;!-- Full text [on researchgate](https://www.researchgate.net/publication/355717138_Towards_the_Productive_Application_of_Reinforcement_Learning_in_Logistics_A_Case_Study_on_Assembly_Line_Material_Provision_Planning). --&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>A brief introduction to deploy Amazon Web Services for online discrete-event simulation</title>
+      <link>/publication/ism2021/</link>
+      <pubDate>Wed, 17 Nov 2021 00:00:00 +0000</pubDate>
+      <guid>/publication/ism2021/</guid>
+      <description>&lt;p&gt;Presented at: International Conference on
+Industry 4.0 and Smart Manufacturing, ISM 2021, Linz, Austria&lt;/p&gt;
+&lt;!-- Full text [on researchgate](https://www.researchgate.net/publication/355717138_Towards_the_Productive_Application_of_Reinforcement_Learning_in_Logistics_A_Case_Study_on_Assembly_Line_Material_Provision_Planning). --&gt;
+</description>
+    </item>
     
     <item>
       <title>Towards the Productive Application of Reinforcement Learning in Logistics: A Case Study on Assembly Line Material Provision Planning</title>
