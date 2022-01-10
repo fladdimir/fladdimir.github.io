@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.8.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Wladimir Hofmann">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Whether its about trying out a new framework or sketching your next big startup idea - its always great to get the code running somewhere. And its even better if you can be sure that you will never be forced to pay anything at all.">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/stack-2022/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="rgba(255,255,255,0.6)">
+  
+
+  
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-1/css/all.min.css" integrity="sha256-4w9DunooKSr3MFXHXWyFER38WmPdm361bQS/2KUWZbU=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/github.min.css" crossorigin="anonymous" title="hl-light" disabled>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark">
+        
+      
+    
+
+    
+
+    
+
+    
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.1.2/lazysizes.min.js" integrity="sha256-Md1qLToewPeKjfAHU1zyPwOutccPAm5tahnaw7Osw0A=" crossorigin="anonymous" async></script>
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+      
+
+      
+      
+        
+      
+
+      
+    
+      
+
+      
+      
+
+      
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/images/icon_hud653617489d02b724f2e6ae29c68221f_13132_32x32_fill_lanczos_center_2.png">
+  <link rel="apple-touch-icon" type="image/png" href="/images/icon_hud653617489d02b724f2e6ae29c68221f_13132_192x192_fill_lanczos_center_2.png">
+
+  <link rel="canonical" href="/post/stack-2022/">
+
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="Wladimir Hofmann | Homepage">
+  <meta property="og:url" content="/post/stack-2022/">
+  <meta property="og:title" content="Credit-card-free web application stack for 2022 | Wladimir Hofmann | Homepage">
+  <meta property="og:description" content="Whether its about trying out a new framework or sketching your next big startup idea - its always great to get the code running somewhere. And its even better if you can be sure that you will never be forced to pay anything at all."><meta property="og:image" content="img/map[gravatar:%!s(bool=false) shape:circle]">
+  <meta property="twitter:image" content="img/map[gravatar:%!s(bool=false) shape:circle]"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2022-02-22T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2022-02-22T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/stack-2022/"
+  },
+  "headline": "Credit-card-free web application stack for 2022",
+  
+  "datePublished": "2022-02-22T00:00:00Z",
+  "dateModified": "2022-02-22T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Wladimir Hofmann"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Wladimir Hofmann | Homepage",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/images/icon_hud653617489d02b724f2e6ae29c68221f_13132_192x192_fill_lanczos_center_2.png"
+    }
+  },
+  "description": "Whether its about trying out a new framework or sketching your next big startup idea - its always great to get the code running somewhere. And its even better if you can be sure that you will never be forced to pay anything at all."
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Credit-card-free web application stack for 2022 | Wladimir Hofmann | Homepage</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" class="dark">
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+    <div class="d-none d-lg-inline-flex">
+      <a class="navbar-brand" href="/">Wladimir Hofmann | Homepage</a>
+    </div>
+    
+
+    
+    <button type="button" class="navbar-toggler" data-toggle="collapse"
+            data-target="#navbar-content" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span><i class="fas fa-bars"></i></span>
+    </button>
+    
+
+    
+    <div class="navbar-brand-mobile-wrapper d-inline-flex d-lg-none">
+      <a class="navbar-brand" href="/">Wladimir Hofmann | Homepage</a>
+    </div>
+    
+
+    
+    
+    <div class="navbar-collapse main-menu-item collapse justify-content-start" id="navbar-content">
+
+      
+      <ul class="navbar-nav d-md-inline-flex">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#experience"><span>Experience</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#publications"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+      
+
+        
+      </ul>
+    </div>
+
+    <ul class="nav-icons navbar-nav flex-row ml-auto d-flex pl-md-2">
+      
+
+      
+
+      
+
+    </ul>
+
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Credit-card-free web application stack for 2022</h1>
+
+  
+  <p class="page-subtitle">A no-credit-card way of developing, deploying, and monitoring a web application</p>
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+  
+  <span><a href="/authors/fladdimir/">Wladimir Hofmann</a></span>
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Feb 22, 2022
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    5 min read
+  </span>
+  
+
+  
+  
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      <p>Whether its about trying out a new framework or sketching your next big startup idea - its always great to get the code running somewhere.
+And its even better if you can be sure that you will never be forced to pay anything at all.</p>
+<p>Many platforms offer a free-tier for freely using some of their services, sometimes just for a limited period of time, and/or only after presenting a valid credit-card. Furthermore, especially services based on vendor-specific technologies tend to be offered freely.</p>
+<p>
+<a href="https://aws.amazon.com/free/" target="_blank" rel="noopener">AWS</a> for example offers one free EC2 compute instance as well as a relational database instance for the first 12 months after the registration.
+In the &ldquo;free-forever&rdquo; offer are vendor-specific technologies such as <em>Lambda</em>-invocations and <em>DynamoDB</em>-storage.</p>
+<p>While this obviously makes sense from a marketing perspective, it is not great to get locked into vendor-specific technologies, or to risk financial loss just because of configuration mistakes (or because of security breaches).</p>
+<p>This post describes a couple of tools, technologies and services which may be used for developing and operating a full-stack web-application, without the need to show a credit-card anywhere, as of 02/2022.
+Vendor lock-in&rsquo;s are avoided as much as possible by aiming to build on established standards.</p>
+<hr>
+<h2 id="sample-app">Sample app</h2>
+<p>&ldquo;Collective Color Picking&rdquo; is a small toy app illustrating the used technologies. It allows users to pick their favorite color and share it with all other connected users in real time.
+A default color, which is assigned to the first connecting user after application startup, is persisted and can be changed via HTTP.</p>
+<p>The app consists of a minimal browser-based frontend, a backend which holds the state (the picked colors of all connected users), and a database which stores the default color.</p>
+<p><img src="collective-color-picking.png" alt="app"></p>
+<blockquote>
+<p>GitHub repository: <a href="https://github.com/fladdimir/collective-color-picking">https://github.com/fladdimir/collective-color-picking</a></p>
+<p>Sample-App on Heroku: <a href="https://collective-color-picking.herokuapp.com">https://collective-color-picking.herokuapp.com</a></p>
+</blockquote>
+<p>(first request may take some seconds, due to a possibly sleeping Heroku dyno)</p>
+<h2 id="application-structure">Application structure</h2>
+<p>The app has a standard 3 tier structure.<br>
+Client-side: 
+<a href="https://vuejs.org/" target="_blank" rel="noopener">Vue.js</a> with Typescript, using the cool 
+<a href="https://www.npmjs.com/package/@radial-color-picker/vue-color-picker" target="_blank" rel="noopener">radial-color-picker</a> and a canvas to display the picked colors.
+Websocket connection for sending and receiving color updates.</p>
+<p>Server-side: 
+<a href="https://quarkus.io/" target="_blank" rel="noopener">Quarkus</a>, a growingly popular Java framework with a number of cool features (e.g. dev-mode, native-image compilation), built on JEE standards like CDI, JPA, Bean Validation. 
+<a href="https://quarkus.io/guides/websockets" target="_blank" rel="noopener">Websocket support</a> is available as well.
+Seamlessly usable with 
+<a href="https://mapstruct.org/" target="_blank" rel="noopener">mapstruct</a>, 
+<a href="https://projectlombok.org/" target="_blank" rel="noopener">lombok</a>, 
+<a href="https://assertj.github.io/doc/" target="_blank" rel="noopener">AssertJ</a>, and others that make Java programming even more fun.
+PostgresQL, widespread and compatible database, locally runnable e.g. via 
+<a href="https://hub.docker.com/_/postgres" target="_blank" rel="noopener">docker</a>.</p>
+<p>For local development, the 
+<a href="https://vitejs.dev/" target="_blank" rel="noopener">vite</a> frontend dev-server can 
+<a href="https://vitejs.dev/config/#server-proxy" target="_blank" rel="noopener">proxy incoming requests</a> to a locally running backend.</p>
+<p>The actual deployment uses 
+<a href="https://www.nginx.com/" target="_blank" rel="noopener">nginx</a> to serve the static client files and proxies <code>/api</code> requests to the backend.</p>
+<h2 id="tests--ci">Tests &amp; CI</h2>
+<p>Both Vue and Quarkus offer good test support. An especially useful feature is the option to run Quarkus API tests not only against the application running on Java but also against a native-image, which helps to discover problems like missing <code>@RegisterForReflection</code> annotations on DTOs.</p>
+<p>Static code analysis tools like 
+<a href="https://www.sonarqube.org/" target="_blank" rel="noopener">sonarqube</a> further help to ensure code quality.
+Sonarqube analysis can be incorporated into the build via a gradle-plugin, and also supports visualizing the test coverage, which can be obtained by integrating the 
+<a href="https://quarkus.io/guides/tests-with-coverage#setting-up-jacoco" target="_blank" rel="noopener">Quarkus-jacoco-extension</a>.</p>
+<p>The test and static analysis can be run e.g. on every push to or PR at a remote repository. git-services like GitHub (<em>actions</em>) and GitLab (<em>pipelines</em>) offer free build time on their runners for public projects.<br>
+Analysis and coverage results can then be submitted to 
+<a href="https://sonarcloud.io/" target="_blank" rel="noopener">sonarcloud</a>, a sonarqube service which is also freely available for public projects (and offers 
+<a href="https://sonarcloud.io/api/project_badges/measure?project=collective-color-picking&amp;metric=coverage" target="_blank" rel="noopener">shiny badges</a>, too).</p>
+<h2 id="hosting--deployment">Hosting &amp; Deployment</h2>
+<p>Different to major cloud platforms, 
+<a href="https://www.heroku.com/" target="_blank" rel="noopener">Heroku</a> offers not only free compute instances (<em>dynos</em>, 512 MB RAM), but also free standard PostgresQL databases (limited rows, size, connections).</p>
+<p>To be able to switch platforms without extensive configuration changes, the application is provided in form of a docker image, which is pushed to the Heroku registry.
+Database credentials are provided to a started container via an environment variable (which may profit from further 
+<a href="https://github.com/fladdimir/collective-color-picking/blob/a88d05a1152529dad37119a6cea74e1e9b37bbd1/deploy/heroku/prepare_jdbc_url.sh" target="_blank" rel="noopener">pre-processing</a> so that the backend can connect successfully).</p>
+<p>The application docker image builds on top of the official nginx image and includes the frontend files and the backend in a single image, which can conveniently be created using a 
+<a href="https://docs.docker.com/develop/develop-images/multistage-build/" target="_blank" rel="noopener">multi-stage docker build</a>, so that no build dependencies need to be included into the final image.</p>
+<p>Since free RAM is limited - and to reduce wake-up time after Heroku dynos were put to sleep - compiling the application backend to a native-image can be beneficial.
+The native-image compilation requires a large amount of memory (~6 GB for the simple app), but luckily the 
+<a href="https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners" target="_blank" rel="noopener">free build runners of GitHub are able to cope with this</a>.</p>
+<p>The port on which the application is supposed to listen is also provided by Heroku via environment variable. To tell nginx, the config is generated at runtime from a template with help of 
+<a href="https://github.com/fladdimir/collective-color-picking/blob/a88d05a1152529dad37119a6cea74e1e9b37bbd1/Dockerfile#L61" target="_blank" rel="noopener">envsubst</a> before the start.</p>
+<p>On update of a dedicated branch, a 
+<a href="https://github.com/marketplace/actions/deploy-to-heroku" target="_blank" rel="noopener">corresponding GitHub action</a> automatically builds and deploys the image, also including a health-check request after application update.</p>
+<h2 id="monitoring-logs--metrics">Monitoring: Logs &amp; Metrics</h2>
+<p>For observing the state of a running application, Heroku offers dedicated add-ons for collecting and analyzing 
+<a href="https://elements.heroku.com/addons/#logging" target="_blank" rel="noopener">logs</a> and a standard 
+<a href="https://devcenter.heroku.com/articles/metrics" target="_blank" rel="noopener">metrics collection</a>, which are <em>only available after registering a credit-card</em>.</p>
+<p>To circumvent this issue, the app uses a dedicated logging and metrics collection setup.
+All logs &amp; metrics are sent to a free-tier 
+<a href="https://grafana.com/products/cloud/" target="_blank" rel="noopener">grafana-cloud</a> instance.</p>
+<p>Application logs are sent by nginx and the 
+<a href="https://quarkus.io/guides/centralized-log-management" target="_blank" rel="noopener">Quarkus backend</a> via syslog to a local 
+<a href="https://github.com/grafana/agent" target="_blank" rel="noopener">grafana-agent</a>, which forwards them to the grafana-cloud 
+<a href="https://github.com/grafana/loki" target="_blank" rel="noopener">loki</a> log database.
+Since the grafana-agent receives syslog logs only via TCP, and nginx sends syslog logs via UDP, 
+<a href="https://www.rsyslog.com/" target="_blank" rel="noopener">rsyslog</a> is additionally used for &ldquo;protocol translation&rdquo;.</p>
+<p>Apart from log-forwarding, the local grafana-agent is also a 
+<a href="https://prometheus.io/blog/2021/11/16/agent/" target="_blank" rel="noopener">slimmed-down prometheus in agent mode</a>, which scrapes metrics information from a specified endpoint created by the 
+<a href="https://quarkus.io/guides/micrometer" target="_blank" rel="noopener">Quarkus metrics extension</a> (/q/metrics).
+The scraped metrics are then forwarded to the Prometheus instance of grafana-cloud.</p>
+<p>Besides forwarding logs and metrics, the grafana-agent event represents an OTLP 
+<a href="https://grafana.com/docs/tempo/latest/grafana-agent/" target="_blank" rel="noopener">trace receiver</a> which can forward traces created by the 
+<a href="https://quarkus.io/guides/opentelemetry" target="_blank" rel="noopener">Quarkus OTLP extension</a>.
+Grafana-cloud free-tier includes a 
+<a href="https://github.com/grafana/tempo" target="_blank" rel="noopener">Tempo tracing backend</a>.</p>
+<p>The grafana-cloud connection credentials are also provided via environment variables.</p>
+<p>The observability backend including 
+<a href="https://github.com/grafana" target="_blank" rel="noopener">grafana components</a> can be 
+<a href="https://github.com/fladdimir/collective-color-picking/tree/a88d05a1152529dad37119a6cea74e1e9b37bbd1/observability/local" target="_blank" rel="noopener">setup locally</a>, e.g. using 
+<a href="https://github.com/fladdimir/collective-color-picking/blob/a88d05a1152529dad37119a6cea74e1e9b37bbd1/observability/local/docker-compose.yml" target="_blank" rel="noopener">docker-compose</a>, so that the complete setup can be tested locally which is especially important due to the amount of involved configuration.</p>
+
+    </div>
+
+    
+
+
+
+
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/stack-2022/&amp;text=Credit-card-free%20web%20application%20stack%20for%202022" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/stack-2022/&amp;t=Credit-card-free%20web%20application%20stack%20for%202022" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Credit-card-free%20web%20application%20stack%20for%202022&amp;body=/post/stack-2022/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/stack-2022/&amp;title=Credit-card-free%20web%20application%20stack%20for%202022" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Credit-card-free%20web%20application%20stack%20for%202022%20/post/stack-2022/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/stack-2022/&amp;title=Credit-card-free%20web%20application%20stack%20for%202022" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+      
+      <img class="avatar mr-3 avatar-circle" src="/authors/fladdimir/avatar_hu9aec7404c102c7c1af6267bcc4e47f28_382731_270x270_fill_lanczos_center_2.png" alt="Wladimir Hofmann">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/">Wladimir Hofmann</a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+    <li>
+      <a href="mailto:fladdi.mir%20[at]%20gmx%20[dot]%20de" >
+        <i class="fas fa-envelope"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://github.com/fladdimir" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.linkedin.com/in/wladimir-hofmann-9065a714b/" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://www.researchgate.net/profile/Wladimir_Hofmann" target="_blank" rel="noopener">
+        <i class="ai ai-researchgate"></i>
+      </a>
+    </li>
+  
+    
+    
+    
+      
+    
+    
+    
+    
+    
+      
+    
+    <li>
+      <a href="https://stackoverflow.com/users/13156126/fladdimir" target="_blank" rel="noopener">
+        <i class="fab fa-stack-overflow"></i>
+      </a>
+    </li>
+  
+</ul>
+
+    </div>
+  </div>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/highlight.min.js" integrity="sha256-eOgo0OtLL4cdq7RdwRUiGKLX9XsIJ7nGhWEKbohmVAQ=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.1/languages/r.min.js"></script>
+        
+      
+
+    
+
+    
+    
+
+    
+    
+    <script>const code_highlighting = true;</script>
+    
+
+    
+    
+    <script>const isSiteThemeDark = true;</script>
+    
+
+    
+
+    
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/js/academic.min.6f7ce8be710290b8c431bbc97f405d15.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

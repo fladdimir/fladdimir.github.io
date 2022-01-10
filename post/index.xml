@@ -5,12 +5,112 @@
     <link>/post/</link>
       <atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     <description>Posts</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Mon, 23 Aug 2021 00:00:00 +0000</lastBuildDate>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><lastBuildDate>Tue, 22 Feb 2022 00:00:00 +0000</lastBuildDate>
     <image>
       <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
       <title>Posts</title>
       <link>/post/</link>
     </image>
+    
+    <item>
+      <title>Credit-card-free web application stack for 2022</title>
+      <link>/post/stack-2022/</link>
+      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>/post/stack-2022/</guid>
+      <description>&lt;p&gt;Whether its about trying out a new framework or sketching your next big startup idea - its always great to get the code running somewhere.
+And its even better if you can be sure that you will never be forced to pay anything at all.&lt;/p&gt;
+&lt;p&gt;Many platforms offer a free-tier for freely using some of their services, sometimes just for a limited period of time, and/or only after presenting a valid credit-card. Furthermore, especially services based on vendor-specific technologies tend to be offered freely.&lt;/p&gt;
+&lt;p&gt;
+&lt;a href=&#34;https://aws.amazon.com/free/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AWS&lt;/a&gt; for example offers one free EC2 compute instance as well as a relational database instance for the first 12 months after the registration.
+In the &amp;ldquo;free-forever&amp;rdquo; offer are vendor-specific technologies such as &lt;em&gt;Lambda&lt;/em&gt;-invocations and &lt;em&gt;DynamoDB&lt;/em&gt;-storage.&lt;/p&gt;
+&lt;p&gt;While this obviously makes sense from a marketing perspective, it is not great to get locked into vendor-specific technologies, or to risk financial loss just because of configuration mistakes (or because of security breaches).&lt;/p&gt;
+&lt;p&gt;This post describes a couple of tools, technologies and services which may be used for developing and operating a full-stack web-application, without the need to show a credit-card anywhere, as of 02/2022.
+Vendor lock-in&amp;rsquo;s are avoided as much as possible by aiming to build on established standards.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;sample-app&#34;&gt;Sample app&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;Collective Color Picking&amp;rdquo; is a small toy app illustrating the used technologies. It allows users to pick their favorite color and share it with all other connected users in real time.
+A default color, which is assigned to the first connecting user after application startup, is persisted and can be changed via HTTP.&lt;/p&gt;
+&lt;p&gt;The app consists of a minimal browser-based frontend, a backend which holds the state (the picked colors of all connected users), and a database which stores the default color.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;collective-color-picking.png&#34; alt=&#34;app&#34;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;GitHub repository: &lt;a href=&#34;https://github.com/fladdimir/collective-color-picking&#34;&gt;https://github.com/fladdimir/collective-color-picking&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Sample-App on Heroku: &lt;a href=&#34;https://collective-color-picking.herokuapp.com&#34;&gt;https://collective-color-picking.herokuapp.com&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;(first request may take some seconds, due to a possibly sleeping Heroku dyno)&lt;/p&gt;
+&lt;h2 id=&#34;application-structure&#34;&gt;Application structure&lt;/h2&gt;
+&lt;p&gt;The app has a standard 3 tier structure.&lt;br&gt;
+Client-side: 
+&lt;a href=&#34;https://vuejs.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Vue.js&lt;/a&gt; with Typescript, using the cool 
+&lt;a href=&#34;https://www.npmjs.com/package/@radial-color-picker/vue-color-picker&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;radial-color-picker&lt;/a&gt; and a canvas to display the picked colors.
+Websocket connection for sending and receiving color updates.&lt;/p&gt;
+&lt;p&gt;Server-side: 
+&lt;a href=&#34;https://quarkus.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Quarkus&lt;/a&gt;, a growingly popular Java framework with a number of cool features (e.g. dev-mode, native-image compilation), built on JEE standards like CDI, JPA, Bean Validation. 
+&lt;a href=&#34;https://quarkus.io/guides/websockets&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Websocket support&lt;/a&gt; is available as well.
+Seamlessly usable with 
+&lt;a href=&#34;https://mapstruct.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;mapstruct&lt;/a&gt;, 
+&lt;a href=&#34;https://projectlombok.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;lombok&lt;/a&gt;, 
+&lt;a href=&#34;https://assertj.github.io/doc/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;AssertJ&lt;/a&gt;, and others that make Java programming even more fun.
+PostgresQL, widespread and compatible database, locally runnable e.g. via 
+&lt;a href=&#34;https://hub.docker.com/_/postgres&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;docker&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For local development, the 
+&lt;a href=&#34;https://vitejs.dev/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;vite&lt;/a&gt; frontend dev-server can 
+&lt;a href=&#34;https://vitejs.dev/config/#server-proxy&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;proxy incoming requests&lt;/a&gt; to a locally running backend.&lt;/p&gt;
+&lt;p&gt;The actual deployment uses 
+&lt;a href=&#34;https://www.nginx.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;nginx&lt;/a&gt; to serve the static client files and proxies &lt;code&gt;/api&lt;/code&gt; requests to the backend.&lt;/p&gt;
+&lt;h2 id=&#34;tests--ci&#34;&gt;Tests &amp;amp; CI&lt;/h2&gt;
+&lt;p&gt;Both Vue and Quarkus offer good test support. An especially useful feature is the option to run Quarkus API tests not only against the application running on Java but also against a native-image, which helps to discover problems like missing &lt;code&gt;@RegisterForReflection&lt;/code&gt; annotations on DTOs.&lt;/p&gt;
+&lt;p&gt;Static code analysis tools like 
+&lt;a href=&#34;https://www.sonarqube.org/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;sonarqube&lt;/a&gt; further help to ensure code quality.
+Sonarqube analysis can be incorporated into the build via a gradle-plugin, and also supports visualizing the test coverage, which can be obtained by integrating the 
+&lt;a href=&#34;https://quarkus.io/guides/tests-with-coverage#setting-up-jacoco&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Quarkus-jacoco-extension&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The test and static analysis can be run e.g. on every push to or PR at a remote repository. git-services like GitHub (&lt;em&gt;actions&lt;/em&gt;) and GitLab (&lt;em&gt;pipelines&lt;/em&gt;) offer free build time on their runners for public projects.&lt;br&gt;
+Analysis and coverage results can then be submitted to 
+&lt;a href=&#34;https://sonarcloud.io/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;sonarcloud&lt;/a&gt;, a sonarqube service which is also freely available for public projects (and offers 
+&lt;a href=&#34;https://sonarcloud.io/api/project_badges/measure?project=collective-color-picking&amp;amp;metric=coverage&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;shiny badges&lt;/a&gt;, too).&lt;/p&gt;
+&lt;h2 id=&#34;hosting--deployment&#34;&gt;Hosting &amp;amp; Deployment&lt;/h2&gt;
+&lt;p&gt;Different to major cloud platforms, 
+&lt;a href=&#34;https://www.heroku.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Heroku&lt;/a&gt; offers not only free compute instances (&lt;em&gt;dynos&lt;/em&gt;, 512 MB RAM), but also free standard PostgresQL databases (limited rows, size, connections).&lt;/p&gt;
+&lt;p&gt;To be able to switch platforms without extensive configuration changes, the application is provided in form of a docker image, which is pushed to the Heroku registry.
+Database credentials are provided to a started container via an environment variable (which may profit from further 
+&lt;a href=&#34;https://github.com/fladdimir/collective-color-picking/blob/a88d05a1152529dad37119a6cea74e1e9b37bbd1/deploy/heroku/prepare_jdbc_url.sh&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;pre-processing&lt;/a&gt; so that the backend can connect successfully).&lt;/p&gt;
+&lt;p&gt;The application docker image builds on top of the official nginx image and includes the frontend files and the backend in a single image, which can conveniently be created using a 
+&lt;a href=&#34;https://docs.docker.com/develop/develop-images/multistage-build/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;multi-stage docker build&lt;/a&gt;, so that no build dependencies need to be included into the final image.&lt;/p&gt;
+&lt;p&gt;Since free RAM is limited - and to reduce wake-up time after Heroku dynos were put to sleep - compiling the application backend to a native-image can be beneficial.
+The native-image compilation requires a large amount of memory (~6 GB for the simple app), but luckily the 
+&lt;a href=&#34;https://docs.github.com/en/actions/using-github-hosted-runners/about-github-hosted-runners&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;free build runners of GitHub are able to cope with this&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The port on which the application is supposed to listen is also provided by Heroku via environment variable. To tell nginx, the config is generated at runtime from a template with help of 
+&lt;a href=&#34;https://github.com/fladdimir/collective-color-picking/blob/a88d05a1152529dad37119a6cea74e1e9b37bbd1/Dockerfile#L61&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;envsubst&lt;/a&gt; before the start.&lt;/p&gt;
+&lt;p&gt;On update of a dedicated branch, a 
+&lt;a href=&#34;https://github.com/marketplace/actions/deploy-to-heroku&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;corresponding GitHub action&lt;/a&gt; automatically builds and deploys the image, also including a health-check request after application update.&lt;/p&gt;
+&lt;h2 id=&#34;monitoring-logs--metrics&#34;&gt;Monitoring: Logs &amp;amp; Metrics&lt;/h2&gt;
+&lt;p&gt;For observing the state of a running application, Heroku offers dedicated add-ons for collecting and analyzing 
+&lt;a href=&#34;https://elements.heroku.com/addons/#logging&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;logs&lt;/a&gt; and a standard 
+&lt;a href=&#34;https://devcenter.heroku.com/articles/metrics&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;metrics collection&lt;/a&gt;, which are &lt;em&gt;only available after registering a credit-card&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;To circumvent this issue, the app uses a dedicated logging and metrics collection setup.
+All logs &amp;amp; metrics are sent to a free-tier 
+&lt;a href=&#34;https://grafana.com/products/cloud/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;grafana-cloud&lt;/a&gt; instance.&lt;/p&gt;
+&lt;p&gt;Application logs are sent by nginx and the 
+&lt;a href=&#34;https://quarkus.io/guides/centralized-log-management&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Quarkus backend&lt;/a&gt; via syslog to a local 
+&lt;a href=&#34;https://github.com/grafana/agent&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;grafana-agent&lt;/a&gt;, which forwards them to the grafana-cloud 
+&lt;a href=&#34;https://github.com/grafana/loki&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;loki&lt;/a&gt; log database.
+Since the grafana-agent receives syslog logs only via TCP, and nginx sends syslog logs via UDP, 
+&lt;a href=&#34;https://www.rsyslog.com/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;rsyslog&lt;/a&gt; is additionally used for &amp;ldquo;protocol translation&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;Apart from log-forwarding, the local grafana-agent is also a 
+&lt;a href=&#34;https://prometheus.io/blog/2021/11/16/agent/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;slimmed-down prometheus in agent mode&lt;/a&gt;, which scrapes metrics information from a specified endpoint created by the 
+&lt;a href=&#34;https://quarkus.io/guides/micrometer&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Quarkus metrics extension&lt;/a&gt; (/q/metrics).
+The scraped metrics are then forwarded to the Prometheus instance of grafana-cloud.&lt;/p&gt;
+&lt;p&gt;Besides forwarding logs and metrics, the grafana-agent event represents an OTLP 
+&lt;a href=&#34;https://grafana.com/docs/tempo/latest/grafana-agent/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;trace receiver&lt;/a&gt; which can forward traces created by the 
+&lt;a href=&#34;https://quarkus.io/guides/opentelemetry&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Quarkus OTLP extension&lt;/a&gt;.
+Grafana-cloud free-tier includes a 
+&lt;a href=&#34;https://github.com/grafana/tempo&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Tempo tracing backend&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The grafana-cloud connection credentials are also provided via environment variables.&lt;/p&gt;
+&lt;p&gt;The observability backend including 
+&lt;a href=&#34;https://github.com/grafana&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;grafana components&lt;/a&gt; can be 
+&lt;a href=&#34;https://github.com/fladdimir/collective-color-picking/tree/a88d05a1152529dad37119a6cea74e1e9b37bbd1/observability/local&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;setup locally&lt;/a&gt;, e.g. using 
+&lt;a href=&#34;https://github.com/fladdimir/collective-color-picking/blob/a88d05a1152529dad37119a6cea74e1e9b37bbd1/observability/local/docker-compose.yml&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;docker-compose&lt;/a&gt;, so that the complete setup can be tested locally which is especially important due to the amount of involved configuration.&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Python-based Emulation for Developing Material Flow Controls in C</title>
