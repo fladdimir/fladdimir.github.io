@@ -667,7 +667,8 @@ Given the fact that testing, integration, commissioning (and bug-fixing) of thes
 &lt;p&gt;This post will show an example of how the integration of simulation-based testing into today&amp;rsquo;s agile software development processes can look like, investigating a case-study on order management &amp;amp; delivery optimization.&lt;/p&gt;
 &lt;hr&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Get the repo from github: &lt;a href=&#34;https://github.com/fladdimir/csa-vcom&#34;&gt;https://github.com/fladdimir/csa-vcom&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Get the repo from github: &lt;a href=&#34;https://github.com/fladdimir/csa-vcom&#34;&gt;https://github.com/fladdimir/csa-vcom&lt;/a&gt;&lt;br&gt;
+Try out the sample app: &lt;a href=&#34;https://delivery-planning-hh.herokuapp.com&#34;&gt;https://delivery-planning-hh.herokuapp.com&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;1-scenario--scope&#34;&gt;1. Scenario &amp;amp; Scope&lt;/h2&gt;
