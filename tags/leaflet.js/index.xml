@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Leaflet.js on WH</title>
+    <link>https://fladdimir.github.io/tags/leaflet.js/</link>
+    <description>Recent content in Leaflet.js on WH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/leaflet.js/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Playing around with React, Leaflet, Micronaut, Okta, &amp; Heroku</title>
+      <link>https://fladdimir.github.io/post/location-sharing/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/post/location-sharing/</guid>
+      <description>A simple web-app for sharing geo-locations with friends</description>
+    </item>
+    
+    <item>
+      <title>Logistics Process Models for Automated Integration Testing</title>
+      <link>https://fladdimir.github.io/post/csa-vcom/</link>
+      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/post/csa-vcom/</guid>
+      <description>Continuous Integration and Virtual Commissioning of Logistics Software</description>
+    </item>
+    
+    <item>
+      <title>Urban Logistics Network Simulation in Python</title>
+      <link>https://fladdimir.github.io/post/csa-streetmap/</link>
+      <pubDate>Sat, 04 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/post/csa-streetmap/</guid>
+      <description>Building Anylogic&amp;rsquo;s GIS-Feature w/ SimPy, OSMnx and Leaflet.js</description>
+    </item>
+    
+  </channel>
+</rss>

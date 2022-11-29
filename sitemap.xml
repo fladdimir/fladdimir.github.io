@@ -1,183 +1,130 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
-    <loc>/authors/fladdimir/</loc>
+    <loc>https://fladdimir.github.io/post/stack-2022/</loc>
     <lastmod>2022-02-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/</loc>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/grafana/</loc>
     <lastmod>2022-02-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/stack-2022/</loc>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/java/</loc>
     <lastmod>2022-02-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/</loc>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/</loc>
     <lastmod>2022-02-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/</loc>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/quarkus/</loc>
     <lastmod>2022-02-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication_types/1/</loc>
-    <lastmod>2021-12-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication/wsc2021/</loc>
-    <lastmod>2021-12-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/paul-reichardt/</loc>
-    <lastmod>2021-12-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication_types/</loc>
-    <lastmod>2021-12-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication/</loc>
-    <lastmod>2021-12-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/sebastian-lang/</loc>
-    <lastmod>2021-12-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/tobias-reggelin/</loc>
-    <lastmod>2021-12-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication/ism2021/</loc>
-    <lastmod>2021-11-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/clemens-l.-schwarz/</loc>
-    <lastmod>2021-10-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/fredrik-branding/</loc>
-    <lastmod>2021-10-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication/esm2021/</loc>
-    <lastmod>2021-10-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/material-flow-control-emulation/</loc>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/</loc>
+    <lastmod>2022-02-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/vue.js/</loc>
+    <lastmod>2022-02-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/</loc>
+    <lastmod>2022-02-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/c/</loc>
     <lastmod>2021-08-23T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/camunda-task-list/</loc>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/cffi/</loc>
+    <lastmod>2021-08-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/python/</loc>
+    <lastmod>2021-08-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/material-flow-control-emulation/</loc>
+    <lastmod>2021-08-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/bpmn/</loc>
     <lastmod>2021-06-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/audio-remote-control/</loc>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/camunda/</loc>
     <lastmod>2021-06-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/location-sharing/</loc>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/camunda-task-list/</loc>
+    <lastmod>2021-06-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/spring/</loc>
+    <lastmod>2021-06-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/vaadin/</loc>
+    <lastmod>2021-06-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/leaflet.js/</loc>
     <lastmod>2020-12-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/csa4j&#43;cs/</loc>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/micronaut/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/oauth/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/location-sharing/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/react/</loc>
+    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/csa4j&#43;cs/</loc>
     <lastmod>2020-12-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/csa-simulation-based-sc-forecast/</loc>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/c#/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/simpy/</loc>
+    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/aws/</loc>
     <lastmod>2020-10-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/csa-vcom/</loc>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/localstack/</loc>
+    <lastmod>2020-10-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/csa-simulation-based-sc-forecast/</loc>
+    <lastmod>2020-10-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/slides/</loc>
+    <lastmod>2020-10-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/terraform/</loc>
+    <lastmod>2020-10-27T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/audio-remote-control/</loc>
+    <lastmod>2020-09-15T11:30:03+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/angular/</loc>
     <lastmod>2020-05-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/csa-streetmap/</loc>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/continuous-integration/</loc>
+    <lastmod>2020-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/django/</loc>
+    <lastmod>2020-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/csa-vcom/</loc>
+    <lastmod>2020-05-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/osmnx/</loc>
     <lastmod>2020-04-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/tugger-routing/</loc>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/csa-streetmap/</loc>
+    <lastmod>2020-04-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/tugger-routing/</loc>
     <lastmod>2020-03-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/post/casymda/</loc>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/openai-gym/</loc>
+    <lastmod>2020-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/reinforcement-learning/</loc>
+    <lastmod>2020-03-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/casymda/</loc>
     <lastmod>2020-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/categories/</loc>
   </url>
-  
-  <url>
-    <loc>/publication/mim2019/</loc>
-    <lastmod>2019-08-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/jan-hendrik-ulrich/</loc>
-    <lastmod>2018-06-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/juri-tolujew/</loc>
-    <lastmod>2018-06-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication/incom2018/</loc>
-    <lastmod>2018-06-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/publication/i3m2017/</loc>
-    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/parisa-dolati-neghabadi/</loc>
-    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/tom-assmann/</loc>
-    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/authors/van-dat-cung/</loc>
-    <lastmod>2017-09-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-  </url>
-  
 </urlset>

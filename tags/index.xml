@@ -1,16 +1,253 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tags | Wladimir Hofmann | Homepage</title>
-    <link>/tags/</link>
-      <atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
-    <description>Tags</description>
-    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language>
-    <image>
-      <url>img/map[gravatar:%!s(bool=false) shape:circle]</url>
-      <title>Tags</title>
-      <link>/tags/</link>
-    </image>
+    <title>Tags on WH</title>
+    <link>https://fladdimir.github.io/tags/</link>
+    <description>Recent content in Tags on WH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 22 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Grafana</title>
+      <link>https://fladdimir.github.io/tags/grafana/</link>
+      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/grafana/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://fladdimir.github.io/tags/java/</link>
+      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Quarkus</title>
+      <link>https://fladdimir.github.io/tags/quarkus/</link>
+      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/quarkus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vue.js</title>
+      <link>https://fladdimir.github.io/tags/vue.js/</link>
+      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/vue.js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C</title>
+      <link>https://fladdimir.github.io/tags/c/</link>
+      <pubDate>Mon, 23 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CFFI</title>
+      <link>https://fladdimir.github.io/tags/cffi/</link>
+      <pubDate>Mon, 23 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/cffi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://fladdimir.github.io/tags/python/</link>
+      <pubDate>Mon, 23 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>BPMN</title>
+      <link>https://fladdimir.github.io/tags/bpmn/</link>
+      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/bpmn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Camunda</title>
+      <link>https://fladdimir.github.io/tags/camunda/</link>
+      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/camunda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spring</title>
+      <link>https://fladdimir.github.io/tags/spring/</link>
+      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/spring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vaadin</title>
+      <link>https://fladdimir.github.io/tags/vaadin/</link>
+      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/vaadin/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Leaflet.js</title>
+      <link>https://fladdimir.github.io/tags/leaflet.js/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/leaflet.js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Micronaut</title>
+      <link>https://fladdimir.github.io/tags/micronaut/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/micronaut/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OAuth</title>
+      <link>https://fladdimir.github.io/tags/oauth/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/oauth/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>React</title>
+      <link>https://fladdimir.github.io/tags/react/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/react/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C#</title>
+      <link>https://fladdimir.github.io/tags/c#/</link>
+      <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/c#/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SimPy</title>
+      <link>https://fladdimir.github.io/tags/simpy/</link>
+      <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/simpy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AWS</title>
+      <link>https://fladdimir.github.io/tags/aws/</link>
+      <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LocalStack</title>
+      <link>https://fladdimir.github.io/tags/localstack/</link>
+      <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/localstack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Slides</title>
+      <link>https://fladdimir.github.io/tags/slides/</link>
+      <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/slides/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Terraform</title>
+      <link>https://fladdimir.github.io/tags/terraform/</link>
+      <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/terraform/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Angular</title>
+      <link>https://fladdimir.github.io/tags/angular/</link>
+      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/angular/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Continuous Integration</title>
+      <link>https://fladdimir.github.io/tags/continuous-integration/</link>
+      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/continuous-integration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Django</title>
+      <link>https://fladdimir.github.io/tags/django/</link>
+      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/django/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OSMnx</title>
+      <link>https://fladdimir.github.io/tags/osmnx/</link>
+      <pubDate>Sat, 04 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/osmnx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OpenAI Gym</title>
+      <link>https://fladdimir.github.io/tags/openai-gym/</link>
+      <pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/openai-gym/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Reinforcement Learning</title>
+      <link>https://fladdimir.github.io/tags/reinforcement-learning/</link>
+      <pubDate>Sat, 21 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/reinforcement-learning/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

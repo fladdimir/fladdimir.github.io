@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Angular on WH</title>
+    <link>https://fladdimir.github.io/tags/angular/</link>
+    <description>Recent content in Angular on WH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 24 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/angular/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Logistics Process Models for Automated Integration Testing</title>
+      <link>https://fladdimir.github.io/post/csa-vcom/</link>
+      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/post/csa-vcom/</guid>
+      <description>Continuous Integration and Virtual Commissioning of Logistics Software</description>
+    </item>
+    
+  </channel>
+</rss>

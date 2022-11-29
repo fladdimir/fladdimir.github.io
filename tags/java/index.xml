@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Java on WH</title>
+    <link>https://fladdimir.github.io/tags/java/</link>
+    <description>Recent content in Java on WH</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 22 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Credit-card-free web application stack for 2022</title>
+      <link>https://fladdimir.github.io/post/stack-2022/</link>
+      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/post/stack-2022/</guid>
+      <description>A no-credit-card way of developing, deploying, and monitoring a web application</description>
+    </item>
+    
+    <item>
+      <title>Camunda Morning Task-List</title>
+      <link>https://fladdimir.github.io/post/camunda-task-list/</link>
+      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/post/camunda-task-list/</guid>
+      <description>Getting up late every morning, efficient processes are crucial. Luckily, there are tools which enable the lazy late riser to get some structure into the start of the day. The diagram below shows a BPMN-definition of what needs to be achieved in which order on a typical morning.
+The workflow engine Camunda can turn the corresponding BPMN file into an executable process, made of a series of completable user-tasks. Vaadin and SpringBoot enable the fast creation of a simple web-ui, showing the tasks which need to be completed next, combined with a progress-bar:</description>
+    </item>
+    
+    <item>
+      <title>Playing around with React, Leaflet, Micronaut, Okta, &amp; Heroku</title>
+      <link>https://fladdimir.github.io/post/location-sharing/</link>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/post/location-sharing/</guid>
+      <description>A simple web-app for sharing geo-locations with friends</description>
+    </item>
+    
+    <item>
+      <title>Block-based Modeling with SimPy - in Java &amp; C#</title>
+      <link>https://fladdimir.github.io/post/csa4j&#43;cs/</link>
+      <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/post/csa4j&#43;cs/</guid>
+      <description>Performance Comparison of Casymda-Ports for Uia-Sim and SimSharp</description>
+    </item>
+    
+  </channel>
+</rss>
