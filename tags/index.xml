@@ -5,31 +5,76 @@
     <link>https://fladdimir.github.io/tags/</link>
     <description>Recent content in Tags on WH</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 22 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Grafana</title>
-      <link>https://fladdimir.github.io/tags/grafana/</link>
-      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+      <title>Debezium</title>
+      <link>https://fladdimir.github.io/tags/debezium/</link>
+      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://fladdimir.github.io/tags/grafana/</guid>
+      <guid>https://fladdimir.github.io/tags/debezium/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Elasticsearch</title>
+      <link>https://fladdimir.github.io/tags/elasticsearch/</link>
+      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/elasticsearch/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
       <link>https://fladdimir.github.io/tags/java/</link>
-      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://fladdimir.github.io/tags/java/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Kafka</title>
+      <link>https://fladdimir.github.io/tags/kafka/</link>
+      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/kafka/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Quarkus</title>
       <link>https://fladdimir.github.io/tags/quarkus/</link>
-      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://fladdimir.github.io/tags/quarkus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>S3</title>
+      <link>https://fladdimir.github.io/tags/s3/</link>
+      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/s3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Transactional outbox</title>
+      <link>https://fladdimir.github.io/tags/transactional-outbox/</link>
+      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/transactional-outbox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Grafana</title>
+      <link>https://fladdimir.github.io/tags/grafana/</link>
+      <pubDate>Tue, 22 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/grafana/</guid>
       <description></description>
     </item>
     

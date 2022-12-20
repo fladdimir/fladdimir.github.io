@@ -5,7 +5,16 @@
     <link>https://fladdimir.github.io/</link>
     <description>Recent content on WH</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 22 Feb 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 17 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Availability and Consistency of an App with Multiple Datasources</title>
+      <link>https://fladdimir.github.io/post/document-search/</link>
+      <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/post/document-search/</guid>
+      <description>Debezium, Quarkus, Kafka, and the Transactional Outbox pattern in action</description>
+    </item>
+    
     <item>
       <title>Credit-card-free web application stack for 2022</title>
       <link>https://fladdimir.github.io/post/stack-2022/</link>
