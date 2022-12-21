@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Kafka on WH</title>
+    <title>Kafka on wh</title>
     <link>https://fladdimir.github.io/tags/kafka/</link>
-    <description>Recent content in Kafka on WH</description>
+    <description>Recent content in Kafka on wh</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 17 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/kafka/index.xml" rel="self" type="application/rss+xml" />
     <item>
@@ -12,7 +12,7 @@
       <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://fladdimir.github.io/post/document-search/</guid>
-      <description>Debezium, Quarkus, Kafka, and the Transactional Outbox pattern in action</description>
+      <description>Debezium, Quarkus, Kafka - the Transactional Outbox pattern in action</description>
     </item>
     
   </channel>
