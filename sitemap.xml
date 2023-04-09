@@ -2,6 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://fladdimir.github.io/tags/clean-architecture/</loc>
+    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/java/</loc>
+    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/legacy-code/</loc>
+    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/</loc>
+    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/</loc>
+    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/testing/</loc>
+    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/testing-legacy-code/</loc>
+    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/</loc>
+    <lastmod>2023-04-10T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://fladdimir.github.io/post/document-search/</loc>
     <lastmod>2022-12-17T00:00:00+00:00</lastmod>
   </url><url>
@@ -11,13 +35,7 @@
     <loc>https://fladdimir.github.io/tags/elasticsearch/</loc>
     <lastmod>2022-12-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://fladdimir.github.io/tags/java/</loc>
-    <lastmod>2022-12-17T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://fladdimir.github.io/tags/kafka/</loc>
-    <lastmod>2022-12-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fladdimir.github.io/post/</loc>
     <lastmod>2022-12-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fladdimir.github.io/tags/quarkus/</loc>
@@ -26,13 +44,7 @@
     <loc>https://fladdimir.github.io/tags/s3/</loc>
     <lastmod>2022-12-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://fladdimir.github.io/tags/</loc>
-    <lastmod>2022-12-17T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://fladdimir.github.io/tags/transactional-outbox/</loc>
-    <lastmod>2022-12-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fladdimir.github.io/</loc>
     <lastmod>2022-12-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fladdimir.github.io/post/stack-2022/</loc>

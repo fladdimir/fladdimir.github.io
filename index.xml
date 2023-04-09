@@ -5,7 +5,16 @@
     <link>https://fladdimir.github.io/</link>
     <description>Recent content on wh</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 17 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 10 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Testing Legacy Software</title>
+      <link>https://fladdimir.github.io/post/testing-legacy-code/</link>
+      <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/post/testing-legacy-code/</guid>
+      <description>On useful automated tests and how to get there when not developing a system from scratch</description>
+    </item>
+    
     <item>
       <title>Availability and Consistency of an App with Multiple Datasources</title>
       <link>https://fladdimir.github.io/post/document-search/</link>
