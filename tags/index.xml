@@ -5,22 +5,86 @@
     <link>https://fladdimir.github.io/tags/</link>
     <description>Recent content in Tags on wh</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 10 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Mon, 26 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Clean Architecture</title>
-      <link>https://fladdimir.github.io/tags/clean-architecture/</link>
-      <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
+      <title>Distributed Tracing</title>
+      <link>https://fladdimir.github.io/tags/distributed-tracing/</link>
+      <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://fladdimir.github.io/tags/clean-architecture/</guid>
+      <guid>https://fladdimir.github.io/tags/distributed-tracing/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Java</title>
       <link>https://fladdimir.github.io/tags/java/</link>
-      <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://fladdimir.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Leaflet.js</title>
+      <link>https://fladdimir.github.io/tags/leaflet.js/</link>
+      <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/leaflet.js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MQTT</title>
+      <link>https://fladdimir.github.io/tags/mqtt/</link>
+      <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/mqtt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NodeJS</title>
+      <link>https://fladdimir.github.io/tags/nodejs/</link>
+      <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/nodejs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>React</title>
+      <link>https://fladdimir.github.io/tags/react/</link>
+      <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/react/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spring</title>
+      <link>https://fladdimir.github.io/tags/spring/</link>
+      <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/spring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>TypeScript</title>
+      <link>https://fladdimir.github.io/tags/typescript/</link>
+      <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/typescript/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Clean Architecture</title>
+      <link>https://fladdimir.github.io/tags/clean-architecture/</link>
+      <pubDate>Mon, 10 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/clean-architecture/</guid>
       <description></description>
     </item>
     
@@ -88,7 +152,7 @@
     </item>
     
     <item>
-      <title>Transactional outbox</title>
+      <title>Transactional Outbox</title>
       <link>https://fladdimir.github.io/tags/transactional-outbox/</link>
       <pubDate>Sat, 17 Dec 2022 00:00:00 +0000</pubDate>
       
@@ -160,29 +224,11 @@
     </item>
     
     <item>
-      <title>Spring</title>
-      <link>https://fladdimir.github.io/tags/spring/</link>
-      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/tags/spring/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Vaadin</title>
       <link>https://fladdimir.github.io/tags/vaadin/</link>
       <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>https://fladdimir.github.io/tags/vaadin/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Leaflet.js</title>
-      <link>https://fladdimir.github.io/tags/leaflet.js/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/tags/leaflet.js/</guid>
       <description></description>
     </item>
     
@@ -201,15 +247,6 @@
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://fladdimir.github.io/tags/oauth/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>React</title>
-      <link>https://fladdimir.github.io/tags/react/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/tags/react/</guid>
       <description></description>
     </item>
     
@@ -291,6 +328,15 @@
       <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
       
       <guid>https://fladdimir.github.io/tags/django/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OR-Tools</title>
+      <link>https://fladdimir.github.io/tags/or-tools/</link>
+      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/or-tools/</guid>
       <description></description>
     </item>
     
