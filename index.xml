@@ -53,16 +53,6 @@
     </item>
     
     <item>
-      <title>Camunda Morning Task-List</title>
-      <link>https://fladdimir.github.io/post/camunda-task-list/</link>
-      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/post/camunda-task-list/</guid>
-      <description>Getting up late every morning, efficient processes are crucial. Luckily, there are tools which enable the lazy late riser to get some structure into the start of the day. The diagram below shows a BPMN-definition of what needs to be achieved in which order on a typical morning.
-The workflow engine Camunda can turn the corresponding BPMN file into an executable process, made of a series of completable user-tasks. Vaadin and SpringBoot enable the fast creation of a simple web-ui, showing the tasks which need to be completed next, combined with a progress-bar:</description>
-    </item>
-    
-    <item>
       <title>Playing around with React, Leaflet, Micronaut, Okta, &amp; Heroku</title>
       <link>https://fladdimir.github.io/post/location-sharing/</link>
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
@@ -87,17 +77,6 @@ The workflow engine Camunda can turn the corresponding BPMN file into an executa
       
       <guid>https://fladdimir.github.io/post/csa-simulation-based-sc-forecast/</guid>
       <description>Proof of Concept using Casymda on AWS, ft. Terraform and LocalStack</description>
-    </item>
-    
-    <item>
-      <title>Minimal Web-based Remote Control with Python and HTML</title>
-      <link>https://fladdimir.github.io/post/audio-remote-control/</link>
-      <pubDate>Tue, 15 Sep 2020 11:30:03 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/post/audio-remote-control/</guid>
-      <description>The huge effort for lifting oneself up from the couch and moving the distance to the connected PC makes it almost unbearable to do audio volume changes when watching Netflix on the big screen (not even speaking of the pain bending the fingers to reach hotkeys).
-Luckily, there are great libraries available to alleviate this agony with just a few lines of Python.
-On the Ubuntu laptop, pyalsaaudio gives simple control over the system&amp;rsquo;s audio level, pycaw offers the same on Windows.</description>
     </item>
     
     <item>

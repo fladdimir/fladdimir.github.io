@@ -16,15 +16,5 @@
       <description>A web-app to reduce traffic-light waiting time on the daily bike ride to work</description>
     </item>
     
-    <item>
-      <title>Camunda Morning Task-List</title>
-      <link>https://fladdimir.github.io/post/camunda-task-list/</link>
-      <pubDate>Wed, 09 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/post/camunda-task-list/</guid>
-      <description>Getting up late every morning, efficient processes are crucial. Luckily, there are tools which enable the lazy late riser to get some structure into the start of the day. The diagram below shows a BPMN-definition of what needs to be achieved in which order on a typical morning.
-The workflow engine Camunda can turn the corresponding BPMN file into an executable process, made of a series of completable user-tasks. Vaadin and SpringBoot enable the fast creation of a simple web-ui, showing the tasks which need to be completed next, combined with a progress-bar:</description>
-    </item>
-    
   </channel>
 </rss>

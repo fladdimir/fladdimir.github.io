@@ -35,17 +35,6 @@
     </item>
     
     <item>
-      <title>Minimal Web-based Remote Control with Python and HTML</title>
-      <link>https://fladdimir.github.io/post/audio-remote-control/</link>
-      <pubDate>Tue, 15 Sep 2020 11:30:03 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/post/audio-remote-control/</guid>
-      <description>The huge effort for lifting oneself up from the couch and moving the distance to the connected PC makes it almost unbearable to do audio volume changes when watching Netflix on the big screen (not even speaking of the pain bending the fingers to reach hotkeys).
-Luckily, there are great libraries available to alleviate this agony with just a few lines of Python.
-On the Ubuntu laptop, pyalsaaudio gives simple control over the system&amp;rsquo;s audio level, pycaw offers the same on Windows.</description>
-    </item>
-    
-    <item>
       <title>Logistics Process Models for Automated Integration Testing</title>
       <link>https://fladdimir.github.io/post/csa-vcom/</link>
       <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
