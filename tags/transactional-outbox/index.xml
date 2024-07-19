@@ -5,7 +5,6 @@
     <link>https://fladdimir.github.io/tags/transactional-outbox/</link>
     <description>Recent content in Transactional Outbox on wh</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
     <lastBuildDate>Sat, 17 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/transactional-outbox/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Availability and Consistency of an App with Multiple Datasources</title>
