@@ -5,14 +5,121 @@
     <link>https://fladdimir.github.io/tags/</link>
     <description>Recent content in Tags on wh</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Mon, 26 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 14 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>DHT22</title>
+      <link>https://fladdimir.github.io/tags/dht22/</link>
+      <pubDate>Sat, 14 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/dht22/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://fladdimir.github.io/tags/python/</link>
+      <pubDate>Sat, 14 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RaspberryPi</title>
+      <link>https://fladdimir.github.io/tags/raspberrypi/</link>
+      <pubDate>Sat, 14 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/raspberrypi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>socket.io</title>
+      <link>https://fladdimir.github.io/tags/socket.io/</link>
+      <pubDate>Sat, 14 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/socket.io/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>timescaledb</title>
+      <link>https://fladdimir.github.io/tags/timescaledb/</link>
+      <pubDate>Sat, 14 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/timescaledb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zeromq</title>
+      <link>https://fladdimir.github.io/tags/zeromq/</link>
+      <pubDate>Sat, 14 Dec 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/zeromq/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hibernate</title>
+      <link>https://fladdimir.github.io/tags/hibernate/</link>
+      <pubDate>Fri, 19 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/hibernate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>jaeger</title>
+      <link>https://fladdimir.github.io/tags/jaeger/</link>
+      <pubDate>Fri, 19 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/jaeger/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Java</title>
       <link>https://fladdimir.github.io/tags/java/</link>
-      <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 19 Jul 2024 00:00:00 +0000</pubDate>
       
       <guid>https://fladdimir.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>JPA</title>
+      <link>https://fladdimir.github.io/tags/jpa/</link>
+      <pubDate>Fri, 19 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/jpa/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OpenTelemetry</title>
+      <link>https://fladdimir.github.io/tags/opentelemetry/</link>
+      <pubDate>Fri, 19 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/opentelemetry/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spring</title>
+      <link>https://fladdimir.github.io/tags/spring/</link>
+      <pubDate>Fri, 19 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/spring/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Spring-Data</title>
+      <link>https://fladdimir.github.io/tags/spring-data/</link>
+      <pubDate>Fri, 19 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/spring-data/</guid>
       <description></description>
     </item>
     
@@ -58,15 +165,6 @@
       <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://fladdimir.github.io/tags/react/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Spring</title>
-      <link>https://fladdimir.github.io/tags/spring/</link>
-      <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/tags/spring/</guid>
       <description></description>
     </item>
     
@@ -224,15 +322,6 @@
     </item>
     
     <item>
-      <title>Python</title>
-      <link>https://fladdimir.github.io/tags/python/</link>
-      <pubDate>Mon, 23 Aug 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/tags/python/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Micronaut</title>
       <link>https://fladdimir.github.io/tags/micronaut/</link>
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
@@ -247,24 +336,6 @@
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://fladdimir.github.io/tags/oauth/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>C#</title>
-      <link>https://fladdimir.github.io/tags/c#/</link>
-      <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/tags/c#/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SimPy</title>
-      <link>https://fladdimir.github.io/tags/simpy/</link>
-      <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/tags/simpy/</guid>
       <description></description>
     </item>
     
@@ -287,6 +358,15 @@
     </item>
     
     <item>
+      <title>SimPy</title>
+      <link>https://fladdimir.github.io/tags/simpy/</link>
+      <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/tags/simpy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Slides</title>
       <link>https://fladdimir.github.io/tags/slides/</link>
       <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
@@ -301,42 +381,6 @@
       <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://fladdimir.github.io/tags/terraform/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Angular</title>
-      <link>https://fladdimir.github.io/tags/angular/</link>
-      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/tags/angular/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Continuous Integration</title>
-      <link>https://fladdimir.github.io/tags/continuous-integration/</link>
-      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/tags/continuous-integration/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Django</title>
-      <link>https://fladdimir.github.io/tags/django/</link>
-      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/tags/django/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>OR-Tools</title>
-      <link>https://fladdimir.github.io/tags/or-tools/</link>
-      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/tags/or-tools/</guid>
       <description></description>
     </item>
     

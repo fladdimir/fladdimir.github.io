@@ -5,33 +5,14 @@
     <link>https://fladdimir.github.io/tags/simpy/</link>
     <description>Recent content in SimPy on wh</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Sun, 20 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/simpy/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 27 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/simpy/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Block-based Modeling with SimPy - in Java &amp; C#</title>
-      <link>https://fladdimir.github.io/post/csa4j&#43;cs/</link>
-      <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/post/csa4j&#43;cs/</guid>
-      <description>Performance Comparison of Casymda-Ports for Uia-Sim and SimSharp</description>
-    </item>
-    
-    <item>
-      <title>Real Time Simulation-based Supply Chain Analytics</title>
+      <title>Real-time Simulation-based Supply-Chain Analytics</title>
       <link>https://fladdimir.github.io/post/csa-simulation-based-sc-forecast/</link>
       <pubDate>Tue, 27 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>https://fladdimir.github.io/post/csa-simulation-based-sc-forecast/</guid>
-      <description>Proof of Concept using Casymda on AWS, ft. Terraform and LocalStack</description>
-    </item>
-    
-    <item>
-      <title>Logistics Process Models for Automated Integration Testing</title>
-      <link>https://fladdimir.github.io/post/csa-vcom/</link>
-      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/post/csa-vcom/</guid>
-      <description>Continuous Integration and Virtual Commissioning of Logistics Software</description>
+      <description>Proof-of-Concept using Casymda on AWS, ft. Terraform and LocalStack</description>
     </item>
     
     <item>

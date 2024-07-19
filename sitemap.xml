@@ -2,10 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://fladdimir.github.io/post/glosa/</loc>
-    <lastmod>2023-06-26T00:00:00+00:00</lastmod>
+    <loc>https://fladdimir.github.io/tags/dht22/</loc>
+    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/hygrometer/</loc>
+    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/</loc>
+    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/python/</loc>
+    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/raspberrypi/</loc>
+    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/socket.io/</loc>
+    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/</loc>
+    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/timescaledb/</loc>
+    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/</loc>
+    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/zeromq/</loc>
+    <lastmod>2024-12-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/hibernate/</loc>
+    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/jaeger/</loc>
+    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fladdimir.github.io/tags/java/</loc>
+    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/jpa/</loc>
+    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/opentelemetry/</loc>
+    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/spring/</loc>
+    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/tags/spring-data/</loc>
+    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/orm-tracing/</loc>
+    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://fladdimir.github.io/post/glosa/</loc>
     <lastmod>2023-06-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fladdimir.github.io/tags/leaflet.js/</loc>
@@ -20,25 +71,13 @@
     <loc>https://fladdimir.github.io/tags/ogc-sensorthings-api/</loc>
     <lastmod>2023-06-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://fladdimir.github.io/post/</loc>
-    <lastmod>2023-06-26T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://fladdimir.github.io/tags/react/</loc>
-    <lastmod>2023-06-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fladdimir.github.io/tags/spring/</loc>
-    <lastmod>2023-06-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fladdimir.github.io/tags/</loc>
     <lastmod>2023-06-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fladdimir.github.io/tags/tracing/</loc>
     <lastmod>2023-06-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fladdimir.github.io/tags/typescript/</loc>
-    <lastmod>2023-06-26T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fladdimir.github.io/</loc>
     <lastmod>2023-06-26T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fladdimir.github.io/tags/clean-architecture/</loc>
@@ -95,9 +134,6 @@
     <loc>https://fladdimir.github.io/tags/cffi/</loc>
     <lastmod>2021-08-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://fladdimir.github.io/tags/python/</loc>
-    <lastmod>2021-08-23T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://fladdimir.github.io/post/material-flow-control-emulation/</loc>
     <lastmod>2021-08-23T00:00:00+00:00</lastmod>
   </url><url>
@@ -110,15 +146,6 @@
     <loc>https://fladdimir.github.io/post/location-sharing/</loc>
     <lastmod>2020-12-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://fladdimir.github.io/post/csa4j&#43;cs/</loc>
-    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fladdimir.github.io/tags/c#/</loc>
-    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fladdimir.github.io/tags/simpy/</loc>
-    <lastmod>2020-12-20T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://fladdimir.github.io/tags/aws/</loc>
     <lastmod>2020-10-27T00:00:00+00:00</lastmod>
   </url><url>
@@ -128,26 +155,14 @@
     <loc>https://fladdimir.github.io/post/csa-simulation-based-sc-forecast/</loc>
     <lastmod>2020-10-27T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://fladdimir.github.io/tags/simpy/</loc>
+    <lastmod>2020-10-27T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://fladdimir.github.io/tags/slides/</loc>
     <lastmod>2020-10-27T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fladdimir.github.io/tags/terraform/</loc>
     <lastmod>2020-10-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fladdimir.github.io/tags/angular/</loc>
-    <lastmod>2020-05-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fladdimir.github.io/tags/continuous-integration/</loc>
-    <lastmod>2020-05-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fladdimir.github.io/tags/django/</loc>
-    <lastmod>2020-05-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fladdimir.github.io/post/csa-vcom/</loc>
-    <lastmod>2020-05-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://fladdimir.github.io/tags/or-tools/</loc>
-    <lastmod>2020-05-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://fladdimir.github.io/tags/osmnx/</loc>
     <lastmod>2020-04-04T00:00:00+00:00</lastmod>

@@ -5,7 +5,6 @@
     <link>https://fladdimir.github.io/tags/leaflet.js/</link>
     <description>Recent content in Leaflet.js on wh</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
     <lastBuildDate>Mon, 26 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/leaflet.js/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Green-Light Optimized Speed Advisory for Cycling in Hamburg</title>
@@ -13,25 +12,16 @@
       <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://fladdimir.github.io/post/glosa/</guid>
-      <description>A web-app to reduce traffic-light waiting time on the daily bike ride to work</description>
+      <description>A proof-of-concept web app to reduce traffic-light waiting time</description>
     </item>
     
     <item>
-      <title>Playing around with React, Leaflet, Micronaut, Okta, &amp; Heroku</title>
+      <title>Web-app for Sharing Geo-Locations</title>
       <link>https://fladdimir.github.io/post/location-sharing/</link>
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://fladdimir.github.io/post/location-sharing/</guid>
-      <description>A simple web-app for sharing geo-locations with friends</description>
-    </item>
-    
-    <item>
-      <title>Logistics Process Models for Automated Integration Testing</title>
-      <link>https://fladdimir.github.io/post/csa-vcom/</link>
-      <pubDate>Sun, 24 May 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/post/csa-vcom/</guid>
-      <description>Continuous Integration and Virtual Commissioning of Logistics Software</description>
+      <description>React, Leaflet, Micronaut, Okta, &amp;amp; Heroku</description>
     </item>
     
     <item>

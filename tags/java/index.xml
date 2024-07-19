@@ -5,15 +5,23 @@
     <link>https://fladdimir.github.io/tags/java/</link>
     <description>Recent content in Java on wh</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Mon, 26 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 Jul 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://fladdimir.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tracing ORM Performance Issues</title>
+      <link>https://fladdimir.github.io/post/orm-tracing/</link>
+      <pubDate>Fri, 19 Jul 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://fladdimir.github.io/post/orm-tracing/</guid>
+      <description>https://github.com/fladdimir/orm-performance-tracing-sample</description>
+    </item>
+    
     <item>
       <title>Green-Light Optimized Speed Advisory for Cycling in Hamburg</title>
       <link>https://fladdimir.github.io/post/glosa/</link>
       <pubDate>Mon, 26 Jun 2023 00:00:00 +0000</pubDate>
       
       <guid>https://fladdimir.github.io/post/glosa/</guid>
-      <description>A web-app to reduce traffic-light waiting time on the daily bike ride to work</description>
+      <description>A proof-of-concept web app to reduce traffic-light waiting time</description>
     </item>
     
     <item>
@@ -44,21 +52,12 @@
     </item>
     
     <item>
-      <title>Playing around with React, Leaflet, Micronaut, Okta, &amp; Heroku</title>
+      <title>Web-app for Sharing Geo-Locations</title>
       <link>https://fladdimir.github.io/post/location-sharing/</link>
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
       
       <guid>https://fladdimir.github.io/post/location-sharing/</guid>
-      <description>A simple web-app for sharing geo-locations with friends</description>
-    </item>
-    
-    <item>
-      <title>Block-based Modeling with SimPy - in Java &amp; C#</title>
-      <link>https://fladdimir.github.io/post/csa4j&#43;cs/</link>
-      <pubDate>Sun, 20 Dec 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://fladdimir.github.io/post/csa4j&#43;cs/</guid>
-      <description>Performance Comparison of Casymda-Ports for Uia-Sim and SimSharp</description>
+      <description>React, Leaflet, Micronaut, Okta, &amp;amp; Heroku</description>
     </item>
     
   </channel>
